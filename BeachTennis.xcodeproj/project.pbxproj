@@ -11,6 +11,10 @@
 		7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6182B2A671A480097A3AD /* ContentView.swift */; };
 		7BB6182E2A671A490097A3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB6182D2A671A490097A3AD /* Assets.xcassets */; };
 		7BB618312A671A490097A3AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB618302A671A490097A3AD /* Preview Assets.xcassets */; };
+		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
+		CE509F662A6F042100E65ECE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* User.swift */; };
+		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
+		CE509F6A2A6F097400E65ECE /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F692A6F097400E65ECE /* Court.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		7BB6182B2A671A480097A3AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BB6182D2A671A490097A3AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB618302A671A490097A3AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		CE509F652A6F042100E65ECE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		CE509F692A6F097400E65ECE /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				7BB618292A671A480097A3AD /* BeachTennisApp.swift */,
+				CE509F692A6F097400E65ECE /* Court.swift */,
+				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
+				CE509F652A6F042100E65ECE /* User.swift */,
+				CE509F672A6F056100E65ECE /* Node.swift */,
 				7BB6182B2A671A480097A3AD /* ContentView.swift */,
 				7BB6182D2A671A490097A3AD /* Assets.xcassets */,
 				7BB6182F2A671A490097A3AD /* Preview Content */,
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE509F662A6F042100E65ECE /* User.swift in Sources */,
+				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
+				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */,
 				7BB6182A2A671A480097A3AD /* BeachTennisApp.swift in Sources */,
+				CE509F6A2A6F097400E65ECE /* Court.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
