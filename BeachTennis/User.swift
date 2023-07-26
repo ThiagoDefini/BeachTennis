@@ -11,16 +11,28 @@ class User{
     var id: Int
     var name: String
     var contact: String
-    var tournamentsCreated:[Int]
-    var tournamentsRegistered:[Int]
-    var matchesFavorited:[Int]
+    var tournamentsCreated:[Tournament]
+    var tournamentsRegistered:[Tournament]
+    var playersFavorited:[Node]
     
-    init(id: Int, name: String, contact: String, tournamentsCreated: [Int], tournamentsRegistered: [Int], matchesFavorited: [Int]) {
+    init(id: Int, name: String, contact: String, tournamentsCreated: [Tournament], tournamentsRegistered: [Tournament], playersFavorited: [Node]) {
         self.id = id
         self.name = name
         self.contact = contact
         self.tournamentsCreated = tournamentsCreated
         self.tournamentsRegistered = tournamentsRegistered
-        self.matchesFavorited = matchesFavorited
+        self.playersFavorited = playersFavorited
+    }
+    
+    func favoritePlayer(nodeFavoritedId: Int, tournamentId: Int){
+        for tournament in tournamentsRegistered {
+            if(tournament.id == tournamentId){
+                for node in tournament.tournamentMatches{
+                    if (node.id == nodeFavoritedId){
+                        playersFavorited.append(node)
+                    }
+                }
+            }
+        }
     }
 }
