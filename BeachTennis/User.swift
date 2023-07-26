@@ -35,4 +35,11 @@ class User{
             }
         }
     }
+    
+    func gamesRemaining (tournament: Tournament) -> Int{
+        for node in playersFavorited{
+            return tournament.checkCourt(nodeId: node.id)
+        }
+        return 0
+    }
 }
