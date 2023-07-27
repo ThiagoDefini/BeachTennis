@@ -37,7 +37,7 @@ class Tournament{
         if (SelectedCourt == courts.count-1){
             SelectedCourt = 0
         }
-        var courtSelected = courts[SelectedCourt]
+        let courtSelected = courts[SelectedCourt]
         return courtSelected
     }
     
@@ -55,13 +55,18 @@ class Tournament{
     //todos os jogadores com suas respectivas quadras, ou seja, a configuracao inicial do torneio
     func createTournament(){
         self.id = 10
+        var match = 0
         for i in 1...(players.count * 2)-1{
             if(i < players.count){
                 tournamentMatches.append(Node(id: tournamentMatches.count+1, empty: true, player: "", time: Date.init(), court: Court.init(id: 0, name: "", line:[]), winner: false))
             }
             else{
                 tournamentMatches.append(Node(id: tournamentMatches.count+1, empty: false, player: players[i - players.count], time: Date.init(), court: self.selectCourt(), winner: false))
-                SelectedCourt+=1
+                match += 1
+                if(match == 2){
+                    SelectedCourt+=1
+                    match = 0
+                }
             }
         }
         
