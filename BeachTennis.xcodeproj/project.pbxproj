@@ -12,6 +12,13 @@
 		7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6182B2A671A480097A3AD /* ContentView.swift */; };
 		7BB6182E2A671A490097A3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB6182D2A671A490097A3AD /* Assets.xcassets */; };
 		7BB618312A671A490097A3AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB618302A671A490097A3AD /* Preview Assets.xcassets */; };
+		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
+		CE509F662A6F042100E65ECE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* User.swift */; };
+		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
+		CE509F6A2A6F097400E65ECE /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F692A6F097400E65ECE /* Court.swift */; };
+		CEE1D2C32A71980B0074F383 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C22A71980B0074F383 /* Collections */; };
+		CEE1D2C52A71980B0074F383 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C42A71980B0074F383 /* DequeModule */; };
+		CEE1D2C72A71980B0074F383 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C62A71980B0074F383 /* OrderedCollections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +28,10 @@
 		7BB6182B2A671A480097A3AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BB6182D2A671A490097A3AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB618302A671A490097A3AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		CE509F652A6F042100E65ECE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		CE509F692A6F097400E65ECE /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +39,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE1D2C32A71980B0074F383 /* Collections in Frameworks */,
+				CEE1D2C52A71980B0074F383 /* DequeModule in Frameworks */,
+				CEE1D2C72A71980B0074F383 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +69,10 @@
 			children = (
 				6FF7C9162A705A0900EBAA12 /* PhotoPicker.swift */,
 				7BB618292A671A480097A3AD /* BeachTennisApp.swift */,
+				CE509F692A6F097400E65ECE /* Court.swift */,
+				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
+				CE509F652A6F042100E65ECE /* User.swift */,
+				CE509F672A6F056100E65ECE /* Node.swift */,
 				7BB6182B2A671A480097A3AD /* ContentView.swift */,
 				7BB6182D2A671A490097A3AD /* Assets.xcassets */,
 				7BB6182F2A671A490097A3AD /* Preview Content */,
@@ -86,6 +104,11 @@
 			dependencies = (
 			);
 			name = BeachTennis;
+			packageProductDependencies = (
+				CEE1D2C22A71980B0074F383 /* Collections */,
+				CEE1D2C42A71980B0074F383 /* DequeModule */,
+				CEE1D2C62A71980B0074F383 /* OrderedCollections */,
+			);
 			productName = BeachTennis;
 			productReference = 7BB618262A671A480097A3AD /* BeachTennis.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +137,9 @@
 				Base,
 			);
 			mainGroup = 7BB6181D2A671A480097A3AD;
+			packageReferences = (
+				CEE1D2C12A71980B0074F383 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = 7BB618272A671A480097A3AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,8 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE509F662A6F042100E65ECE /* User.swift in Sources */,
+				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
+				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */,
 				7BB6182A2A671A480097A3AD /* BeachTennisApp.swift in Sources */,
+				CE509F6A2A6F097400E65ECE /* Court.swift in Sources */,
 				6FF7C9172A705A0900EBAA12 /* PhotoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +373,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEE1D2C12A71980B0074F383 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEE1D2C22A71980B0074F383 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEE1D2C12A71980B0074F383 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		CEE1D2C42A71980B0074F383 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEE1D2C12A71980B0074F383 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
+		CEE1D2C62A71980B0074F383 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEE1D2C12A71980B0074F383 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7BB6181E2A671A480097A3AD /* Project object */;
 }
