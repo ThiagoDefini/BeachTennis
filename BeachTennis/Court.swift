@@ -23,7 +23,7 @@ class Court{
         var placement = 1
         for node in line{
             if (node.id == nodeId){
-                return placement
+                return Int(ceil(Double(placement/2)))
             }
             else{
                 placement += 1

@@ -9,6 +9,7 @@ import Foundation
 
 class Tournament{
     var id: Int
+    var organizerId: Int
     var SelectedCourt: Int = 0
     var tournamentMatches: [Node]
     var players: [String]
@@ -16,8 +17,9 @@ class Tournament{
     var startingTime: Date
     var ranking: [Node]
     
-    init(id: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node]){
+    init(id: Int, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node]){
         self.id = id
+        self.organizerId = organizerId
         self.tournamentMatches = tournamentMatches
         self.players = players
         self.courts = courts
@@ -34,7 +36,7 @@ class Tournament{
     }
     
     func selectCourt() -> Court{
-        if (SelectedCourt == courts.count-1){
+        if (SelectedCourt == courts.count+1){
             SelectedCourt = 0
         }
         let courtSelected = courts[SelectedCourt]
@@ -42,11 +44,13 @@ class Tournament{
     }
     
     //seleciona uma quadra para uma partida
-    func changeCourt(courtId: Int, nodeId: Int){
+    func changeCourt(nodeId: Int, courtId: Int){
         for court in courts {
             if (court.id == courtId){
-                tournamentMatches[nodeId-1].court = court
-                court.line.append(tournamentMatches[nodeId-1])
+                tournamentMatches[(nodeId*2)-1].court = court
+                tournamentMatches[(nodeId*2)].court = court
+                court.line.append(tournamentMatches[(nodeId*2)-1])
+                court.line.append(tournamentMatches[(nodeId*2)])
             }
         }
     }
@@ -64,7 +68,7 @@ class Tournament{
                 tournamentMatches.append(Node(id: tournamentMatches.count+1, empty: false, player: players[i - players.count], time: Date.init(), court: self.selectCourt(), winner: false))
                 match += 1
                 if(match == 2){
-                    SelectedCourt+=1
+                    SelectedCourt += 1
                     match = 0
                 }
             }
@@ -102,7 +106,8 @@ class Tournament{
                 tournamentMatches[aux-1].winner = false
             }
             if(node.id == 0 && node.empty == false){
-               print(ranking)
+                createRanking()
+                print(ranking)
             }
         }
     }
