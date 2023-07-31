@@ -57,9 +57,9 @@ class User{
     
     func editTournament (tournament: Tournament, editSelected: editOptions){
         if(tournament.organizerId == self.id){
-            var aux1 = ""
-            var aux2 = 0
-            var aux3 = 0
+            let aux1 = ""
+            let aux2 = 0
+            let aux3 = 0
             print("Please select the kind of edit you would like to make:")
             switch editSelected{
                 
@@ -80,7 +80,7 @@ class User{
                 
             case .advanceTonextRound:
                 print("Advancing to the next stage of the tournament...")
-                tournament.updateTournament()
+                tournament.updateTournamentTree()
                 break
             }
         }
