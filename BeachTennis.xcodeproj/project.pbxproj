@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = SOURCE_ROOT; };
-		6F6DC8282A7430C80052F9E3 /* Managing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managing.swift; sourceTree = SOURCE_ROOT; };
+		6F6DC8282A7430C80052F9E3 /* Managing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Managing.swift; path = BeachTennis/Managing.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChamp.swift; sourceTree = SOURCE_ROOT; };
 		7BB618262A671A480097A3AD /* BeachTennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeachTennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB618292A671A480097A3AD /* BeachTennisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachTennisApp.swift; sourceTree = "<group>"; };

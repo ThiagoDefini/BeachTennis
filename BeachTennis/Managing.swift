@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Managing: View {
-   
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -20,17 +20,14 @@ struct Managing: View {
                     .offset(y: -60)
                 
                 NavigationLink(destination: CreateChamp(), label: { Text("New championship")})
-                   // .cornerRadius(16)
+                // .cornerRadius(16)
                     .frame(width: 350, height: 64)
                     .background(Color("blue"))
                     .foregroundColor(.white)
-                    
-            
+                
+                
             }
         }
-        
-            
-    
     }
 }
 

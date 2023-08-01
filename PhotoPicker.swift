@@ -11,8 +11,7 @@ import SwiftUI
 struct PhotoPicker: View {
     @State var showImage = false
     @State var image: UIImage?
-//    @FetchRequest(sortDescriptors: []) var profile: FetchedResults<P rofile>
-//    //database problem
+    
     var body: some View {
         ZStack{
             VStack(alignment: .leading){
@@ -33,33 +32,22 @@ struct PhotoPicker: View {
                                 .padding(.leading, 70)
                         } else {
                             Text("Insert image")
-                           
+                            
                         }
                     }
-                    }
                 }
+            }
             .padding(.bottom, 5)
-//            VStack {
-//                if profile[profile.endIndex - 1].name ==  "" {
-//                    Text("Olá")
-//                } else {
-//                    Text("Olá, \(profile[profile.endIndex - 1].name!)")
-//                }
-//            }
-//            .padding(.leading, 10)
-//            .font(.system(size: 24))
-//            .bold()
-//            .foregroundColor(Color("color.purple"))
-
+            
         }
         .padding()
         .fullScreenCover(isPresented: $showImage, onDismiss: nil) {
             CotrollerPhotoPicker(image: $image)
                 .ignoresSafeArea()
         }
-
-            }
-        }
+        
+    }
+}
 
 
 struct PhotoPicker_Previews: PreviewProvider {
@@ -70,37 +58,37 @@ struct PhotoPicker_Previews: PreviewProvider {
 
 
 struct CotrollerPhotoPicker: UIViewControllerRepresentable {
-
+    
     @Binding var image: UIImage?
     private let controller = UIImagePickerController()
-
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
-
+    
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+        
         let parent: CotrollerPhotoPicker
-
+        
         init(parent: CotrollerPhotoPicker) {
             self.parent = parent
         }
-
+        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             parent.image = info[.originalImage] as? UIImage
             picker.dismiss(animated: true)
         }
-
+        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true)
         }
     }
-
+    
     func makeUIViewController(context: Context) -> some UIViewController {
         controller.delegate = context.coordinator
         return controller
     }
-
+    
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }
