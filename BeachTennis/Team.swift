@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import DequeModule
 
 class Team{
     var id:Int
     var playersInGroup:[Node]
-    var matches:[Node]
+    var matches:Deque<Node>
 
-    init(id: Int, players: [Node], matches: [Node]) {
+    init(id: Int, players: [Node], matches: Deque<Node>) {
         self.id = id
         self.playersInGroup = players
         self.matches = matches
@@ -28,10 +29,8 @@ class Team{
     }
     
     func findNode(id:Int) -> Node{
-        var single = 0
         for node in playersInGroup{
-            if (node.id == id && single == 0){
-                single += 1
+            if (node.id == id){
                 return node
             }
         }

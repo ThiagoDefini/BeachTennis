@@ -9,7 +9,8 @@ import Foundation
 
 class Node {
     var id:Int
-    var empty:Bool 
+    var empty:Bool
+    var fineshed:Bool = false
     var player:String
     var time:Date
     var court:Court
