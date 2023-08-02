@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Group{
+class Team{
     var id:Int
     var playersInGroup:[Node]
     var matches:[Node]

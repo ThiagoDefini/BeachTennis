@@ -19,10 +19,10 @@ class Tournament{
     var startingTime: Date
     var ranking: [Node]
     var tournamentMatches: [Node]
-    var groups: [Group]
+    var groups: [Team]
 
     
-    init(id: Int, tournamentType: tournamentTypes, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Group]){
+    init(id: Int, tournamentType: tournamentTypes, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Team]){
         self.id = id
         self.tournamentType = tournamentType
         self.organizerId = organizerId
@@ -170,7 +170,7 @@ class Tournament{
         switch playersTotal {
         case 3...5:
             for i in 0...playersTotal-1{
-                let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i)], matches: [])
+                let newGroup = Team(id: numGroups, players: [createOccupiedNode(num: i)], matches: [])
                 groups.append(newGroup)
                 selectedCourt += 1
             }
@@ -181,7 +181,7 @@ class Tournament{
             for i in 0...Int(floor(Double(playersTotal/3))) - 1{
                 numGroups += 1
                 if (offset > 0){
-                    let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment),createOccupiedNode(num: i*3+3+adjustment)], matches: [])
+                    let newGroup = Team(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment),createOccupiedNode(num: i*3+3+adjustment)], matches: [])
                     groups.append(newGroup)
                     newGroup.matchMaker()
                     selectedCourt += 1
@@ -190,7 +190,7 @@ class Tournament{
                     groups.append(newGroup)
                 }
                 else{
-                    let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment)], matches: [])
+                    let newGroup = Team(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment)], matches: [])
                     groups.append(newGroup)
                     newGroup.matchMaker()
                     selectedCourt += 1
