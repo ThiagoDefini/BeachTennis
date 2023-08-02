@@ -14,18 +14,23 @@ struct CreateChamp: View {
     @State private var startDate = Date()
     @State private var endDate = Date()
     
+    @State private var createButton = false
+    
     let characterLimit = 18
     var body: some View {
         NavigationView{
                     VStack{
                         Group{
-                            NavigationLink(destination: CreateChamp(), label: {Text("Create")})
-                                .padding(.leading, 300)
+//                            NavigationLink(destination: Created(), label: {Text("Create")})
+//                                .padding(.leading, 300)
+                            Button("Create"){
+                                
+                            }
                             Divider()
                             Text("New championship")
                                 .font(.title)
                                 .bold()
-                            Spacer()
+                           // Spacer()
                             
                             HStack(spacing: 20){
                                 Text("Name")
@@ -73,17 +78,6 @@ struct CreateChamp: View {
 
 
 
-struct CreatedChamp: View {
-    var body: some View{
-        VStack{
-            Image("")
-            Text("Championship created")
-        }
-        
-    }
-    
-    
-}
 
 struct CreateChamp_Previews: PreviewProvider {
     static var previews: some View {

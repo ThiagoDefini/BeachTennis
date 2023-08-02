@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct Managing: View {
+    @State private var isCreated = false
     
     var body: some View {
         NavigationView{
             VStack{
-                Image("jiji")
-                    .resizable()
-                    .frame(width: 350, height: 182)
-                    .cornerRadius(16)
-                    .navigationTitle("Managing")
-                    .offset(y: -60)
+                if isCreated == true {
+                    
+                }
                 
                 NavigationLink(destination: CreateChamp(), label: { Text("New championship")})
                 // .cornerRadius(16)

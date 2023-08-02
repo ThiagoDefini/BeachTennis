@@ -10,6 +10,7 @@
 		6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */; };
 		6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8282A7430C80052F9E3 /* Managing.swift */; };
 		6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */; };
+		6F6DC82D2A7976B60052F9E3 /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC82C2A7976B60052F9E3 /* Created.swift */; };
 		7BB6182A2A671A480097A3AD /* BeachTennisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB618292A671A480097A3AD /* BeachTennisApp.swift */; };
 		7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6182B2A671A480097A3AD /* ContentView.swift */; };
 		7BB6182E2A671A490097A3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB6182D2A671A490097A3AD /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC8282A7430C80052F9E3 /* Managing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Managing.swift; path = BeachTennis/Managing.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChamp.swift; sourceTree = SOURCE_ROOT; };
+		6F6DC82C2A7976B60052F9E3 /* Created.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Created.swift; sourceTree = SOURCE_ROOT; };
 		7BB618262A671A480097A3AD /* BeachTennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeachTennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB618292A671A480097A3AD /* BeachTennisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeachTennisApp.swift; sourceTree = "<group>"; };
 		7BB6182B2A671A480097A3AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		6F6DC8272A74308A0052F9E3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6F6DC82C2A7976B60052F9E3 /* Created.swift */,
 				6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */,
 				6F6DC8282A7430C80052F9E3 /* Managing.swift */,
 			);
@@ -182,6 +185,7 @@
 			files = (
 				CE509F662A6F042100E65ECE /* User.swift in Sources */,
 				6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */,
+				6F6DC82D2A7976B60052F9E3 /* Created.swift in Sources */,
 				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
 				6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */,
 				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
