@@ -28,8 +28,10 @@ class Group{
     }
     
     func findNode(id:Int) -> Node{
+        var single = 0
         for node in playersInGroup{
-            if (node.id == id){
+            if (node.id == id && single == 0){
+                single += 1
                 return node
             }
         }

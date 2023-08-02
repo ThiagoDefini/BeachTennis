@@ -28,7 +28,7 @@ class User{
         case addPlayer
         case addCourt
         case changeCourt
-        case advanceTonextRound
+        case advanceTonextRoundTree
     }
     
     func favoritePlayer(nodeFavoritedId: Int, tournamentId: Int){
@@ -50,9 +50,27 @@ class User{
         return 0
     }
     
-    func createTournament (tournamentID: Int, startingTime: Date){
-        var tournament = Tournament(id: tournamentID, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [])
+    func createTournament (tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date){
+        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
         tournamentsCreated.append(tournament)
+    }
+    
+    func printTournament(tournament: Tournament){
+        var line = 0
+        for node in tournament.tournamentMatches{
+            line += 1
+            let sonNode1 = tournament.tournamentMatches[node.id*2]
+            let sonNode2 = tournament.tournamentMatches[node.id*2+1]
+            if (node.empty == true && sonNode1.empty == true){
+                print("\n "+String(line)+". this node is not associated with any matches")
+            if (node.empty == true && sonNode1.empty == false){
+                print("\n "+String(line)+". this node represents the match between: "+String(sonNode1.player)+" and "+String(sonNode2.player))
+                }
+            if (node.empty == false){
+                print("\n "+String(line)+". this node represents the players: "+String(node.player))
+                }
+            }
+        }
     }
     
     func editTournament (tournament: Tournament, editSelected: editOptions){
@@ -74,11 +92,11 @@ class User{
                 break
                 
             case .changeCourt:
-                print("Please insert the id of the match and the id of the court you would like to change:")
-                tournament.changeCourt(nodeId: aux2,courtId: aux3)
+                print("Please insert the id of the match/group and the id of the court you would like to change:")
+                tournament.changeCourt(nodeId: aux2, courtId: aux3, groupId: aux2)
                 break
                 
-            case .advanceTonextRound:
+            case .advanceTonextRoundTree:
                 print("Advancing to the next stage of the tournament...")
                 tournament.updateTournamentTree()
                 break

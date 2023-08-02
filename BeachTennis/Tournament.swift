@@ -9,19 +9,22 @@ import Foundation
 
 class Tournament{
     var id: Int
+    var tournamentType: tournamentTypes
     var organizerId: Int
-    var selectedCourt: Int = 0
+    var selectedCourt = 0
+    var nodesCreated = 0
+    var numGroups = 0
     var players: [String]
     var courts: [Court]
     var startingTime: Date
     var ranking: [Node]
     var tournamentMatches: [Node]
     var groups: [Group]
-    var nodesCreated = 0
-    var numGroups = 0
+
     
-    init(id: Int, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Group]){
+    init(id: Int, tournamentType: tournamentTypes, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Group]){
         self.id = id
+        self.tournamentType = tournamentType
         self.organizerId = organizerId
         self.tournamentMatches = tournamentMatches
         self.players = players
@@ -49,18 +52,50 @@ class Tournament{
     }
     
     //seleciona uma quadra para uma partida
-    func changeCourt(nodeId: Int, courtId: Int){
-        for court in courts {
-            if (court.id == courtId){
-                tournamentMatches[(nodeId*2)-1].court = court
-                tournamentMatches[(nodeId*2)].court = court
-                court.line.append(tournamentMatches[(nodeId*2)-1])
-                court.line.append(tournamentMatches[(nodeId*2)])
+    func changeCourt(nodeId: Int, courtId: Int, groupId: Int){
+        if(tournamentType == .Tree){
+            for court in courts {
+                if (court.id == courtId){
+                    tournamentMatches[(nodeId*2)].court.removeById(nodeId: nodeId*2)
+                    tournamentMatches[(nodeId*2)].court.removeById(nodeId: nodeId*2+1)
+                    tournamentMatches[(nodeId*2)].court = court
+                    tournamentMatches[(nodeId*2)+1].court = court
+                    court.line.append(tournamentMatches[(nodeId*2)])
+                    court.line.append(tournamentMatches[(nodeId*2)+1])
+                }
+            }
+        }
+        else{
+            for court in courts {
+                if (court.id == courtId){
+                    for i in  0...groups[groupId-1].playersInGroup.count-1{
+                        if (groups[groupId-1].playersInGroup[i].id == nodeId){
+                            if(nodeId%2 == 1){
+                                groups[groupId-1].playersInGroup[i].court.removeById(nodeId: groups[groupId-1].playersInGroup[i].id)
+                                groups[groupId-1].playersInGroup[i+1].court.removeById(nodeId: groups[groupId-1].playersInGroup[i+1].id)
+                                groups[groupId-1].playersInGroup[i].court = court
+                                groups[groupId-1].playersInGroup[i+1].court = court
+                                court.line.append(groups[groupId-1].playersInGroup[i])
+                                court.line.append(groups[groupId-1].playersInGroup[i+1])
+                            }
+                            else{
+                                if(nodeId%2 == 1){
+                                    groups[groupId-1].playersInGroup[i-1].court.removeById(nodeId: groups[groupId-1].playersInGroup[i-1].id)
+                                    groups[groupId-1].playersInGroup[i].court.removeById(nodeId: groups[groupId-1].playersInGroup[i].id)
+                                    groups[groupId-1].playersInGroup[i-1].court = court
+                                    groups[groupId-1].playersInGroup[i].court = court
+                                    court.line.append(groups[groupId-1].playersInGroup[i-1])
+                                    court.line.append(groups[groupId-1].playersInGroup[i])
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
     
-    func checkCourt(nodeId: Int) -> Int{
+    func checkCourtTree(nodeId: Int) -> Int{
         for node in tournamentMatches{
             if(node.id == nodeId){
                 let auxCourt = node.court
@@ -75,7 +110,7 @@ class Tournament{
         return 0
     }
     
-    func selectWinner(id: Int){
+    func selectWinnerTree(id: Int){
         tournamentMatches[id].winner += 1
         tournamentMatches[id].removeFromLine()
     }
@@ -116,7 +151,7 @@ class Tournament{
     //atualiza o torneio e move ele para a próxima etapa
     func updateTournamentTree(){
         for node in tournamentMatches{
-            var aux = Int(floor(Double(node.id/2)))
+            let aux = Int(floor(Double(node.id/2)))
             if(node.winner >= 1 && tournamentMatches[aux-1].empty == true){
                 node.winner = 0
                 tournamentMatches[aux-1] = node
@@ -135,7 +170,8 @@ class Tournament{
         switch playersTotal {
         case 3...5:
             for i in 0...playersTotal-1{
-                var newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i)], matches: [])
+                let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i)], matches: [])
+                groups.append(newGroup)
                 selectedCourt += 1
             }
             break
@@ -145,7 +181,8 @@ class Tournament{
             for i in 0...Int(floor(Double(playersTotal/3))) - 1{
                 numGroups += 1
                 if (offset > 0){
-                    var newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment),createOccupiedNode(num: i*3+3+adjustment)], matches: [])
+                    let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment),createOccupiedNode(num: i*3+3+adjustment)], matches: [])
+                    groups.append(newGroup)
                     newGroup.matchMaker()
                     selectedCourt += 1
                     offset -= 1
@@ -153,7 +190,8 @@ class Tournament{
                     groups.append(newGroup)
                 }
                 else{
-                    var newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment)], matches: [])
+                    let newGroup = Group(id: numGroups, players: [createOccupiedNode(num: i*3+adjustment),createOccupiedNode(num: i*3+1+adjustment),createOccupiedNode(num: i*3+2+adjustment)], matches: [])
+                    groups.append(newGroup)
                     newGroup.matchMaker()
                     selectedCourt += 1
                     groups.append(newGroup)
