@@ -115,11 +115,11 @@ class Tournament{
         tournamentMatches[id].removeFromLine()
     }
     
-    func selectWinnerGroup(groupId: Int,nodeId: Int){
+    func selectWinnerGroup(groupId: Int, nodeId: Int){
         groups[groupId].findNode(id: nodeId).winner += 1
         groups[groupId].matches.removeFirst()
         groups[groupId].matches.removeFirst()
-        groups[groupId].findNode(id: nodeId).removeFromLine()
+        groups[groupId].findNode(id: nodeId-1).removeFromLine()
     }
     
     func createOccupiedNode(num: Int) -> Node{
