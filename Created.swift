@@ -10,13 +10,25 @@ import SwiftUI
 struct Created: View {
     @Environment(\.dismiss) var dismiss
     
+    
     var body: some View {
         VStack{
-            Button("dimiss"){
-            dismiss()
-            }
-            Image("")
-            Text("Championship created")
+//            Button("dimiss"){
+//            dismiss()
+//            }
+            Image("checkmark")
+                .resizable()
+                .frame(width: 200, height: 200)
+                .padding(.bottom)
+            Text("Championship created!")
+                .padding(.bottom, 150)
+                .font(.headline)
+            
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(.green)
+                .frame(width: 329, height: 226)
+                
+          
         }    }
 }
 

@@ -22,13 +22,22 @@ class Court{
     func positionInLine(nodeId: Int) -> Int{
         var placement = 1
         for node in line{
-            if (node.id == nodeId){
-                return placement
+            if (node.id == nodeId && node.fineshed == false){
+                node.fineshed = true
+                return Int(ceil(Double(placement/2)))
             }
             else{
                 placement += 1
             }
         }
         return 0
+    }
+    
+    func removeById(nodeId: Int){
+        for node in line{
+            if (node.id == nodeId){
+                line.remove(at: nodeId)
+            }
+        }
     }
 }

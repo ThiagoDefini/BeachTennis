@@ -13,9 +13,9 @@ struct Managing: View {
     var body: some View {
         NavigationView{
             VStack{
-                if isCreated == true {
-                    
-                }
+//                if isCreated == true {
+//
+//                }
                 
                 NavigationLink(destination: CreateChamp(), label: { Text("New championship")})
                 // .cornerRadius(16)

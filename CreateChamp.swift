@@ -13,6 +13,7 @@ struct CreateChamp: View {
     @State private var adress: String = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
+    @State private var image = Image("")
     
     @State private var createButton = false
     
@@ -23,9 +24,9 @@ struct CreateChamp: View {
                         Group{
 //                            NavigationLink(destination: Created(), label: {Text("Create")})
 //                                .padding(.leading, 300)
-                            Button("Create"){
-                                
-                            }
+//                          Button(action: {createTournament(tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date)}, label: {
+//                              Text("Create")
+//                          })
                             Divider()
                             Text("New championship")
                                 .font(.title)
@@ -70,6 +71,8 @@ struct CreateChamp: View {
                         .padding(.leading, 40)
                         
                         PhotoPicker()
+                           .padding(.trailing, 250)
+                        
                     }
                 }
             }
