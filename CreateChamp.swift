@@ -15,6 +15,8 @@ struct CreateChamp: View {
     @State private var endDate = Date()
     @State private var image = Image("")
     
+   
+    
     @State private var createButton = false
     
     let characterLimit = 18
@@ -22,34 +24,34 @@ struct CreateChamp: View {
         NavigationView{
                     VStack{
                         Group{
-//                            NavigationLink(destination: Created(), label: {Text("Create")})
-//                                .padding(.leading, 300)
-//                          Button(action: {createTournament(tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date)}, label: {
-//                              Text("Create")
-//                          })
-                            Divider()
-                            Text("New championship")
-                                .font(.title)
-                                .bold()
-                           // Spacer()
-                            
+                            Spacer()
+                               // .padding(.bottom, -11.0)
+                            PhotoPicker()
+                                .foregroundColor(Color("blue"))
+                           
                             HStack(spacing: 20){
                                 Text("Name")
+                                    .foregroundColor(.black)
                                 TextField("name", text: self.$name)
+                                    .foregroundColor(.black)
                             }
                             .padding(.leading, 40)
                             Divider()
                             
                             HStack(spacing: 20){
                                 Text("Tennis court")
+                                    .foregroundColor(.black)
                                 TextField("name", text: self.$tennisCourt)
+                                    .foregroundColor(.black)
                             }
                             .padding(.leading, 40)
                             Divider()
                         }
                         HStack(spacing: 20){
                             Text("Adress")
+                                .foregroundColor(.black)
                             TextField("name", text: self.$adress)
+                                .foregroundColor(.black)
                         }
                         .padding(.leading, 40)
                         Divider()
@@ -57,7 +59,9 @@ struct CreateChamp: View {
                         
                         HStack{
                             Text("Start date")
+                                .foregroundColor(.black)
                             DatePicker("", selection: $startDate, displayedComponents: .date)
+                               // .foregroundColor(.black)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
@@ -65,15 +69,29 @@ struct CreateChamp: View {
                         
                         HStack{
                             Text("End date")
+                                .foregroundColor(.black)
                             DatePicker("", selection: $endDate, displayedComponents: .date)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
                         
-                        PhotoPicker()
-                           .padding(.trailing, 250)
+                        Spacer()
+                    
+                        Button("Create championship"){
+                        createButton.toggle()
+                    }
+                    .sheet(isPresented: $createButton) {
+                        Created()
+
+                    }
+                    .frame(width: 350, height: 64)
+                    .background(Color("blue"))
+                    .cornerRadius(16)
+                    .foregroundColor(.white)
+                    .padding()
                         
                     }
+                    .navigationTitle("New championship")
                 }
             }
         }
