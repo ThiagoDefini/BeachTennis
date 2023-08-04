@@ -13,37 +13,45 @@ struct CreateChamp: View {
     @State private var adress: String = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
+    @State private var image = Image("")
+    
+   
+    
+    @State private var createButton = false
     
     let characterLimit = 18
     var body: some View {
         NavigationView{
                     VStack{
                         Group{
-                            NavigationLink(destination: CreateChamp(), label: {Text("Create")})
-                                .padding(.leading, 300)
-                            Divider()
-                            Text("New championship")
-                                .font(.title)
-                                .bold()
                             Spacer()
-                            
+                               // .padding(.bottom, -11.0)
+                            PhotoPicker()
+                                .foregroundColor(Color("blue"))
+                           
                             HStack(spacing: 20){
                                 Text("Name")
+                                    .foregroundColor(.black)
                                 TextField("name", text: self.$name)
+                                    .foregroundColor(.black)
                             }
                             .padding(.leading, 40)
                             Divider()
                             
                             HStack(spacing: 20){
                                 Text("Tennis court")
+                                    .foregroundColor(.black)
                                 TextField("name", text: self.$tennisCourt)
+                                    .foregroundColor(.black)
                             }
                             .padding(.leading, 40)
                             Divider()
                         }
                         HStack(spacing: 20){
                             Text("Adress")
+                                .foregroundColor(.black)
                             TextField("name", text: self.$adress)
+                                .foregroundColor(.black)
                         }
                         .padding(.leading, 40)
                         Divider()
@@ -51,7 +59,9 @@ struct CreateChamp: View {
                         
                         HStack{
                             Text("Start date")
+                                .foregroundColor(.black)
                             DatePicker("", selection: $startDate, displayedComponents: .date)
+                               // .foregroundColor(.black)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
@@ -59,13 +69,29 @@ struct CreateChamp: View {
                         
                         HStack{
                             Text("End date")
+                                .foregroundColor(.black)
                             DatePicker("", selection: $endDate, displayedComponents: .date)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
                         
-                        PhotoPicker()
+                        Spacer()
+                    
+                        Button("Create championship"){
+                        createButton.toggle()
                     }
+                    .sheet(isPresented: $createButton) {
+                        Created()
+
+                    }
+                    .frame(width: 350, height: 64)
+                    .background(Color("blue"))
+                    .cornerRadius(16)
+                    .foregroundColor(.white)
+                    .padding()
+                        
+                    }
+                    .navigationTitle("New championship")
                 }
             }
         }
@@ -73,17 +99,6 @@ struct CreateChamp: View {
 
 
 
-struct CreatedChamp: View {
-    var body: some View{
-        VStack{
-            Image("")
-            Text("Championship created")
-        }
-        
-    }
-    
-    
-}
 
 struct CreateChamp_Previews: PreviewProvider {
     static var previews: some View {
