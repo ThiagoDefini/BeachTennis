@@ -59,12 +59,13 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     
     func addButtonPressed(){
         guard !text.isEmpty else { return }
+        print("Entrou")
         addItem(name: text)
     }
     
     private func addItem(name: String){
-        guard let image = UIImage(named: "guaxinim"),
-            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("guaxinim.png"),
+        guard let image = UIImage(named: "checkmark"),
+            let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("checkmark.png"),
             let data = image.jpegData(compressionQuality: 1.0) else { return }
         
         do{
