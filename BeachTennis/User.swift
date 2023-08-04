@@ -28,7 +28,7 @@ class User{
         case addPlayer
         case addCourt
         case changeCourt
-        case advanceTonextRound
+        case advanceTonextRoundTree
     }
     
     func favoritePlayer(nodeFavoritedId: Int, tournamentId: Int){
@@ -51,17 +51,11 @@ class User{
     }
     
     func createTournament (tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date){
-        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [Court(id: 1, name: "X", line: []), Court(id: 2, name: "Y", line: [])], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
+        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
         tournamentsCreated.append(tournament)
-        if (tournament.tournamentType == .Group){
-            tournament.createTournamentGroup()
-        }
-        else{
-            tournament.createTournamentTree()
-        }
     }
     
-    func printTournamentTree(tournament: Tournament){
+    func printTournament(tournament: Tournament){
         var line = 0
         for node in tournament.tournamentMatches{
             line += 1
@@ -75,19 +69,6 @@ class User{
             if (node.empty == false){
                 print("\n "+String(line)+". this node represents the players: "+String(node.player))
                 }
-            }
-        }
-    }
-    
-    func printTournamentGroup(tournament: Tournament){
-        var line = 0
-        for group in tournament.groups{
-            for node in group.playersInGroup{
-                print("\n "+String(line)+". this node represents the players: "+String(node.player)+" in the group: "+String(group.id))
-            }
-            print("\n This group has the following matches: ")
-            for i in 0...group.matches.count/2{
-                print("\n Match between "+group.matches[i*2].player+" and "+group.matches[i*2+1].player)
             }
         }
     }
@@ -115,14 +96,9 @@ class User{
                 tournament.changeCourt(nodeId: aux2, courtId: aux3, groupId: aux2)
                 break
                 
-            case .advanceTonextRound:
+            case .advanceTonextRoundTree:
                 print("Advancing to the next stage of the tournament...")
-                if(tournament.tournamentType == .Tree){
-                    tournament.updateTournamentTree()
-                }
-                else{
-                    tournament.updateTournamentGroup()
-                }
+                tournament.updateTournamentTree()
                 break
             }
         }

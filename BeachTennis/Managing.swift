@@ -9,21 +9,19 @@ import SwiftUI
 
 struct Managing: View {
     @State private var isCreated = false
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView{
             VStack{
+//                if isCreated == true {
+//
+//                }
                 
-                
-                Button("New championship"){
-                    isCreated.toggle()
-                }
-                .frame(width: 350, height: 64)
-                .background(Color("blue"))
-                .foregroundColor(.white)
-                .cornerRadius(16)
-                .sheet(isPresented: $isCreated, content:{ CreateChamp()})
+                NavigationLink(destination: CreateChamp(), label: { Text("New championship")})
+                // .cornerRadius(16)
+                    .frame(width: 350, height: 64)
+                    .background(Color("blue"))
+                    .foregroundColor(.white)
                 
                 
             }
