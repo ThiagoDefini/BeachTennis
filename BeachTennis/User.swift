@@ -51,7 +51,7 @@ class User{
     }
     
     func createTournament (tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date){
-        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
+        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [Court(id: 1, name: "X", line: []), Court(id: 2, name: "Y", line: [])], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
         tournamentsCreated.append(tournament)
         if (tournament.tournamentType == .Group){
             tournament.createTournamentGroup()

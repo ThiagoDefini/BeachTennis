@@ -15,24 +15,21 @@ struct PhotoPicker: View {
     var body: some View {
         ZStack{
             VStack(alignment: .leading){
+                
                 Button{
                     showImage.toggle()
                 } label: {
-                    VStack {
+                    VStack{
                         if let image = self.image {
                             Image(uiImage: image)
                                 .resizable()
-                                .scaledToFill()
-                                .frame(width: 91, height: 91)
-                                .cornerRadius(80)
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(.black)
-                                .font(.system(size: 25))
-                                .padding(.top, -35)
-                                .padding(.leading, 70)
+                                .frame(width: 350, height: 109)
+                                .cornerRadius(16)
+                            
+                            Text("edit image")
+                            
                         } else {
                             Text("Insert image")
-                            
                         }
                     }
                 }
