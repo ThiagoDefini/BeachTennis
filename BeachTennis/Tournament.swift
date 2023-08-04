@@ -7,8 +7,9 @@
 
 import Foundation
 
-class Tournament{
+class Tournament: Identifiable{
     var id: Int
+    var name: String
     var tournamentType: tournamentTypes
     var organizerId: Int
     var selectedCourt = 0
@@ -20,10 +21,13 @@ class Tournament{
     var ranking: [Node]
     var tournamentMatches: [Node]
     var groups: [Team]
+    var location: String
+    var adress: String
 
     
-    init(id: Int, tournamentType: tournamentTypes, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Team]){
+    init(id: Int, name: String, tournamentType: tournamentTypes, organizerId: Int, players: [String], courts: [Court], startingTime: Date, ranking: [Node], tournamentMatches: [Node], groups: [Team], location: String, adress: String){
         self.id = id
+        self.name = name
         self.tournamentType = tournamentType
         self.organizerId = organizerId
         self.tournamentMatches = tournamentMatches
@@ -32,6 +36,8 @@ class Tournament{
         self.startingTime = startingTime
         self.ranking = ranking
         self.groups = groups
+        self.location = location
+        self.adress = adress
     }
     
     func addPlayers(player: String){

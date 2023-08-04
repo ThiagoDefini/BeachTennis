@@ -9,7 +9,7 @@ import UserNotifications
 
 struct ContentView: View {
     var body: some View {
-        Managing()
+        TabBarView()
         //        VStack {
         //            Button("Toque para ativar notificação") {
         //                sendNotification(title: "1 nova mensagem", subtitle: "Thiago é um chato", secondsLater: 5, isRepeating: false)

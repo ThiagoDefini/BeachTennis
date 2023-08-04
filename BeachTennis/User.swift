@@ -15,7 +15,7 @@ class User{
     var tournamentsRegistered:[Tournament]
     var playersFavorited:[Node]
     
-    init(id: Int, name: String, contact: String, tournamentsCreated: [Tournament], tournamentsRegistered: [Tournament], playersFavorited: [Node]) {
+    init(id: Int, name: String, contact: String, tournamentsCreated: [Tournament], tournamentsRegistered: [Tournament], playersFavorited: [Node]){
         self.id = id
         self.name = name
         self.contact = contact
@@ -50,8 +50,8 @@ class User{
         return 0
     }
     
-    func createTournament (tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date){
-        let tournament = Tournament(id: tournamentID, tournamentType: tournamentType, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [])
+    func createTournament (name: String,tournamentType: tournamentTypes, tournamentID: Int, startingTime: Date, location: String, adress: String){
+        let tournament = Tournament(id: tournamentID, name:name ,tournamentType: tournamentType, organizerId: self.id, players: [], courts: [], startingTime: startingTime, ranking: [], tournamentMatches: [],groups: [], location: location, adress: adress)
         tournamentsCreated.append(tournament)
         if (tournament.tournamentType == .Group){
             tournament.createTournamentGroup()

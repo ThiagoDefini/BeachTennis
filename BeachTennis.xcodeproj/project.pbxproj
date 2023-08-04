@@ -14,6 +14,14 @@
 		7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB6182B2A671A480097A3AD /* ContentView.swift */; };
 		7BB6182E2A671A490097A3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB6182D2A671A490097A3AD /* Assets.xcassets */; };
 		7BB618312A671A490097A3AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BB618302A671A490097A3AD /* Preview Assets.xcassets */; };
+		7BE19E082A7C1FE20086DA10 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E072A7C1FE20086DA10 /* TabBarView.swift */; };
+		7BE19E0A2A7C206B0086DA10 /* PlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E092A7C206B0086DA10 /* PlayingView.swift */; };
+		7BE19E0C2A7C25770086DA10 /* EnterChampionshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E0B2A7C25770086DA10 /* EnterChampionshipView.swift */; };
+		7BE19E0E2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E0D2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift */; };
+		7BE19E102A7C301A0086DA10 /* CustomTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E0F2A7C301A0086DA10 /* CustomTF.swift */; };
+		7BE19E122A7C39C70086DA10 /* EnterChampionshipDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E112A7C39C70086DA10 /* EnterChampionshipDetailsView.swift */; };
+		7BE19E142A7C4A810086DA10 /* ChampionshipDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E132A7C4A810086DA10 /* ChampionshipDetailsView.swift */; };
+		7BE19E162A7C65F20086DA10 /* ChampionshipRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E152A7C65F20086DA10 /* ChampionshipRow.swift */; };
 		CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AC2A784FA200242F3D /* TournamentTypes.swift */; };
 		CE1447AF2A797B7600242F3D /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AE2A797B7600242F3D /* GameState.swift */; };
 		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
@@ -35,6 +43,14 @@
 		7BB6182B2A671A480097A3AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7BB6182D2A671A490097A3AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BB618302A671A490097A3AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7BE19E072A7C1FE20086DA10 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		7BE19E092A7C206B0086DA10 /* PlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingView.swift; sourceTree = "<group>"; };
+		7BE19E0B2A7C25770086DA10 /* EnterChampionshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterChampionshipView.swift; sourceTree = "<group>"; };
+		7BE19E0D2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumericalKeyboardView.swift; sourceTree = "<group>"; };
+		7BE19E0F2A7C301A0086DA10 /* CustomTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTF.swift; sourceTree = "<group>"; };
+		7BE19E112A7C39C70086DA10 /* EnterChampionshipDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterChampionshipDetailsView.swift; sourceTree = "<group>"; };
+		7BE19E132A7C4A810086DA10 /* ChampionshipDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionshipDetailsView.swift; sourceTree = "<group>"; };
+		7BE19E152A7C65F20086DA10 /* ChampionshipRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionshipRow.swift; sourceTree = "<group>"; };
 		CE1447AC2A784FA200242F3D /* TournamentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTypes.swift; sourceTree = "<group>"; };
 		CE1447AE2A797B7600242F3D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
@@ -63,6 +79,14 @@
 			children = (
 				6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */,
 				6F6DC8282A7430C80052F9E3 /* Managing.swift */,
+				7BE19E072A7C1FE20086DA10 /* TabBarView.swift */,
+				7BE19E092A7C206B0086DA10 /* PlayingView.swift */,
+				7BE19E0B2A7C25770086DA10 /* EnterChampionshipView.swift */,
+				7BE19E112A7C39C70086DA10 /* EnterChampionshipDetailsView.swift */,
+				7BE19E0D2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift */,
+				7BE19E0F2A7C301A0086DA10 /* CustomTF.swift */,
+				7BE19E132A7C4A810086DA10 /* ChampionshipDetailsView.swift */,
+				7BE19E152A7C65F20086DA10 /* ChampionshipRow.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -191,16 +215,24 @@
 			files = (
 				CEE1D2C92A744AA40074F383 /* Team.swift in Sources */,
 				CE509F662A6F042100E65ECE /* User.swift in Sources */,
+				7BE19E082A7C1FE20086DA10 /* TabBarView.swift in Sources */,
+				7BE19E142A7C4A810086DA10 /* ChampionshipDetailsView.swift in Sources */,
+				7BE19E0A2A7C206B0086DA10 /* PlayingView.swift in Sources */,
 				CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */,
 				6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */,
 				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
+				7BE19E122A7C39C70086DA10 /* EnterChampionshipDetailsView.swift in Sources */,
+				7BE19E0C2A7C25770086DA10 /* EnterChampionshipView.swift in Sources */,
 				6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */,
+				7BE19E102A7C301A0086DA10 /* CustomTF.swift in Sources */,
+				7BE19E0E2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift in Sources */,
 				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */,
 				7BB6182C2A671A480097A3AD /* ContentView.swift in Sources */,
 				CE1447AF2A797B7600242F3D /* GameState.swift in Sources */,
 				7BB6182A2A671A480097A3AD /* BeachTennisApp.swift in Sources */,
 				CE509F6A2A6F097400E65ECE /* Court.swift in Sources */,
+				7BE19E162A7C65F20086DA10 /* ChampionshipRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
