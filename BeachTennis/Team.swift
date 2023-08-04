@@ -34,7 +34,7 @@ class Team{
                 return node
             }
         }
-        return Node(id: 0, empty: false, player: "", time: Date.init(), court: Court(id: 0, name: "", line: []), winner: 0)
+        return Node(id: 0, empty: 0, player: "", time: Date.init(), court: Court(id: 0, name: "", line: []), winner: 0)
     }
     
 }

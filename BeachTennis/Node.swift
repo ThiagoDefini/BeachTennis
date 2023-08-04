@@ -9,14 +9,14 @@ import Foundation
 
 class Node {
     var id:Int
-    var empty:Bool
-    var fineshed:Bool = false
+    var empty:Int
+    var fineshed = 0
     var player:String
     var time:Date
     var court:Court
     var winner:Int
     
-    init(id: Int, empty: Bool, player: String, time: Date, court: Court, winner: Int) {
+    init(id: Int, empty: Int, player: String, time: Date, court: Court, winner: Int) {
         self.id = id
         self.empty = empty
         self.player = player

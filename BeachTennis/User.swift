@@ -61,12 +61,12 @@ class User{
             line += 1
             let sonNode1 = tournament.tournamentMatches[node.id*2]
             let sonNode2 = tournament.tournamentMatches[node.id*2+1]
-            if (node.empty == true && sonNode1.empty == true){
+            if (node.empty == 1 && sonNode1.empty == 1){
                 print("\n "+String(line)+". this node is not associated with any matches")
-            if (node.empty == true && sonNode1.empty == false){
+            if (node.empty == 1 && sonNode1.empty == 0){
                 print("\n "+String(line)+". this node represents the match between: "+String(sonNode1.player)+" and "+String(sonNode2.player))
                 }
-            if (node.empty == false){
+            if (node.empty == 0){
                 print("\n "+String(line)+". this node represents the players: "+String(node.player))
                 }
             }

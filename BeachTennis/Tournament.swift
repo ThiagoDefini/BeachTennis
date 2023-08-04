@@ -45,7 +45,7 @@ class Tournament: Identifiable{
     }
     
     func addCourts(court:String){
-        courts.append(Court(id: court.count, name: court, line:[]))
+        courts.append(Court(id: courts.count, name: court, line:[]))
     }
     
     func selectCourt(nodeId: Int) -> Court{
@@ -130,7 +130,7 @@ class Tournament: Identifiable{
     
     func createOccupiedNode(num: Int) -> Node{
         nodesCreated += 1
-        return Node(id: nodesCreated, empty: false, player: players[num], time: Date.init(), court: self.selectCourt(nodeId: tournamentMatches.count+1), winner: 0)
+        return Node(id: nodesCreated, empty: 0, player: players[num], time: Date.init(), court: self.selectCourt(nodeId: tournamentMatches.count+1), winner: 0)
         
     }
     
@@ -142,7 +142,7 @@ class Tournament: Identifiable{
         for i in 1...(players.count * 2)-1{
             if(i < players.count){
                 nodesCreated += 1
-                tournamentMatches.append(Node(id: nodesCreated, empty: true, player: "", time: Date.init(), court: Court.init(id: 0, name: "", line:[]), winner: 0))
+                tournamentMatches.append(Node(id: nodesCreated, empty: 1, player: "", time: Date.init(), court: Court.init(id: 0, name: "", line:[]), winner: 0))
             }
             else{
                 tournamentMatches.append(createOccupiedNode(num: i - players.count))
@@ -160,11 +160,11 @@ class Tournament: Identifiable{
     func updateTournamentTree(){
         for node in tournamentMatches{
             let aux = Int(floor(Double(node.id/2)))
-            if(node.winner >= 1 && tournamentMatches[aux-1].empty == true){
+            if(node.winner >= 1 && tournamentMatches[aux-1].empty == 1){
                 node.winner = 0
                 tournamentMatches[aux-1] = node
             }
-            if(node.id == 0 && node.empty == false){
+            if(node.id == 0 && node.empty == 0){
                 createRanking()
                 print(ranking)
             }
@@ -212,7 +212,7 @@ class Tournament: Identifiable{
     func updateTournamentGroup(){
         var nextBatch: [String] = []
         for group in groups{
-            var highestWins = Node(id: 0, empty: false, player: "", time: Date.init(), court: Court(id: 0, name: "", line: []), winner: 0)
+            var highestWins = Node(id: 0, empty: 0, player: "", time: Date.init(), court: Court(id: 0, name: "", line: []), winner: 0)
             for player in group.playersInGroup {
                 if(player.winner > highestWins.winner){
                     highestWins = player

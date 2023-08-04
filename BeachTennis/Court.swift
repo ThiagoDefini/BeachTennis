@@ -22,8 +22,8 @@ class Court{
     func positionInLine(nodeId: Int) -> Int{
         var placement = 1
         for node in line{
-            if (node.id == nodeId && node.fineshed == false){
-                node.fineshed = true
+            if (node.id == nodeId && node.fineshed == 0){
+                node.fineshed = 1
                 return Int(ceil(Double(placement/2)))
             }
             else{
