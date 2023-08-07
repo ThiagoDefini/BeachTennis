@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct AddPlayersView: View {
+    @State private var name: String = ""
+    
     var body: some View {
-        Text("Coming soon")
+        NavigationView{
+            VStack{
+                Group{
+                    HStack(spacing: 20){
+                        Text("Name 1")
+                            .foregroundColor(.black)
+                        TextField("name", text: self.$name)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.leading, 40)
+                    Divider()
+                }
+            }.navigationTitle("Add Players")
+        }
     }
 }
 

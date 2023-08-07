@@ -112,6 +112,7 @@
 		7BB6181D2A671A480097A3AD = {
 			isa = PBXGroup;
 			children = (
+				CE1447B02A8170DC00242F3D /* BackEnd */,
 				7BB618282A671A480097A3AD /* BeachTennis */,
 				7BB618272A671A480097A3AD /* Products */,
 			);
@@ -133,13 +134,6 @@
 				6F6DC8272A74308A0052F9E3 /* Screens */,
 				6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */,
 				7BB618292A671A480097A3AD /* BeachTennisApp.swift */,
-				CE509F692A6F097400E65ECE /* Court.swift */,
-				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
-				CE509F652A6F042100E65ECE /* User.swift */,
-				CEE1D2C82A744AA40074F383 /* Team.swift */,
-				CE1447AC2A784FA200242F3D /* TournamentTypes.swift */,
-				CE1447AE2A797B7600242F3D /* GameState.swift */,
-				CE509F672A6F056100E65ECE /* Node.swift */,
 				7BB6182B2A671A480097A3AD /* ContentView.swift */,
 				7BB6182D2A671A490097A3AD /* Assets.xcassets */,
 				7BB6182F2A671A490097A3AD /* Preview Content */,
@@ -164,6 +158,20 @@
 				7BE19E1E2A7D781A0086DA10 /* CloudKitUtility.swift */,
 			);
 			path = CloudKitBootcamps;
+			sourceTree = "<group>";
+		};
+		CE1447B02A8170DC00242F3D /* BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				CE1447AC2A784FA200242F3D /* TournamentTypes.swift */,
+				CE1447AE2A797B7600242F3D /* GameState.swift */,
+				CE509F652A6F042100E65ECE /* User.swift */,
+				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
+				CEE1D2C82A744AA40074F383 /* Team.swift */,
+				CE509F672A6F056100E65ECE /* Node.swift */,
+				CE509F692A6F097400E65ECE /* Court.swift */,
+			);
+			path = BackEnd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
