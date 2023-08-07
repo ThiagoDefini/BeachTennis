@@ -1,13 +1,13 @@
 //
-//  CreateChamp.swift
+//  CreateComponent.swift
 //  BeachTennis
 //
-//  Created by Madu Maciel on 28/07/23.
+//  Created by Madu Maciel on 07/08/23.
 //
 
 import SwiftUI
 
-struct CreateChamp: View {
+struct CreateComponent: View {
     @State private var name: String = ""
     @State private var tennisCourt: String = ""
     @State private var adress: String = ""
@@ -15,20 +15,18 @@ struct CreateChamp: View {
     @State private var endDate = Date()
     @State private var image = Image("")
     
-   
-    
-    @State private var createButton = false
-    
-    let characterLimit = 18
     var body: some View {
-        NavigationView{
+            ZStack{
+                RoundedRectangle(cornerRadius: 16)
+                    .frame(width: 393, height: 264)
+                    .foregroundColor(.gray)
                     VStack{
                         Group{
                             Spacer()
-                               // .padding(.bottom, -11.0)
+                            // .padding(.bottom, -11.0)
                             PhotoPicker()
-                                .foregroundColor(Color("orange"))
-                           
+                                .foregroundColor(Color("blue"))
+                            
                             HStack(spacing: 20){
                                 Text("Name")
                                     .foregroundColor(.black)
@@ -60,14 +58,8 @@ struct CreateChamp: View {
                         HStack{
                             Text("Start date")
                                 .foregroundColor(.black)
-//                            DatePicker("", selection: $startDate, displayedComponents: .date)
-                            Spacer()
-                            Text(startDate, style: .date)
-                                .foregroundColor(Color("orange"))
-                                //.background(Color("lightGray"))
-                            Text(startDate, style: .time)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
+                            DatePicker("", selection: $startDate, displayedComponents: .date)
+                            // .foregroundColor(.black)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
@@ -76,44 +68,18 @@ struct CreateChamp: View {
                         HStack{
                             Text("End date")
                                 .foregroundColor(.black)
-                            Spacer()
-                            Text(endDate, style: .date)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
-                            Text(endDate, style: .time)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
+                            DatePicker("", selection: $endDate, displayedComponents: .date)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
-                        
-                        Spacer()
-                    
-                        Button("Create championship"){
-                        createButton.toggle()
-                    }
-                    .sheet(isPresented: $createButton) {
-                        Created()
-
-                    }
-                    .frame(width: 350, height: 64)
-                    .background(Color("orange"))
-                    .cornerRadius(16)
-                    .foregroundColor(.white)
-                    .padding()
-                        
-                    }
-                    .navigationTitle("New championship")
-                }
-            }
+              
+           }
         }
-    
+    }
+}
 
-
-
-
-struct CreateChamp_Previews: PreviewProvider {
+struct CreateComponent_Previews: PreviewProvider {
     static var previews: some View {
-        CreateChamp()
+        CreateComponent()
     }
 }

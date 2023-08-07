@@ -34,7 +34,7 @@ struct ChampInfoView: View {
                     }
                     
                     ShareLink(item: link)
-                        .foregroundColor(Color("blue"))
+                        .foregroundColor(Color("orange"))
                     
                 }
                 .frame(width: 350)
@@ -43,6 +43,7 @@ struct ChampInfoView: View {
                 HStack{
                     Image(systemName: "mappin")
                         .foregroundColor(Color("yellow"))
+                        .padding(.leading, 7)
                     
                     Text(championship.location)
                         .foregroundColor(.black)
@@ -81,7 +82,7 @@ struct ChampInfoView: View {
             }
                 .frame(width: 350, height: 64)
                 .foregroundColor(.white)
-                .background(Color("blue"))
+                .background(Color("orange"))
                 .cornerRadius(16)
                 .padding(.leading)
                 
