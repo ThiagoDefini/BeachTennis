@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Node {
+class Node: Identifiable{
     var id:Int
     var empty:Int
     var fineshed = 0
