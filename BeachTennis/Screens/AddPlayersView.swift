@@ -48,11 +48,12 @@ struct AddPlayersView: View {
             .foregroundColor(.white)
             .padding()
                 
-            }.navigationTitle("Add Players")
-            
-            ForEach(c1.tournamentMatches){ teams in
+            ForEach(c2.tournamentMatches){ teams in
                 PlayerCell(team: teams)
             }
+                
+            }.navigationTitle("Add Players")
+            
                 }
             }
         }

@@ -44,6 +44,33 @@ class Tournament: Identifiable{
         players.append(player)
     }
     
+//    func fetchNodeById(nodeId: Int) -> Node{
+//        for node in tournamentMatches{
+//            if (node.id == nodeId){
+//                return node
+//            }
+//        }
+//        return Node(id: -1, empty: 0, player: "", time: Date.init(), court: Court(id: 0, name: "", line: []), winner: 0)
+//    }
+//
+//    func fetchCourtById(courtId: Int) -> Court{
+//        for court in courts{
+//            if (court.id == courtId){
+//                return court
+//            }
+//        }
+//        return Court(id: -1, name: "", line: [])
+//    }
+//
+//    func fetchTeamById(teamId: Int) -> Team{
+//        for team in groups{
+//            if (team.id == teamId){
+//                return team
+//            }
+//        }
+//        return Team(id: -1, players: [], matches: [])
+//    }
+    
     func addCourts(court:String){
         courts.append(Court(id: courts.count, name: court, line:[]))
     }
