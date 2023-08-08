@@ -13,6 +13,7 @@ struct TabBarView: View {
             PlayingView()
                 .tabItem {
                     Label("Playing", systemImage: "tennis.racket")
+                        
                 }
             
             Managing()

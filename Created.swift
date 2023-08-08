@@ -45,7 +45,7 @@ struct Created: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
                         .frame(width: 350, height: 64)
-                        .foregroundColor(Color("blue"))
+                        .foregroundColor(Color("orange"))
                     
                     ShareLink("Share now", item: link)
                         .foregroundColor(.white)
@@ -53,13 +53,13 @@ struct Created: View {
                 
                 NavigationLink("Share later", destination: ChampInfoView())
                     .navigationBarBackButtonHidden(true)
-                    .foregroundColor(Color("blue"))
+                    .foregroundColor(Color("orange"))
                     .padding(.bottom)
                 
                     Button("Send notification") {
                         sendNotification(title: "1 new notification", subtitle: "Your championship starts in 10 minutes🎾🏆", secondsLater: 7, isRepeating: false)
                     }
-                    .foregroundColor(Color("blue"))
+                    .foregroundColor(Color("orange"))
                     
                 .onAppear {
                     UIApplication.shared.applicationIconBadgeNumber = 0
