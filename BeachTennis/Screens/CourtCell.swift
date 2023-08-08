@@ -1,26 +1,26 @@
 //
-//  PlayerCell.swift
+//  CourtCell.swift
 //  BeachTennis
 //
-//  Created by Lucas Cunha on 07/08/23.
+//  Created by Lucas Cunha on 08/08/23.
 //
 
 import SwiftUI
 
-struct PlayerCell: View {
-    var team: Node
+struct CourtCell: View {
+    var court: Court
     var number: Int
     @State private var name: String = ""
     @State private var name2: String = ""
     
     var body: some View {
         VStack{
-            Text("Team #"+String(number))
+            Text("Court #"+String(number))
                 .padding(.leading,0)
             HStack(spacing: 5){
-                Text("Team Name:")
+                Text("Court Name:")
                     .foregroundColor(.black)
-                Text(team.player)
+                Text(court.name)
                     .foregroundColor(.black)
             }
             .padding(.leading, 0)
@@ -29,8 +29,8 @@ struct PlayerCell: View {
     }
 }
 
-struct PlayerCell_Previews: PreviewProvider {
+struct CourtCell_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerCell(team: c2.tournamentMatches[0],number:0)
+        CourtCell(court: c2.courts[0],number:0)
     }
 }

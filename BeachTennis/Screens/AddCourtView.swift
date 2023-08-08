@@ -1,16 +1,15 @@
 //
-//  AddPlayersView.swift
+//  AddCourt.swift
 //  BeachTennis
 //
-//  Created by Madu Maciel on 04/08/23.
+//  Created by Lucas Cunha on 08/08/23.
 //
 
 import SwiftUI
 
-struct AddPlayersView: View {
+struct AddCourtView: View {
     
     @State private var name: String = ""
-    @State private var name2: String = ""
     @State private var createButton = false
     @State private var num:Int = 1
     
@@ -18,7 +17,7 @@ struct AddPlayersView: View {
         NavigationView{
             VStack{
                 HStack(spacing: 20){
-                    Text("Court Name")
+                    Text("Name 1")
                         .foregroundColor(.black)
                     TextField("name", text: self.$name)
                         .foregroundColor(.black)
@@ -26,9 +25,9 @@ struct AddPlayersView: View {
                 .padding(.leading, 40)
                 Divider()
                 HStack(spacing: 20){
-                    Text("Description")
+                    Text("Name 2")
                         .foregroundColor(.black)
-                    TextField("name", text: self.$name2)
+                    TextField("name", text: self.$name)
                         .foregroundColor(.black)
                 }
                 .padding(.leading, 40)
@@ -37,7 +36,7 @@ struct AddPlayersView: View {
                 
                 Spacer()
                 
-                Button("Add Court"){
+                Button("Add Player"){
                     createButton.toggle()
                 }
                 .sheet(isPresented: $createButton) {
@@ -61,9 +60,8 @@ struct AddPlayersView: View {
     }
 }
 
-
-struct AddPlayersView_Previews: PreviewProvider {
+struct AddCourtView_Previews: PreviewProvider {
     static var previews: some View {
-        AddPlayersView()
+        AddCourtView()
     }
 }
