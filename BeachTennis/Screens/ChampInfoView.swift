@@ -7,93 +7,91 @@
 
 import SwiftUI
 
-struct ChampInfoView: View {
+struct ChampInfoView: View, Shape {
     @State var addPlayers: Bool = false
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
     
     var championship: Tournament = Tournament(id: 12345, name: "Sun, Sand, and Smashes", tournamentType: .Tree, organizerId: 1, players: [], courts: [], startingTime: Date.now, ranking: [], tournamentMatches: [], groups: [], location: "Parque Esportivo da PUCRS", adress: "Av. Ipiranga, 6690 - Partenon, RS, 90619-900")
     
     let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
+    func path(in rect: CGRect) -> Path {
+           let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+           return Path(path.cgPath)
+       }
+    
     var body: some View {
         NavigationStack{
-            VStack(alignment: .leading){
-                    Image("BannerImage")
+            ZStack{
+                Color("bege")
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
+                    Image("jiji")
                         .resizable()
-                        .frame(width: 350, height: 109)
-                        .cornerRadius(16)
-                        .padding()
-            
-                HStack{
+                        .frame(width: 440, height: 500)
+                        .edgesIgnoringSafeArea(.all)
+                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
+                        .offset(y: -300)
+                    CreateComponent()
+                        .offset(y: -370 )
+                    
                     ZStack{
-                        RoundedRectangle(cornerRadius: 16)
-                            .frame(width: 94,height: 41)
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 372, height: 142)
                             .foregroundColor(Color("bege"))
-                        Text("83972")
-                            .foregroundColor(Color("gray"))
-                            .bold()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color("orange"), lineWidth: 2)
+                            )
+                        HStack{
+                            Image("checkmark")
+                                .resizable()
+                                .frame(width: 23, height: 26)
+                            VStack{
+                                Text("Parque Esportivo da PUCRS")
+                                Text("Avenida Ipiranga, 6690 - Partenon 90304-000, POA, RS")
+                                    .padding(.leading)
+                            }
+                            
+                        }
                     }
                     
-                    ShareLink(item: link)
-                        .foregroundColor(Color("orange"))
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .frame(width: 372, height: 142)
+//                        .foregroundColor(Color("bege"))
+//                        .overlay(
+//                                  RoundedRectangle(cornerRadius: 20)
+//                                      .stroke(Color("orange"), lineWidth: 2)
+//                              )
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .frame(width: 372, height: 142)
+//                        .foregroundColor(Color("bege"))
+//                        .overlay(
+//                                  RoundedRectangle(cornerRadius: 20)
+//                                      .stroke(Color("orange"), lineWidth: 2)
+//                              )
+//
+//
                     
-                }
-                .frame(width: 350)
-                .padding(.top, 24)
-                
-                HStack{
-                    Image(systemName: "mappin")
-                        .foregroundColor(Color("yellow"))
-                        .padding(.leading, 7)
-                    
-                    Text(championship.location)
-                        .foregroundColor(.black)
-                    Spacer()
-                }
-                .frame(width: 350)
-                .padding(.top, 46)
-                
-                HStack{
-                    Text(championship.adress)
-                        .foregroundColor(.gray)
-//                    Spacer()
-                }
-                .frame(width: 350)
-                .padding(.top, 8)
-                
-                HStack{
-                    VStack{
-                        Image(systemName: "clock")
-                            .foregroundColor(Color("yellow"))
-                        Spacer()
-                    }
-                    VStack{
-                        Text("\(championship.startingTime)")
-                            .foregroundColor(.black)
+                   
+                    Button("Start championship"){
                         
-                        Text("\(championship.startingTime)")
-                            .foregroundColor(.black)
                     }
+                    .frame(width: 372, height: 65)
+                    .foregroundColor(Color("bege"))
+                    .background(Color("blue"))
+                    .cornerRadius(20)
                 }
-                .frame(width: 350, height: 60)
-                .padding(.top, 8)
-                Spacer()
-                Button("Add players"){
-                addPlayers.toggle()
             }
-                .frame(width: 350, height: 64)
-                .foregroundColor(.white)
-                .background(Color("orange"))
-                .cornerRadius(16)
-                .padding(.leading)
-                
-                
-                
-            
-            }
-          
-            .navigationTitle(championship.name)
-            
         }
+    }
+  
+        
+}
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( ChampInfoView(radius: radius, corners: corners) )
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct Created: View {
     @Environment(\.dismiss) var dismiss
     
-    let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
+    @State var link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
     
     var body: some View {

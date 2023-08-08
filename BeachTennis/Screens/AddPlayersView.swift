@@ -49,7 +49,7 @@ struct AddPlayersView: View {
             .padding()
                 
             ForEach(c2.tournamentMatches){ teams in
-                PlayerCell(team: teams)
+                PlayerCell(team: teams, number: 0)
             }
                 
             }.navigationTitle("Add Players")
