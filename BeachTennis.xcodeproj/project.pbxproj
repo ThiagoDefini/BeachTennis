@@ -115,7 +115,6 @@
 		7BB6181D2A671A480097A3AD = {
 			isa = PBXGroup;
 			children = (
-				CE1447B02A8170DC00242F3D /* BackEnd */,
 				7BB618282A671A480097A3AD /* BeachTennis */,
 				7BB618272A671A480097A3AD /* Products */,
 			);
@@ -132,6 +131,7 @@
 		7BB618282A671A480097A3AD /* BeachTennis */ = {
 			isa = PBXGroup;
 			children = (
+				CE1447B02A8170DC00242F3D /* BackEnd */,
 				7BE19E202A7D7D060086DA10 /* BeachTennis.entitlements */,
 				7BE19E172A7D76950086DA10 /* CloudKitBootcamps */,
 				6F6DC8272A74308A0052F9E3 /* Screens */,

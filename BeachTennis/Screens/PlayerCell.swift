@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayerCell: View {
     var team: Node
+    var number: Int
     @State private var name: String = ""
     @State private var name2: String = ""
     
@@ -17,27 +18,27 @@ struct PlayerCell: View {
             Text("Team")
                 .padding(.leading,-170)
             HStack(spacing: 20){
-                Text("Name 1")
+                Text("Team Name:")
                     .foregroundColor(.black)
-                TextField("name", text: self.$name)
-                    .foregroundColor(.black)
-            }
-            .padding(.leading, 40)
-            Divider()
-            HStack(spacing: 20){
-                Text("Name 2")
-                    .foregroundColor(.black)
-                TextField("name", text: self.$name2)
+                Text(team.player)
                     .foregroundColor(.black)
             }
             .padding(.leading, 40)
             Divider()
+//            HStack(spacing: 20){
+//                Text("Court:")
+//                    .foregroundColor(.black)
+//                Text(team.court.name)
+//                    .foregroundColor(.black)
+//            }
+//            .padding(.leading, 40)
+//            Divider()
         }
     }
 }
 
 struct PlayerCell_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerCell(team: c1.tournamentMatches[1])
+        PlayerCell(team: c2.tournamentMatches[0],number:0)
     }
 }
