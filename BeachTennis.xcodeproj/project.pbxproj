@@ -32,6 +32,7 @@
 		7BE19E1F2A7D781A0086DA10 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E1E2A7D781A0086DA10 /* CloudKitUtility.swift */; };
 		CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AC2A784FA200242F3D /* TournamentTypes.swift */; };
 		CE1447AF2A797B7600242F3D /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AE2A797B7600242F3D /* GameState.swift */; };
+		CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B32A81831800242F3D /* PlayerCell.swift */; };
 		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
 		CE509F662A6F042100E65ECE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* User.swift */; };
 		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
@@ -70,6 +71,7 @@
 		7BE19E202A7D7D060086DA10 /* BeachTennis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeachTennis.entitlements; sourceTree = "<group>"; };
 		CE1447AC2A784FA200242F3D /* TournamentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTypes.swift; sourceTree = "<group>"; };
 		CE1447AE2A797B7600242F3D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		CE1447B32A81831800242F3D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		CE509F652A6F042100E65ECE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				7BE19E132A7C4A810086DA10 /* ChampionshipDetailsView.swift */,
 				7BE19E152A7C65F20086DA10 /* ChampionshipRow.swift */,
 				6F6DC8362A8177640052F9E3 /* CreateComponent.swift */,
+				CE1447B32A81831800242F3D /* PlayerCell.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -115,6 +118,7 @@
 		7BB6181D2A671A480097A3AD = {
 			isa = PBXGroup;
 			children = (
+				CE1447B02A8170DC00242F3D /* BackEnd */,
 				7BB618282A671A480097A3AD /* BeachTennis */,
 				7BB618272A671A480097A3AD /* Products */,
 			);
@@ -136,13 +140,6 @@
 				6F6DC8272A74308A0052F9E3 /* Screens */,
 				6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */,
 				7BB618292A671A480097A3AD /* BeachTennisApp.swift */,
-				CE509F692A6F097400E65ECE /* Court.swift */,
-				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
-				CE509F652A6F042100E65ECE /* User.swift */,
-				CEE1D2C82A744AA40074F383 /* Team.swift */,
-				CE1447AC2A784FA200242F3D /* TournamentTypes.swift */,
-				CE1447AE2A797B7600242F3D /* GameState.swift */,
-				CE509F672A6F056100E65ECE /* Node.swift */,
 				7BB6182B2A671A480097A3AD /* ContentView.swift */,
 				7BB6182D2A671A490097A3AD /* Assets.xcassets */,
 				7BB6182F2A671A490097A3AD /* Preview Content */,
@@ -167,6 +164,20 @@
 				7BE19E1E2A7D781A0086DA10 /* CloudKitUtility.swift */,
 			);
 			path = CloudKitBootcamps;
+			sourceTree = "<group>";
+		};
+		CE1447B02A8170DC00242F3D /* BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				CE1447AC2A784FA200242F3D /* TournamentTypes.swift */,
+				CE1447AE2A797B7600242F3D /* GameState.swift */,
+				CE509F652A6F042100E65ECE /* User.swift */,
+				CE509F632A6EFF2200E65ECE /* Tournament.swift */,
+				CEE1D2C82A744AA40074F383 /* Team.swift */,
+				CE509F672A6F056100E65ECE /* Node.swift */,
+				CE509F692A6F097400E65ECE /* Court.swift */,
+			);
+			path = BackEnd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 				6F6DC8332A7D20550052F9E3 /* ChampInfoView.swift in Sources */,
 				7BE19E102A7C301A0086DA10 /* CustomTF.swift in Sources */,
 				7BE19E0E2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift in Sources */,
+				CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */,
 				7BE19E1B2A7D77C00086DA10 /* CloudKitCrudBootcamp.swift in Sources */,
 				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */,
