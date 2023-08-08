@@ -39,6 +39,7 @@ struct Managing: View {
                     .frame(width: 350, height: 109)
                 })
                 .navigationTitle("Managing")
+                   
                 Spacer()
             
                 Button("New championship"){
@@ -49,7 +50,7 @@ struct Managing: View {
                     
                 }
                 .frame(width: 350, height: 64)
-                .background(Color("blue"))
+                .background(Color("orange"))
                 .cornerRadius(16)
                 .foregroundColor(.white)
                 .padding()
