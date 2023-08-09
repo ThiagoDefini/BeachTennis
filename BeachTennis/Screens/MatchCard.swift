@@ -14,7 +14,7 @@ struct MatchCard: View {
     @State private var name2: String = ""
     
     var body: some View {
-        VStack(spacing: 30){
+        VStack(spacing: 20){
             
 //            HStack {
 //                Text("Horário")
@@ -25,22 +25,11 @@ struct MatchCard: View {
 //            }
 //            .padding(16)
             HStack{
-                    Text("⏱️: 10:00")
-                        .foregroundColor(.black)
-                Spacer()
                 Text("Match:")
                     .foregroundColor(.black)
                 Spacer()
-                Text("⭐️")
-                    .foregroundColor(.black)
+                
             }
-            HStack{
-                Text("📌: Quadra 3")
-                    .foregroundColor(.black)
-                Spacer()
-            }
-
-            
             HStack {
                 VStack(spacing: 5){
                     Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
@@ -57,12 +46,33 @@ struct MatchCard: View {
                         .foregroundColor(.black)
                 }
             }
+            HStack{
+                VStack(alignment: .leading){
+                    Text("📌: Quadra 3")
+                        .foregroundColor(.black)
+                    Text("🗓️ 12/04/2023 - 17:00 PM")
+                        .foregroundColor(.black)
+                }
+                .padding(16)
+                Spacer()
+            }
+            .background(Color.blue)
+            .frame(width: 340)
+            .cornerRadius(16, corners: [.bottomLeft, .bottomRight])
+            .overlay {
+                RoundedCorner(radius: 16, corners: [.bottomLeft, .bottomRight])
+                    .stroke(lineWidth: 1)
+            }
         }
         .padding(16)
         .frame(width: 340)
-        .frame(height: 170)
+        .frame(height: 180)
         .background(Color.yellow)
         .cornerRadius(16)
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(lineWidth: 1)
+        }
     }
 }
 
