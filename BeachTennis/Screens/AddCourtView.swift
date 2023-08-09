@@ -16,6 +16,7 @@ struct AddCourtView: View {
     var body: some View {
         NavigationView{
             VStack{
+                Spacer()
                 HStack(spacing: 20){
                     Text("Name 1")
                         .foregroundColor(.black)

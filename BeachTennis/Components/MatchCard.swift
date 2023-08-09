@@ -9,9 +9,7 @@ import SwiftUI
 
 struct MatchCard: View {
     var tournament: Tournament
-    var number: Int
-    @State private var name: String = ""
-    @State private var name2: String = ""
+    @State var favorite: Int
     
     var body: some View {
         VStack(spacing: 20){
@@ -28,7 +26,13 @@ struct MatchCard: View {
                 Text("Match:")
                     .foregroundColor(.black)
                 Spacer()
-                
+                Button {
+                    if(favorite == 1){
+                        favorite = 0
+                    }else{favorite = 1}
+                } label: {
+                    Image(systemName: favorite == 1 ? "star.fill" : "star")
+                }
             }
             HStack {
                 VStack(spacing: 5){
@@ -78,6 +82,6 @@ struct MatchCard: View {
 
 struct MatchCard_Previews: PreviewProvider {
     static var previews: some View {
-        MatchCard(tournament:c2,number:0)
+        MatchCard(tournament:c2,favorite:0)
     }
 }
