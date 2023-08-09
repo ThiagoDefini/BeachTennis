@@ -15,24 +15,16 @@ struct PlayerCell: View {
     
     var body: some View {
         VStack{
-            Text("Team")
-                .padding(.leading,-170)
-            HStack(spacing: 20){
+            Text("Team #"+String(number))
+                .padding(.leading,0)
+            HStack(spacing: 5){
                 Text("Team Name:")
                     .foregroundColor(.black)
                 Text(team.player)
                     .foregroundColor(.black)
             }
-            .padding(.leading, 40)
+            .padding(.leading, 0)
             Divider()
-//            HStack(spacing: 20){
-//                Text("Court:")
-//                    .foregroundColor(.black)
-//                Text(team.court.name)
-//                    .foregroundColor(.black)
-//            }
-//            .padding(.leading, 40)
-//            Divider()
         }
     }
 }
