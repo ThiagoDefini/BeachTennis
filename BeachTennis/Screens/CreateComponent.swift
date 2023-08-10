@@ -25,7 +25,7 @@ struct CreateComponent: View {
                         
                         HStack(spacing: 20){
                             Text("Torneio das gurias")
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("gray"))
                                 .bold()
                                 .font(.system(size: 24))
                                 .padding(.trailing, 130)
@@ -39,57 +39,22 @@ struct CreateComponent: View {
                                 .bold()
                             ShareLink(item: link){
                                 Label("", systemImage: "square.and.arrow.up")
-                                    .frame(width: 30, height: 25)
                                     .foregroundColor(Color("blue"))
                             }
+                            .frame(width: 30, height: 25)
                             .padding(.trailing, 25)
+                            
                         }
-                            
-                                
-                            
-                            
-//                            .padding(.leading, 40)
-//                            Divider()
-//
-//                            HStack(spacing: 20){
-//                                Text("Tennis court")
-//                                    .foregroundColor(.black)
-//                                TextField("name", text: self.$tennisCourt)
-//                                    .foregroundColor(.black)
-//                            }
-//                            .padding(.leading, 40)
-//                            Divider()
-    
-//                        HStack(spacing: 20){
-//                            Text("Adress")
-//                                .foregroundColor(.black)
-//                            TextField("name", text: self.$adress)
-//                                .foregroundColor(.black)
-//                        }
-//                        .padding(.leading, 40)
-//                        Divider()
-//
-//
-//                        HStack{
-//                            Text("Start date")
-//                                .foregroundColor(.black)
-//                            DatePicker("", selection: $startDate, displayedComponents: .date)
-//                            // .foregroundColor(.black)
-//                                .padding(.trailing)
-//                        }
-//                        .padding(.leading, 40)
-//                        Divider()
-//
-//                        HStack{
-//                            Text("End date")
-//                                .foregroundColor(.black)
-//                            DatePicker("", selection: $endDate, displayedComponents: .date)
-//                                .padding(.trailing)
-//                        }
-//                        .padding(.leading, 40)
-//
+                        
            }
+                RoundedCorner(radius: 20)
+                    .stroke(lineWidth: 0.5)
+                    .foregroundColor(Color("orange"))
+                    .frame(width: 372, height: 104)
+                
         }
+        
+      
     }
 }
 

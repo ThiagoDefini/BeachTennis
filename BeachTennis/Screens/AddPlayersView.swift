@@ -45,6 +45,7 @@ struct AddPlayersView: View {
             }.navigationTitle("Add Players")
             
                 }
+                .navigationTitle("Players")
                 .sheet(isPresented: $createButton) {
                     Created()
                     
@@ -60,12 +61,11 @@ struct AddPlayersView: View {
                     PlayerCell(team: teams,number: num)
                 }
                 
-            }.navigationTitle("Players")
+            }
+            
             
         }
-    }
-}
-
+   
 
 struct AddPlayersView_Previews: PreviewProvider {
     static var previews: some View {
