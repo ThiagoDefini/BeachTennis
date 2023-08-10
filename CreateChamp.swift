@@ -60,14 +60,9 @@ struct CreateChamp: View {
                         HStack{
                             Text("Start date")
                                 .foregroundColor(.black)
-//                            DatePicker("", selection: $startDate, displayedComponents: .date)
+                        
                             Spacer()
-                            Text(startDate, style: .date)
-                                .foregroundColor(Color("orange"))
-                                //.background(Color("lightGray"))
-                            Text(startDate, style: .time)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
+                            DatePicker("", selection: $startDate)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)
@@ -77,12 +72,7 @@ struct CreateChamp: View {
                             Text("End date")
                                 .foregroundColor(.black)
                             Spacer()
-                            Text(endDate, style: .date)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
-                            Text(endDate, style: .time)
-                                .foregroundColor(Color("orange"))
-                               // .background(Color("lightGray"))
+                            DatePicker("", selection: $endDate)
                                 .padding(.trailing)
                         }
                         .padding(.leading, 40)

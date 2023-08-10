@@ -13,27 +13,27 @@ struct MatchCard: View {
     
     var body: some View {
         VStack(spacing: 20){
-            
-//            HStack {
-//                Text("Horário")
-//                Spacer()
-//                Text("Partida")
-//                Spacer()
-//                Text("Estrela")
-//            }
-//            .padding(16)
             HStack{
-                Text("Match:")
-                    .foregroundColor(.black)
+                Text("Match #12")
+                    .foregroundColor(Color("dark-orange"))
+                    .padding(.top)
                 Spacer()
-                Button {
-                    if(favorite == 1){
-                        favorite = 0
-                    }else{favorite = 1}
-                } label: {
-                    Image(systemName: favorite == 1 ? "star.fill" : "star")
+                ZStack{
+                    Circle()
+                        .frame(width: 36)
+                        .foregroundColor(.white)
+                    Button {
+                        if(favorite == 1){
+                            favorite = 0
+                        }else{favorite = 1}
+                    } label: {
+                        Image(systemName: favorite == 1 ? "heart.fill" : "heart")
+                    }
                 }
+              
             }
+            .padding(.top)
+           
             HStack {
                 VStack(spacing: 5){
                     Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
@@ -42,6 +42,8 @@ struct MatchCard: View {
                         .foregroundColor(.black)                }
                 Spacer()
                 Text("X")
+                    .foregroundColor(Color("orange"))
+                    .bold()
                 Spacer()
                 VStack(spacing: 5){
                     Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
@@ -52,16 +54,27 @@ struct MatchCard: View {
             }
             HStack{
                 VStack(alignment: .leading){
-                    Text("📌: Quadra 3")
-                        .foregroundColor(.black)
-                    Text("🗓️ 12/04/2023 - 17:00 PM")
-                        .foregroundColor(.black)
+                    HStack{
+                        Image(systemName: "calendar.badge.clock")
+                            .foregroundColor(Color("orange"))
+                        Text("12/04/2023 - 17:00 PM")
+                            .foregroundColor(.black)
+                    }
+                    HStack{
+                        Image("mapa")
+                            .resizable()
+                            .frame(width: 18, height: 20)
+                        
+                        Text("Quadra 3")
+                            .foregroundColor(.black)
+
+                    }
                 }
-                .padding(16)
+                .padding()
                 Spacer()
             }
-            .background(Color.blue)
-            .frame(width: 340)
+            .background(Color("dark-bege"))
+            .frame(width: 350)
             .cornerRadius(16, corners: [.bottomLeft, .bottomRight])
             .overlay {
                 RoundedCorner(radius: 16, corners: [.bottomLeft, .bottomRight])
@@ -69,13 +82,13 @@ struct MatchCard: View {
             }
         }
         .padding(16)
-        .frame(width: 340)
-        .frame(height: 180)
-        .background(Color.yellow)
+        .frame(width: 350)
+        .frame(height: 207)
+        .background(Color("light-orange"))
         .cornerRadius(16)
         .overlay {
             RoundedRectangle(cornerRadius: 16)
-                .stroke(lineWidth: 1)
+                .stroke(Color("orange"), lineWidth: 1)
         }
     }
 }

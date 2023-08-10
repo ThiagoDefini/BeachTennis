@@ -11,6 +11,7 @@ struct MultiUseCell: View {
     var body: some View {
         HStack(spacing:10){
             Image(systemName: "star.fill")
+                .foregroundColor(Color("orange"))
             VStack(alignment: .leading){
                 Text("Titulo")
                     .foregroundColor(.black)
@@ -28,6 +29,7 @@ struct MultiUseCell: View {
         .overlay {
             RoundedCorner(radius: 16)
                 .stroke(lineWidth: 2)
+                .foregroundColor(Color("orange"))
         }
     }
 }
