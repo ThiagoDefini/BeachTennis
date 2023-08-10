@@ -38,8 +38,12 @@ struct AddPlayersView: View {
                 
                 Spacer()
                 
-                Button("Add Court"){
-                    createButton.toggle()
+            ForEach(c2.tournamentMatches){ teams in
+                PlayerCell(team: teams, number: 0)
+            }
+                
+            }.navigationTitle("Add Players")
+            
                 }
                 .sheet(isPresented: $createButton) {
                     Created()
