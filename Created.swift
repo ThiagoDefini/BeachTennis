@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Created: View {
     @Environment(\.dismiss) var dismiss
+    @State private var scale = 1.0
     
     @State var link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
@@ -16,15 +17,20 @@ struct Created: View {
     var body: some View {
         NavigationView{
             VStack{
-                
-                Image("checkmark")
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .padding(.bottom)
-                Text("Championship created!")
-                    .padding(.bottom, 100)
-                    .font(.headline)
-                    .foregroundColor(Color("gray"))
+                VStack{
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .foregroundColor(Color("orange"))
+                        .padding(.bottom)
+                    Text("Championship created!")
+                        .font(.system(size: 24))
+                        .padding(.bottom, 100)
+                        .bold()
+                        .foregroundColor(Color("orange"))
+                    
+                }
+                .animation(.easeOut(duration: 2), value: scale)
                 ZStack{
                     RoundedRectangle(cornerRadius: 16)
                         .foregroundColor(Color("bege"))

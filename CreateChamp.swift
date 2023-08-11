@@ -29,14 +29,15 @@ struct CreateChamp: View {
                             PhotoPicker()
                                 .foregroundColor(Color("orange"))
                            
-                            HStack(spacing: 20){
-                                Text("Name")
+                            VStack(alignment: .center){
+                                Text("Name:")
                                     .foregroundColor(.black)
                                 TextField("name", text: self.$name)
                                     .foregroundColor(.black)
+                                    .
                             }
-                            .padding(.leading, 40)
-                            Divider()
+                            
+                           
                             
                             HStack(spacing: 20){
                                 Text("Tennis court")
@@ -93,7 +94,7 @@ struct CreateChamp: View {
                     .padding()
                         
                     }
-                    .navigationTitle("New championship")
+                    .navigationTitle("Create championship")
                 }
             }
         }
