@@ -15,12 +15,12 @@ enum points{
     case Game
 }
 
-class GameState{
-    var tournament: Tournament
-    var groupId: Int
-    var score:[points] = [.Love,.Love]
-    var players:[Int]
-    var sets:[Int] = [0,0]
+class GameState: ObservableObject {
+    @Published var tournament: Tournament
+    @Published var groupId: Int
+    @Published var score:[points] = [.Love,.Love]
+    @Published var players:[Int]
+    @Published var sets:[Int] = [0,0]
     
     init(tournament: Tournament, groupId: Int, players: [Int]) {
         self.tournament = tournament
@@ -28,9 +28,23 @@ class GameState{
         self.players = players
     }
     
-    func pointsIncrease(nodeId: Int){
-        for i in 0...1{
-            if(players[i] == nodeId){
+    func printPoints(i: Int) -> String{
+        switch score[i]{
+            case .Love:
+                return "0"
+            case .Fifthteen:
+                return "15"
+            case .Thirty:
+                return "30"
+            case .Fourty:
+                return "40"
+            case .Game:
+                return "Game"
+        }
+    }
+    
+    func pointsIncrease(i: Int){
+        print("Gabriel fede", score[i])
                 switch score[i]{
                 case .Love:
                     score[i] = .Fifthteen
@@ -57,9 +71,6 @@ class GameState{
                     break
                 case .Game:
                     break
-
-                }
-            }
         }
     }
 }
