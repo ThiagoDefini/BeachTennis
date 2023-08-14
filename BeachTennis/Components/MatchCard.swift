@@ -15,13 +15,11 @@ struct MatchCard: View {
         VStack(spacing: 20){
             HStack{
                 Text("Match #12")
-                    .foregroundColor(Color("dark-orange"))
+                    .foregroundColor(Color("orange"))
+                    .bold()
                     .padding(.top)
                 Spacer()
                 ZStack{
-                    Circle()
-                        .frame(width: 36)
-                        .foregroundColor(.white)
                     Button {
                         if(favorite == 1){
                             favorite = 0
@@ -84,7 +82,6 @@ struct MatchCard: View {
         .padding(16)
         .frame(width: 350)
         .frame(height: 207)
-        .background(Color("light-orange"))
         .cornerRadius(16)
         .overlay {
             RoundedRectangle(cornerRadius: 16)

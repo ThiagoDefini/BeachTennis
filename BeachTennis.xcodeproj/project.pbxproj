@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6F6CCC492A855053005E6457 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC482A855053005E6457 /* MatchesView.swift */; };
 		6F6CCC4B2A855C99005E6457 /* MatchComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */; };
+		6F6CCC4D2A8A9109005E6457 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */; };
+		6F6CCC4F2A8A944C005E6457 /* PhotoPicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */; };
 		6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */; };
 		6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8282A7430C80052F9E3 /* Managing.swift */; };
 		6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		6F6CCC482A855053005E6457 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchComponent2.swift; sourceTree = "<group>"; };
+		6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
+		6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker2.swift; sourceTree = "<group>"; };
 		6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC8282A7430C80052F9E3 /* Managing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Managing.swift; path = BeachTennis/Managing.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChamp.swift; sourceTree = SOURCE_ROOT; };
@@ -115,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				6F6DC8342A7D332C0052F9E3 /* AddPlayersView.swift */,
-				CE1447B52A82C84A00242F3D /* AddCourtView.swift */,
 				6F6DC8322A7D20550052F9E3 /* ChampInfoView.swift */,
 				6F6DC82C2A7976B60052F9E3 /* Created.swift */,
 				6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */,
@@ -132,6 +135,7 @@
 				CE0D61B72A84268D0036B5DE /* InitialScreen.swift */,
 				CE1447B52A82C84A00242F3D /* AddCourtView.swift */,
 				6F6CCC482A855053005E6457 /* MatchesView.swift */,
+				6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -214,6 +218,7 @@
 				CE1447B92A82CD6200242F3D /* MatchCard.swift */,
 				CE0D61B52A841D8F0036B5DE /* MultiUseCell.swift */,
 				6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */,
+				6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6CCC4D2A8A9109005E6457 /* FirstScreenView.swift in Sources */,
 				CEE1D2C92A744AA40074F383 /* Team.swift in Sources */,
 				CE509F662A6F042100E65ECE /* User.swift in Sources */,
 				7BE19E082A7C1FE20086DA10 /* TabBarView.swift in Sources */,
@@ -324,6 +330,7 @@
 				7BE19E122A7C39C70086DA10 /* EnterChampionshipDetailsView.swift in Sources */,
 				7BE19E0C2A7C25770086DA10 /* EnterChampionshipView.swift in Sources */,
 				6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */,
+				6F6CCC4F2A8A944C005E6457 /* PhotoPicker2.swift in Sources */,
 				6F6DC8332A7D20550052F9E3 /* ChampInfoView.swift in Sources */,
 				7BE19E102A7C301A0086DA10 /* CustomTF.swift in Sources */,
 				6FBD2AA52A82EC43003EF5F8 /* WatchOSUI.swift in Sources */,
