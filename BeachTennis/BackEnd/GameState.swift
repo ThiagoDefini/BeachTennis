@@ -44,7 +44,7 @@ class GameState: ObservableObject {
     }
     
     func pointsIncrease(i: Int){
-        print("Gabriel fede", score[i])
+        print()
                 switch score[i]{
                 case .Love:
                     score[i] = .Fifthteen
@@ -58,7 +58,8 @@ class GameState: ObservableObject {
                 case .Fourty:
                     score[i] = .Game
                     sets[i] += 1
-                    if(sets[i] == 2){
+                    print(sets[i])
+                    if(sets[i] == 20){
                         if(tournament.tournamentType == .Group){
                             tournament.selectWinnerGroup(groupId: groupId, nodeId: players[i])
                         }
