@@ -50,7 +50,7 @@ struct AddPlayersView: View {
                     Created()
                     
                 }
-                .frame(width: 350, height: 64)
+                .frame(width: 350, height: 264)
                 .background(Color("blue"))
                 .cornerRadius(16)
                 .foregroundColor(.white)
