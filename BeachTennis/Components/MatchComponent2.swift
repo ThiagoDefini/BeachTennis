@@ -10,7 +10,12 @@ import SwiftUI
 struct MatchComponent2: View {
     var body: some View {
         ZStack{
-
+            RoundedCorner(radius: 20)
+                .stroke(lineWidth: 0.5)
+                .foregroundColor(Color("orange"))
+                .frame(width: 372, height: 104)
+                .background(.white)
+            
                 VStack{
                     Text("Matches")
                         .foregroundColor(Color("gray"))
@@ -34,10 +39,6 @@ struct MatchComponent2: View {
                     
                     
        }
-            RoundedCorner(radius: 20)
-                .stroke(lineWidth: 0.5)
-                .foregroundColor(Color("orange"))
-                .frame(width: 372, height: 104)
             
     }
     }
