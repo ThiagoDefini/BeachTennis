@@ -18,7 +18,7 @@ struct MultiUseCell: View {
             VStack(alignment: .leading){
                 Text(text1)
                     .foregroundColor(.black)
-                    .font(.title)
+                    .font(.title2)
                 Text(text2)
                     .foregroundColor(.black)
                     .font(.subheadline)
@@ -28,7 +28,7 @@ struct MultiUseCell: View {
         }
         .padding(16)
         .frame(width: 340)
-        .frame(height: 90)
+        .frame(height: 70)
         .cornerRadius(16)
         .overlay {
             RoundedCorner(radius: 16)
