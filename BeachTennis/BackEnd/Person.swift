@@ -8,13 +8,11 @@
 import Foundation
 import CloudKit
 
-struct Person: CloudKitableProtocol{
+struct Person: CloudKitableProtocol, Equatable{
     var id: String
     var name: String
     var contact: String
-    var tournamentsCreated:[String]
     var tournamentsRegistered:[String]
-    var playersFavorited:[String] //Node
     
     var record: CKRecord
     
@@ -22,28 +20,22 @@ struct Person: CloudKitableProtocol{
         guard let id = record["id"] as? String,
               let name = record["name"] as? String,
               let contact = record["contact"] as? String,
-              let tournamentsCreated = record["tournamentsCreated"] as? [String],
-              let tournamentsRegistered = record["tournamentsRegistered"] as? [String],
-              let playersFavorited = record["playersFavorited"] as? [String] else { return nil }
+              let tournamentsRegistered = record["tournamentsRegistered"] as? [String] else { return nil }
         
         self.id = id
         self.name = name
         self.contact = contact
-        self.tournamentsCreated = tournamentsCreated
         self.tournamentsRegistered = tournamentsRegistered
-        self.playersFavorited = playersFavorited
         self.record = record
     }
     
     
-    init?(name: String, contact: String, tournamentsCreated: [String], tournamentsRegistered: [String], playersFavorited: [String]){
+    init?(id: String, name: String, contact: String, tournamentsRegistered: [String]){
         let record = CKRecord(recordType: "Person")
-        record["id"] = UUID().uuidString
+        record["id"] = id
         record["name"] = name
         record["contact"] = contact
-        record["tournamentsCreated"] = tournamentsCreated
         record["tournamentsRegistered"] = tournamentsRegistered
-        record["playersFavorited"] = playersFavorited
         
         self.init(record: record)
     }
@@ -52,9 +44,7 @@ struct Person: CloudKitableProtocol{
         self.record["id"] = self.id
         self.record["name"] = self.name
         self.record["contact"] = self.contact
-        self.record["tournamentsCreated"] = self.tournamentsCreated
         self.record["tournamentsRegistered"] = self.tournamentsRegistered
-        self.record["playersFavorited"] = self.playersFavorited
     }
     
     enum EditOptions{
@@ -64,12 +54,12 @@ struct Person: CloudKitableProtocol{
         case advanceTonextRoundTree
     }
     
-    mutating func favoritePlayer(nodeFavoritedId: String, tournamentId: String){
-        let vm = CloudKitCrudBootcampViewModel()
-        
-        playersFavorited.append(nodeFavoritedId)
-        
-        vm.updatePerson(person: self)
+//    mutating func favoritePlayer(nodeFavoritedId: String, tournamentId: String){
+//        let vm = CloudKitCrudBootcampViewModel()
+//
+//        playersFavorited.append(nodeFavoritedId)
+//
+//        vm.updatePerson(person: self)
 //        for tournament in tournamentsRegistered {
 //            if(tournament.id == tournamentId){
 //                for node in tournament.tournamentMatches{
@@ -80,7 +70,7 @@ struct Person: CloudKitableProtocol{
 //            }
 //        }
         
-    }
+//    }
 
 //    func gamesRemaining (tournament: String) -> Int{
 //        let vm = CloudKitCrudBootcampViewModel()
@@ -104,7 +94,7 @@ struct Person: CloudKitableProtocol{
         
         vm.addTournament(newTournament: tournament)
         
-        tournamentsCreated.append(tournament.id)
+//        tournamentsCreated.append(tournament.id)
         vm.updatePerson(person: self)
     }
 

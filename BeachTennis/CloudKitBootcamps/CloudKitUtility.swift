@@ -121,6 +121,52 @@ extension CloudKitUtility {
         }
     }
     
+    
+    #warning("VER COM ALGUEM SE TA CERTO")
+    
+    static private func fetchUserRecordName(completion: @escaping (Result<String, Error>) -> ()) {
+        CKContainer.default().fetchUserRecordID { returnedID, returnedError in
+            if let id = returnedID {
+                completion(.success(id.recordName))
+            }else if let error = returnedError{
+                completion(.failure(error))
+            }else{
+                completion(.failure(CloudKitError.iCloudCouldNotFetchUserRecordID))
+            }
+        }
+    }
+    
+    static private func discoverUserIdentityName(id: CKRecord.ID, completion: @escaping (Result<String, Error>) -> ()) {
+        CKContainer.default().discoverUserIdentity(withUserRecordID: id) { returnedIdentity, returnedError in
+            DispatchQueue.main.async {
+                if let name = returnedIdentity?.nameComponents?.givenName{
+                    completion(.success(name))
+                }else{
+                    completion(.failure(CloudKitError.iCloudCouldNotDiscoverUser))
+                }
+            }
+        }
+    }
+    
+    static private func discoverUserIdentityName(completion: @escaping (Result<String, Error>) -> ()) {
+        fetchUserRecordID { fetchCompletion in
+            switch fetchCompletion{
+            case .success(let recordID):
+                CloudKitUtility.discoverUserIdentityName(id: recordID, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
+    
+    static func discoverUserIdentityName() -> Future<String, Error> {
+        Future { promise in
+            CloudKitUtility.discoverUserIdentityName { result in
+                promise(result)
+            }
+        }
+    }
 }
 
 // MARK: CRUD FUNCTIONS

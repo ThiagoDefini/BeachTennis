@@ -38,16 +38,16 @@ struct AddPlayersView: View {
                 
                 Spacer()
                 
-            ForEach(c2.tournamentMatches){ teams in
-                PlayerCell(team: teams, number: 0)
-            }
+//            ForEach(c2.tournamentMatches){ teams in
+//                PlayerCell(team: teams, number: 0)    ARRUMAR
+//            }
                 
             }.navigationTitle("Add Players")
             
                 }
                 .navigationTitle("Players")
                 .sheet(isPresented: $createButton) {
-                    Created()
+//                    Created()
                     
                 }
                 .frame(width: 350, height: 264)
@@ -57,9 +57,9 @@ struct AddPlayersView: View {
                 .padding()
                 
                 
-                ForEach(c2.tournamentMatches){ teams in
-                    PlayerCell(team: teams,number: num)
-                }
+//                ForEach(c2.tournamentMatches){ teams in
+//                    PlayerCell(team: teams,number: num) ARRUMAR
+//                }
                 
             }
             

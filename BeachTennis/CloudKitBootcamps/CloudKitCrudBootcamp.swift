@@ -63,10 +63,9 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     @Published var gameStates: [GameState] = []
     
     @Published var userId: String?
+    @Published var userName: String?
     
     init(){
-//        fetchItems()
-//        fetchNodes()
         CloudKitUtility.discoverUserIdentity()
             .receive(on: DispatchQueue.main)
             .sink { _ in
@@ -77,6 +76,21 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
             }
             .store(in: &cancellables)
         
+        CloudKitUtility.discoverUserIdentityName()
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] name in
+                self?.userName = name
+                print(self?.userName)
+            }
+            .store(in: &cancellables)
+        fetchNodes()
+        fetchTeams()
+        fetchCourts()
+        fetchPersons()
+        fetchTournaments()
+        fetchGameStates()
     }
     
     func addButtonPressed(){
@@ -689,17 +703,13 @@ extension CloudKitCrudBootcampViewModel {
 // MARK: Person
 extension CloudKitCrudBootcampViewModel {
 
-    func addPerson(name: String, contact: String, tournamentsCreated: [String], tournamentsRegistered: [String], playersFavorited: [String]){
+    func addPerson(id: String,name: String, contact: String, tournamentsRegistered: [String]){
 
-            guard let newPerson = Person(name: name, contact: contact, tournamentsCreated: tournamentsCreated, tournamentsRegistered: tournamentsRegistered, playersFavorited: playersFavorited) else { return }
+        guard let newPerson = Person(id: id,name: name, contact: contact, tournamentsRegistered: tournamentsRegistered) else { return }
 
         print("Name: \(newPerson.name)")
         print("contact: \(newPerson.contact)")
-        print("tournamentCreated: \(newPerson.tournamentsCreated)")
         print("tournamentRegist: \(newPerson.tournamentsRegistered)")
-        print("playersFav: \(newPerson.playersFavorited)")
-
-
 
             CloudKitUtility.add(item: newPerson) { result in
                 DispatchQueue.main.async(){
@@ -791,6 +801,18 @@ extension CloudKitCrudBootcampViewModel {
             .store(in: &cancellables)
 
     }
+    
+//    func hasPersonById(id: String){
+//        var personsId: [String] = []
+//        ForEach person in persons{
+//            personsId = person.id
+//        }
+//        
+//        
+//        if personsId.contains(id){
+//            
+//        }
+//    }
 
 }
 

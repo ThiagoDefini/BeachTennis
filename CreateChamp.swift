@@ -166,18 +166,14 @@ struct CreateChamp: View {
                     }
                     Spacer()
 
-                    Button("Create championship"){
+                    Button(action: {
                         if name != "" && tennisCourt != "" && address != "" {
-                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: "adsasd", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: startDate, endingTime: endDate, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
+//                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: "adsasd", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: startDate, endingTime: endDate, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
                             
                         } else {
                             print("Tem algum campo vazio")
                         }
-                        
                         createButton.toggle()
-                    }
-                    .sheet(isPresented: $createButton) {
-                        Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")
                         
                     }, label: {
                         Text("Next")
@@ -187,7 +183,7 @@ struct CreateChamp: View {
                             .cornerRadius(16)
                         
                     })
-                    .sheet(isPresented: $createButton, content:{ Created()})
+                    .sheet(isPresented: $createButton, content:{ Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")})
                 }
                 .navigationTitle("Create championship")
             }
