@@ -25,9 +25,9 @@ struct PhotoPicker2: View {
                                 .cornerRadius(80)
                             Image(systemName: "plus.circle")
                                 .foregroundColor(.black)
-                                .font(.system(size: 25))
+                                .font(.system(size: 15))
                                 .padding(.top, -35)
-                                .padding(.leading, 70)
+                                .padding(.leading, 50)
                         } else {
                             Image("icon.photo")
                                 .resizable()
@@ -38,7 +38,7 @@ struct PhotoPicker2: View {
                                 .foregroundColor(.black)
                                 .font(.system(size: 15))
                                 .padding(.top, -35)
-                                .padding(.leading, 70)
+                                .padding(.leading, 50)
                         }
                     }
                 }
