@@ -7,7 +7,16 @@
 
 import Foundation
 
-class Node: Identifiable{
+class Node: Identifiable, Hashable {
+    
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+    
+    var hashValue: Int {
+        return ObjectIdentifier(self).hashValue
+    }
+    
     var id:Int
     var empty:Int
     var fineshed = 0
