@@ -15,90 +15,173 @@ struct CreateChamp: View {
     @State private var endDate = Date()
     @State private var image = Image("")
     
-   
+    
     
     @State private var createButton = false
     
     let characterLimit = 18
     var body: some View {
         NavigationView{
+            VStack{
+                Group{
                     VStack{
-                        Group{
-                            Spacer()
-                               // .padding(.bottom, -11.0)
-                            PhotoPicker()
-                                .foregroundColor(Color("orange"))
-                           
-                            HStack(spacing: 20){
-                                Text("Name")
-                                    .foregroundColor(.black)
-                                TextField("name", text: self.$name)
-                                    .foregroundColor(.black)
-                            }
-                            .padding(.leading, 40)
-                            Divider()
-                            
-                            HStack(spacing: 20){
-                                Text("Tennis court")
-                                    .foregroundColor(.black)
-                                TextField("name", text: self.$tennisCourt)
+                        Text("Name:")
+                            .padding(.trailing, 290)
+                            .foregroundColor(.black)
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 400, height: 43)
+                            HStack{
+                                Image(systemName: "trophy.fill")
+                                    .foregroundColor(Color("orange"))
+                                TextField("Name", text: self.$name)
                                     .foregroundColor(.black)
                             }
-                            .padding(.leading, 40)
-                            Divider()
+                            .padding(.leading, 50)
                         }
-                        HStack(spacing: 20){
-                            Text("Adress")
-                                .foregroundColor(.black)
-                            TextField("name", text: self.$adress)
-                                .foregroundColor(.black)
+                    }
+                    VStack{
+                        Text("Location:")
+                            .padding(.trailing, 270)
+                            .foregroundColor(.black)
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 400, height: 43)
+                            HStack{
+                                Image(systemName: "mappin")
+                                    .foregroundColor(Color("orange"))
+                                TextField("Location", text: self.$tennisCourt)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.leading, 50)
                         }
-                        .padding(.leading, 40)
-                        Divider()
-                        
-                        
+                    }
+                    VStack{
+                        Text("Adress:")
+                            .padding(.trailing, 285)
+                            .foregroundColor(.black)
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 400, height: 43)
+                            HStack{
+                                Image(systemName: "mappin")
+                                    .foregroundColor(Color("orange"))
+                                TextField("Adress", text: self.$adress)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.leading, 50)
+                        }
+                    }
+                    VStack{
+                        Text("Date:")
+                            .padding(.trailing, 300)
+                            .foregroundColor(.black)
                         HStack{
-                            Text("Start date")
-                                .foregroundColor(.black)
-                        
-                            Spacer()
-                            DatePicker("", selection: $startDate)
-                                .padding(.trailing)
+                            ZStack{
+                                VStack{
+                                    HStack{
+                                        Image(systemName: "calendar")
+                                            .foregroundColor(Color("orange"))
+                                            .padding(.leading, 25)
+                                        DatePicker("", selection: $startDate, displayedComponents: .date)
+                                    }
+                                }
+                                .padding(.trailing,15)
+                                RoundedCorner(radius: 12)
+                                    .stroke(lineWidth: 0.5)
+                                    .foregroundColor(Color("blue"))
+                                    .frame(width: 170, height: 43)
+                                                                    
+                            }
+                            Image(systemName: "arrow.right")
+                            ZStack{
+                                VStack{
+                                    HStack{
+                                        Image(systemName: "calendar")
+                                           .foregroundColor(Color("orange"))
+                                           .padding(.leading, 25)
+                                        DatePicker("", selection: $endDate, displayedComponents: .date)
+                                    }
+                                }
+                                .padding(.trailing, 15)
+                                    RoundedCorner(radius: 12)
+                                    .stroke(lineWidth: 0.5)
+                                    .foregroundColor(Color("blue"))
+                                    .frame(width: 170, height: 43)
+                                }
+                            }
                         }
-                        .padding(.leading, 40)
-                        Divider()
-                        
+                       
+                    VStack{
+                        Text("Hour:")
+                            .padding(.trailing, 300)
+                            .foregroundColor(.black)
                         HStack{
-                            Text("End date")
-                                .foregroundColor(.black)
-                            Spacer()
-                            DatePicker("", selection: $endDate)
-                                .padding(.trailing)
+                            ZStack{
+                                VStack{
+                                    HStack{
+                                        Image(systemName: "calendar")
+                                            .foregroundColor(Color("orange"))
+                                            .padding(.leading, 25)
+                                        DatePicker("", selection: $startDate, displayedComponents: .hourAndMinute)
+                                    }
+                                }
+                                .padding(.trailing, 35)
+                                        RoundedCorner(radius: 12)
+                                            .stroke(lineWidth: 0.5)
+                                            .foregroundColor(Color("blue"))
+                                            .frame(width: 170, height: 43)
+                                            
+                                
+                            }
+                            Image(systemName: "arrow.right")
+                            ZStack{
+    
+                                VStack{
+                                    HStack{
+                                        Image(systemName: "calendar")
+                                            .foregroundColor(Color("orange"))
+                                            .padding(.leading, 25)
+                                        DatePicker("", selection: $endDate, displayedComponents: .hourAndMinute)
+                                    }
+                                }
+                                .padding(.trailing, 35)
+                                RoundedCorner(radius: 12)
+                                    .stroke(lineWidth: 0.5)
+                                    .foregroundColor(Color("blue"))
+                                    .frame(width: 170, height: 43)
+                            }
                         }
-                        .padding(.leading, 40)
-                        
-                        Spacer()
+                       
+                    }
+                    Spacer()
                     
-                        Button("Create championship"){
+                    Button("Create championship"){
                         createButton.toggle()
                     }
                     .sheet(isPresented: $createButton) {
                         Created()
-
+                        
                     }
                     .frame(width: 350, height: 64)
                     .background(Color("orange"))
                     .cornerRadius(16)
                     .foregroundColor(.white)
                     .padding()
-                        
-                    }
-                    .navigationTitle("New championship")
+                    
                 }
+                .navigationTitle("Create championship")
             }
         }
+    }
     
-
+}
 
 
 
