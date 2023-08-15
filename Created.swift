@@ -12,7 +12,7 @@ struct Created: View {
     @State private var scale = 1.0
     
     @State var link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
-    
+    var code: String
     
     var body: some View {
         NavigationView{
@@ -42,9 +42,9 @@ struct Created: View {
                         Text("the athletes updated:")
                             .foregroundColor(Color("gray"))
                             .bold()
-                        Text("83972")
+                        Text(code)
                             .foregroundColor(Color("gray"))
-                            .font(.system(size: 90))
+                            .font(.system(size: 25))
                     }
                 }
                 .padding(.bottom)
@@ -114,6 +114,6 @@ func sendNotification(title: String, subtitle: String, secondsLater: TimeInterva
 
 struct Created_Previews: PreviewProvider {
     static var previews: some View {
-        Created()
+        Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")
     }
 }

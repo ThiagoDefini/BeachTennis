@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum tournamentTypes{
+enum TournamentTypes: String, Codable{
     case Tree
     case Group
+    
+    static func fromString(_ string: String) -> TournamentTypes?{
+        return TournamentTypes(rawValue: string)
+    }
 }

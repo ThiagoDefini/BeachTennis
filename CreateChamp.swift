@@ -10,11 +10,12 @@ import SwiftUI
 struct CreateChamp: View {
     @State private var name: String = ""
     @State private var tennisCourt: String = ""
-    @State private var adress: String = ""
+    @State private var address: String = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
     @State private var image = Image("")
     
+    let vm = CloudKitCrudBootcampViewModel()
     
     
     @State private var createButton = false
@@ -61,7 +62,7 @@ struct CreateChamp: View {
                         }
                     }
                     VStack{
-                        Text("Adress:")
+                        Text("Address:")
                             .padding(.trailing, 285)
                             .foregroundColor(.black)
                         ZStack{
@@ -72,7 +73,7 @@ struct CreateChamp: View {
                             HStack{
                                 Image(systemName: "mappin")
                                     .foregroundColor(Color("orange"))
-                                TextField("Adress", text: self.$adress)
+                                TextField("Address", text: self.$address)
                                     .foregroundColor(.black)
                             }
                             .padding(.leading, 50)
@@ -97,27 +98,27 @@ struct CreateChamp: View {
                                     .stroke(lineWidth: 0.5)
                                     .foregroundColor(Color("blue"))
                                     .frame(width: 170, height: 43)
-                                                                    
+                                
                             }
                             Image(systemName: "arrow.right")
                             ZStack{
                                 VStack{
                                     HStack{
                                         Image(systemName: "calendar")
-                                           .foregroundColor(Color("orange"))
-                                           .padding(.leading, 25)
+                                            .foregroundColor(Color("orange"))
+                                            .padding(.leading, 25)
                                         DatePicker("", selection: $endDate, displayedComponents: .date)
                                     }
                                 }
                                 .padding(.trailing, 15)
-                                    RoundedCorner(radius: 12)
+                                RoundedCorner(radius: 12)
                                     .stroke(lineWidth: 0.5)
                                     .foregroundColor(Color("blue"))
                                     .frame(width: 170, height: 43)
-                                }
                             }
                         }
-                       
+                    }
+                }
                     VStack{
                         Text("Hour:")
                             .padding(.trailing, 300)
@@ -161,12 +162,19 @@ struct CreateChamp: View {
                        
                     }
                     Spacer()
-                    
+
                     Button("Create championship"){
+                        if name != "" && tennisCourt != "" && address != "" {
+                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: "adsasd", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: startDate, endingTime: endDate, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
+                            
+                        } else {
+                            print("Tem algum campo vazio")
+                        }
+                        
                         createButton.toggle()
                     }
                     .sheet(isPresented: $createButton) {
-                        Created()
+                        Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")
                         
                     }
                     .frame(width: 350, height: 64)
@@ -181,7 +189,7 @@ struct CreateChamp: View {
         }
     }
     
-}
+
 
 
 

@@ -89,10 +89,10 @@ extension CloudKitUtility {
         }
     }
     
-    static private func discoverUserIdentity(id: CKRecord.ID, completion: @escaping (Result<String, Error>) -> ()) {
+    static private func discoverUserIdentity(id: CKRecord.ID, completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
         CKContainer.default().discoverUserIdentity(withUserRecordID: id) { returnedIdentity, returnedError in
             DispatchQueue.main.async {
-                if let name = returnedIdentity?.nameComponents?.givenName{
+                if let name = returnedIdentity?.userRecordID{
                     completion(.success(name))
                 }else{
                     completion(.failure(CloudKitError.iCloudCouldNotDiscoverUser))
@@ -101,7 +101,7 @@ extension CloudKitUtility {
         }
     }
     
-    static private func discoverUserIdentity(completion: @escaping (Result<String, Error>) -> ()) {
+    static private func discoverUserIdentity(completion: @escaping (Result<CKRecord.ID, Error>) -> ()) {
         fetchUserRecordID { fetchCompletion in
             switch fetchCompletion{
             case .success(let recordID):
@@ -113,7 +113,7 @@ extension CloudKitUtility {
         
     }
     
-    static func discoverUserIdentity() -> Future<String, Error> {
+    static func discoverUserIdentity() -> Future<CKRecord.ID, Error> {
         Future { promise in
             CloudKitUtility.discoverUserIdentity { result in
                 promise(result)
