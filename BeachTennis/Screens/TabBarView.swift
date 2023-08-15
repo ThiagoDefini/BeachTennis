@@ -23,7 +23,7 @@ struct TabBarView: View {
             
             Managing()
                 .tabItem {
-                    Label("Coming Soonc", systemImage: "star")
+                    Label("Coming Soon", systemImage: "star")
                 }
             
         }

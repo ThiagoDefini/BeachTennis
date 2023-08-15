@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct MultiUseCell: View {
+    var text1 = ""
+    var text2 = ""
+    var image = ""
     var body: some View {
         HStack(spacing:10){
-            Image(systemName: "star.fill")
+            Image(systemName: image)
                 .foregroundColor(Color("orange"))
             VStack(alignment: .leading){
-                Text("Titulo")
+                Text(text1)
                     .foregroundColor(.black)
-                    .font(.title)
-                Text("Descricao")
+                    .font(.title2)
+                Text(text2)
                     .foregroundColor(.black)
                     .font(.subheadline)
             }
@@ -25,6 +28,7 @@ struct MultiUseCell: View {
         }
         .padding(16)
         .frame(width: 340)
+        .frame(height: 70)
         .cornerRadius(16)
         .overlay {
             RoundedCorner(radius: 16)
@@ -36,6 +40,6 @@ struct MultiUseCell: View {
 
 struct MultiUseCell_Previews: PreviewProvider {
     static var previews: some View {
-        MultiUseCell()
+        MultiUseCell(text1: "Titulo", text2: "Subtitulo", image: "star.fill")
     }
 }
