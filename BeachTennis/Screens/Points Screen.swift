@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PointsCard: View {
     var tournament: Tournament
-    @State private var id1: Int = 0
-    @State private var id2: Int = 0
+    @State private var id1: String = "0"
+    @State private var id2: String = "0"
     @State private var player1 = "0"
     @State private var player2 = "0"
     @State private var winner1 = false
@@ -170,11 +170,11 @@ struct PointsCard: View {
                 
                 Button("Save Results"){
                     if(self.player1 == "6" && winner1 == false && winner2 == false){
-                        tournament.selectWinnerTree(id: id1)
+                        tournament.selectWinnerTree(id: Int(id1)!)
                         winner1 = true
                     }
                     if(self.player2 == "6"){
-                        tournament.selectWinnerTree(id: id2)
+                        tournament.selectWinnerTree(id: Int(id2)!)
                         winner2 = true
                     }
                 }
