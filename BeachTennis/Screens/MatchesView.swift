@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MatchesView: View {
   //  @State var currentScreen: Tournament = .all
-    var tournament: Tournament
+    var tournaments: Tournament
+    var player: User
     @State var favorite = false
     var body: some View {
         NavigationStack{
@@ -49,17 +50,21 @@ struct MatchesView: View {
                     }
                     Spacer()
                     VStack{
-//                        for match in tournament.tournamentMatches{
-//                            if (favorite == false){
-//                              MatchCard(tournament,i)
-//                          }
-//                            if(favorite == true){
-//                              for j in player.favorites{
-//                                  if(j.id == i.id){
-//                                  MatchCard(tournament,i)
-//                                 }
-//                          }
-//                        }
+                        ForEach(tournaments.tournamentMatches, id: \.self) { match in
+                                if (favorite == false){
+                                    MatchCard(tournament: tournaments,favorite: match.id)
+                              }
+                                if(favorite == true){
+                                  //for j in player.favorites{
+                                    ForEach(player.playersFavorited, id: \.self){
+                                        j in
+                                        if(j.id == match.id){
+                                            MatchCard(tournament: tournaments,favorite:match.id)
+                                     }
+                              }
+                            }
+                        }
+
                     }
                 }
                 .padding(120)
@@ -71,6 +76,6 @@ struct MatchesView: View {
 
 struct MatchesView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchesView(tournament:c2)
+        MatchesView(tournaments:c2, player: User(id: 0, name: "", contact: "", tournamentsCreated: [], tournamentsRegistered: [], playersFavorited: []))
     }
 }
