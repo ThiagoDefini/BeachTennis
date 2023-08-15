@@ -11,6 +11,8 @@
 		6F6CCC4B2A855C99005E6457 /* MatchComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */; };
 		6F6CCC4D2A8A9109005E6457 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */; };
 		6F6CCC4F2A8A944C005E6457 /* PhotoPicker2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */; };
+		6F6CCC532A8B1703005E6457 /* JoinCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC522A8B1703005E6457 /* JoinCard.swift */; };
+		6F6CCC552A8C0038005E6457 /* NoGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC542A8C0038005E6457 /* NoGames.swift */; };
 		6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */; };
 		6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC8282A7430C80052F9E3 /* Managing.swift */; };
 		6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */; };
@@ -59,6 +61,8 @@
 		6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchComponent2.swift; sourceTree = "<group>"; };
 		6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker2.swift; sourceTree = "<group>"; };
+		6F6CCC522A8B1703005E6457 /* JoinCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCard.swift; sourceTree = "<group>"; };
+		6F6CCC542A8C0038005E6457 /* NoGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGames.swift; sourceTree = "<group>"; };
 		6F6DC8232A7305E00052F9E3 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC8282A7430C80052F9E3 /* Managing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Managing.swift; path = BeachTennis/Managing.swift; sourceTree = SOURCE_ROOT; };
 		6F6DC82A2A7437190052F9E3 /* CreateChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChamp.swift; sourceTree = SOURCE_ROOT; };
@@ -219,6 +223,8 @@
 				CE0D61B52A841D8F0036B5DE /* MultiUseCell.swift */,
 				6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */,
 				6F6CCC4E2A8A944C005E6457 /* PhotoPicker2.swift */,
+				6F6CCC522A8B1703005E6457 /* JoinCard.swift */,
+				6F6CCC542A8C0038005E6457 /* NoGames.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				6F6DC82D2A7976B60052F9E3 /* Created.swift in Sources */,
 				7BE19E192A7D779C0086DA10 /* CloudKitUserBootcamp.swift in Sources */,
 				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
+				6F6CCC532A8B1703005E6457 /* JoinCard.swift in Sources */,
 				7BE19E122A7C39C70086DA10 /* EnterChampionshipDetailsView.swift in Sources */,
 				7BE19E0C2A7C25770086DA10 /* EnterChampionshipView.swift in Sources */,
 				6F6DC8292A7430C80052F9E3 /* Managing.swift in Sources */,
@@ -344,6 +351,7 @@
 				7BE19E1B2A7D77C00086DA10 /* CloudKitCrudBootcamp.swift in Sources */,
 				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				CE0D61B62A841D8F0036B5DE /* MultiUseCell.swift in Sources */,
+				6F6CCC552A8C0038005E6457 /* NoGames.swift in Sources */,
 				6F6DC82B2A7437190052F9E3 /* CreateChamp.swift in Sources */,
 				6F6DC8372A8177640052F9E3 /* CreateComponent.swift in Sources */,
 				6F6CCC4B2A855C99005E6457 /* MatchComponent2.swift in Sources */,

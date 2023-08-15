@@ -11,8 +11,10 @@ struct CreateChamp: View {
     @State private var name: String = ""
     @State private var tennisCourt: String = ""
     @State private var adress: String = ""
-    @State private var startDate = Date()
-    @State private var endDate = Date()
+    @State private var startDate: String = ""
+    @State private var endDate: String = ""
+    @State private var startTime: String = ""
+    @State private var endTime: String = ""
     @State private var image = Image("")
     
     
@@ -89,7 +91,8 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                             .foregroundColor(Color("orange"))
                                             .padding(.leading, 25)
-                                        DatePicker("", selection: $startDate, displayedComponents: .date)
+                                        TextField("Start date", text: self.$startDate)
+                                            .foregroundColor(.black)
                                     }
                                 }
                                 .padding(.trailing,15)
@@ -106,7 +109,7 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                            .foregroundColor(Color("orange"))
                                            .padding(.leading, 25)
-                                        DatePicker("", selection: $endDate, displayedComponents: .date)
+                                        TextField("End date", text: self.$endDate)
                                     }
                                 }
                                 .padding(.trailing, 15)
@@ -117,7 +120,6 @@ struct CreateChamp: View {
                                 }
                             }
                         }
-                       
                     VStack{
                         Text("Hour:")
                             .padding(.trailing, 300)
@@ -129,7 +131,7 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                             .foregroundColor(Color("orange"))
                                             .padding(.leading, 25)
-                                        DatePicker("", selection: $startDate, displayedComponents: .hourAndMinute)
+                                        TextField("End date", text: self.$startTime)
                                     }
                                 }
                                 .padding(.trailing, 35)
@@ -148,7 +150,7 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                             .foregroundColor(Color("orange"))
                                             .padding(.leading, 25)
-                                        DatePicker("", selection: $endDate, displayedComponents: .hourAndMinute)
+                                        TextField("End date", text: self.$endTime)
                                     }
                                 }
                                 .padding(.trailing, 35)
@@ -161,20 +163,17 @@ struct CreateChamp: View {
                        
                     }
                     Spacer()
-                    
-                    Button("Create championship"){
-                        createButton.toggle()
-                    }
-                    .sheet(isPresented: $createButton) {
-                        Created()
+                    Button(action: { createButton.toggle()
                         
-                    }
-                    .frame(width: 350, height: 64)
-                    .background(Color("orange"))
-                    .cornerRadius(16)
-                    .foregroundColor(.white)
-                    .padding()
-                    
+                    }, label: {
+                        Text("Next")
+                            .frame(width: 350, height: 64)
+                            .background(Color("blue"))
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+                        
+                    })
+                    .sheet(isPresented: $createButton, content:{ Created()})
                 }
                 .navigationTitle("Create championship")
             }

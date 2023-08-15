@@ -9,7 +9,7 @@ import UserNotifications
 
 struct ContentView: View {
     var body: some View {
-        TabBarView()
+        FirstScreenView()
     }
 }
 
