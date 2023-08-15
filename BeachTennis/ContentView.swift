@@ -9,10 +9,8 @@ import UserNotifications
 
 struct ContentView: View {
     var body: some View {
-        CreateChamp()
-//        Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")
-//        CloudKitCrudBootcamp()
-//        PointsCard(tournament: c2, points: GameState(tournament: c2, groupId: 1, players: [0,1]), favorite: 0)
+        FirstScreenView()
+        PointsCard(tournament: c2, points: GameState(tournament: c2, groupId: 1, players: [0,1]), favorite: 0)
     }
 }
 

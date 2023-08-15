@@ -25,8 +25,8 @@ struct ChampInfoView: View, Shape {
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    Image("jiji")
-                        .resizable()
+                    Color("dark-orange")
+                
                         .frame(width: 440, height: 500)
                         .edgesIgnoringSafeArea(.all)
                         .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
