@@ -28,10 +28,10 @@ struct TournamentCard: View {
                     HStack{
                         Image(systemName: "calendar.badge.clock")
                             .foregroundColor(Color("orange"))
-                        Text("12/04/2023 - 17:00 PM")
+                        Text("12/04/2023 - 17:00")
                             .foregroundColor(.black)
                             .font(.footnote)
-                        Text("12/04/2023 - 17:00 PM")
+                        Text("12/04/2023 - 17:00")
                             .foregroundColor(.black)
                             .font(.footnote)
                     }
