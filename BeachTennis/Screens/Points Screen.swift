@@ -9,14 +9,15 @@ import SwiftUI
 
 struct PointsCard: View {
     var tournament: Tournament
-    @StateObject var points: GameState = GameState(tournament: c1, groupId: 0, players: [0,1])
+    @State private var id1: Int = 0
+    @State private var id2: Int = 0
     @State private var player1 = "0"
     @State private var player2 = "0"
     @State private var winner1 = false
     @State private var winner2 = false
     @FocusState var colorFixer:Bool
     @State var isShowingKeyboard: Bool = false
-    @State var favorite: Int
+    @State var favorite: Int = 0
     
     var body: some View {
         ZStack{
@@ -169,11 +170,11 @@ struct PointsCard: View {
                 
                 Button("Save Results"){
                     if(self.player1 == "6" && winner1 == false && winner2 == false){
-                        tournament.selectWinnerTree(id: points.players[0])
+                        tournament.selectWinnerTree(id: id1)
                         winner1 = true
                     }
                     if(self.player2 == "6"){
-                        tournament.selectWinnerTree(id: points.players[1])
+                        tournament.selectWinnerTree(id: id2)
                         winner2 = true
                     }
                 }
@@ -191,6 +192,6 @@ struct PointsCard: View {
 
 struct PointsCard_Previews: PreviewProvider {
     static var previews: some View {
-        PointsCard(tournament:c2,points: GameState(tournament: c2, groupId: 1, players: [0,1]),favorite:0)
+        PointsCard(tournament:c2)
     }
 }
