@@ -12,6 +12,8 @@ struct PointsCard: View {
     @StateObject var points: GameState = GameState(tournament: c1, groupId: 0, players: [0,1])
     @State private var player1 = "0"
     @State private var player2 = "0"
+    @State private var winner1 = false
+    @State private var winner2 = false
     @FocusState var colorFixer:Bool
     @State var isShowingKeyboard: Bool = false
     @State var favorite: Int
@@ -65,7 +67,7 @@ struct PointsCard: View {
                             TextField("name", text: self.$player1)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(winner1 ? .green : .black)
                                 .multilineTextAlignment(.center)
                                 .focused($colorFixer)
                             VStack{
@@ -81,7 +83,7 @@ struct PointsCard: View {
                             TextField("name", text: self.$player2)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(winner2 ? .green : .black)
                                 .multilineTextAlignment(.center)
                                 .focused($colorFixer)
                             VStack{
@@ -166,7 +168,14 @@ struct PointsCard: View {
                 MultiUseCell(text1: "Hour", text2: "X", image: "clock.fill")
                 
                 Button("Save Results"){
-                    isShowingKeyboard.toggle()
+                    if(self.player1 == "6" && winner1 == false && winner2 == false){
+                        tournament.selectWinnerTree(id: points.players[0])
+                        winner1 = true
+                    }
+                    if(self.player2 == "6"){
+                        tournament.selectWinnerTree(id: points.players[1])
+                        winner2 = true
+                    }
                 }
                 .frame(width: 350, height: 64)
                 .background(Color("blue"))
