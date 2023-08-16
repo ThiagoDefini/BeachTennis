@@ -17,49 +17,55 @@ struct AddPlayersView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Spacer()
-                HStack(spacing: 20){
-                    Text("Court Name")
-                        .foregroundColor(.black)
-                    TextField("name", text: self.$name)
-                        .foregroundColor(.black)
+                Text("Please click the button below to add the players to the doubles team:")
+                    .font(.system(size: 18))
+                    .offset(y: -270)
+                    .padding()
+                HStack{
+                    NavigationLink(destination: SinglePlayerView(), label: {
+                        ZStack{
+                            RoundedCorner(radius: 16)
+                                .stroke(lineWidth: 5)
+                                .frame(width: 165, height: 100)
+                                .background(.white)
+                                .foregroundColor(Color("blue"))
+                                .cornerRadius(16)
+                            VStack{
+                                Image(systemName: "person.fill")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(Color("blue"))
+                                Text("Add single player")
+                                    .foregroundColor(Color("blue"))
+                                    .bold()
+                            }
+                        }
+                    })
+                    Spacer()
+                           .frame(width: 20)
+                    NavigationLink(destination: DoublePlayerView(), label: {
+                        ZStack{
+                            RoundedCorner(radius: 16)
+                                .stroke(lineWidth: 5)
+                                .frame(width: 165, height: 100)
+                                .background(.white)
+                                .foregroundColor(Color("blue"))
+                                .cornerRadius(16)
+                            VStack{
+                                Image(systemName: "person.2.fill")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(Color("blue"))
+                                Text("Add double team")
+                                    .foregroundColor(Color("blue"))
+                                    .bold()
+                            }
+                        }
+                    })
                 }
-                .padding(.leading, 40)
-                Divider()
-                HStack(spacing: 20){
-                    Text("Description")
-                        .foregroundColor(.black)
-                    TextField("name", text: self.$name2)
-                        .foregroundColor(.black)
-                }
-                .padding(.leading, 40)
-                Divider()
-                
-                
-                Spacer()
-                
-            ForEach(c2.tournamentMatches){ teams in
-                PlayerCell(team: teams, number: 0)
-            }
-                
-            }.navigationTitle("Add Players")
+                .offset(y: -200)
+            }.navigationTitle("Include teams")
             
-                }
-                .navigationTitle("Players")
-                .sheet(isPresented: $createButton) {
-                    Created()
-                    
-                }
-                .frame(width: 350, height: 264)
-                .background(Color("blue"))
-                .cornerRadius(16)
-                .foregroundColor(.white)
-                .padding()
-                
-                
-                ForEach(c2.tournamentMatches){ teams in
-                    PlayerCell(team: teams,number: num)
-                }
+        }
+        .navigationBarHidden(true)
                 
             }
             
@@ -72,3 +78,24 @@ struct AddPlayersView_Previews: PreviewProvider {
         AddPlayersView()
     }
 }
+//Spacer()
+//                HStack(spacing: 20){
+//                    Text("Court Name")
+//                        .foregroundColor(.black)
+//                    TextField("name", text: self.$name)
+//                        .foregroundColor(.black)
+//                }
+//                .padding(.leading, 40)
+//                Divider()
+//                HStack(spacing: 20){
+//                    Text("Description")
+//                        .foregroundColor(.black)
+//                    TextField("name", text: self.$name2)
+//                        .foregroundColor(.black)
+//                }
+//                .padding(.leading, 40)
+//                Divider()
+//
+//
+//                Spacer()
+//
