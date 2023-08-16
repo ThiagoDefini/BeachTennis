@@ -16,25 +16,27 @@ struct Created: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            ZStack(alignment: .topTrailing){
+                Button(action: {
+                    dismiss()}, label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 35))
+                        .foregroundColor(.gray)
+                })
                 VStack{
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .foregroundColor(Color("orange"))
-                        .padding(.bottom)
-                    Text("Championship created!")
-                        .font(.system(size: 24))
-                        .padding(.bottom, 100)
-                        .bold()
-                        .foregroundColor(Color("orange"))
-                    
-                }
-                .animation(.easeOut(duration: 2), value: scale)
-                ZStack{
-                    RoundedRectangle(cornerRadius: 16)
-                        .foregroundColor(Color("bege"))
-                        .frame(width: 329, height: 226)
+                    VStack{
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .frame(width: 89, height: 89)
+                            .foregroundColor(Color("orange"))
+                            .padding(.bottom)
+                        Text("Championship created!")
+                            .font(.system(size: 24))
+                            .padding(.bottom, 100)
+                            .bold()
+                            .foregroundColor(Color("orange"))
+                        
+                    }
                     VStack{
                         Text("Share the code below to keep")
                             .foregroundColor(Color("gray"))
@@ -42,40 +44,50 @@ struct Created: View {
                         Text("the athletes updated:")
                             .foregroundColor(Color("gray"))
                             .bold()
-                        Text("83972")
-                            .foregroundColor(Color("gray"))
-                            .font(.system(size: 90))
+                        
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 16)
+                                .foregroundColor(Color("bege"))
+                                .frame(width: 350, height: 107)
+                            VStack{
+                                
+                                Text("83972")
+                                    .foregroundColor(Color("gray"))
+                                    .font(.system(size: 90))
+                            }
+                        }
                     }
-                }
-                .padding(.bottom)
-                ZStack{
-                    RoundedRectangle(cornerRadius: 16)
-                        .frame(width: 350, height: 64)
-                        .foregroundColor(Color("orange"))
+                    .padding(.bottom, 150)
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(width: 350, height: 64)
+                            .foregroundColor(Color("blue"))
+                        
+                        ShareLink("Share code", item: link)
+                            .foregroundColor(.white)
+                            .bold()
+                        
+                    }
                     
-                    ShareLink("Share now", item: link)
-                        .foregroundColor(.white)
+                    //                NavigationLink("Share later", destination: ChampInfoView())
+                    //                    .navigationBarBackButtonHidden(true)
+                    //                    .foregroundColor(Color("orange"))
+                    //                    .padding(.bottom)
+                    //
+                    //                    Button("Send notification") {
+                    //                        sendNotification(title: "1 new notification", subtitle: "Your championship starts in 10 minutes🎾🏆", secondsLater: 7, isRepeating: false)
+                    //                    }
+                    //                    .foregroundColor(Color("orange"))
+                    //
+                    //                .onAppear {
+                    //                    UIApplication.shared.applicationIconBadgeNumber = 0
+                    //                }
+                    
                 }
                 
-                NavigationLink("Share later", destination: ChampInfoView())
-                    .navigationBarBackButtonHidden(true)
-                    .foregroundColor(Color("orange"))
-                    .padding(.bottom)
-                
-                    Button("Send notification") {
-                        sendNotification(title: "1 new notification", subtitle: "Your championship starts in 10 minutes🎾🏆", secondsLater: 7, isRepeating: false)
-                    }
-                    .foregroundColor(Color("orange"))
-                    
-                .onAppear {
-                    UIApplication.shared.applicationIconBadgeNumber = 0
-                }
-
             }
             
         }
-        
-        
       
     }
 }

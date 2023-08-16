@@ -163,9 +163,17 @@ struct CreateChamp: View {
                        
                     }
                     Spacer()
-                    Button(action: { createButton.toggle()
-                        
-                    }, label: {
+//                    Button(action: { createButton.toggle()
+//
+//                    }, label: {
+//                        Text("Next")
+//                            .frame(width: 350, height: 64)
+//                            .background(Color("blue"))
+//                            .foregroundColor(.white)
+//                            .cornerRadius(16)
+//
+//                    })
+                    NavigationLink(destination: AddPlayersView(), label: {
                         Text("Next")
                             .frame(width: 350, height: 64)
                             .background(Color("blue"))
@@ -173,11 +181,12 @@ struct CreateChamp: View {
                             .cornerRadius(16)
                         
                     })
-                    .sheet(isPresented: $createButton, content:{ Created()})
+//                    .sheet(isPresented: $createButton, content:{ Created()})
                 }
                 .navigationTitle("Create championship")
             }
         }
+        .navigationBarHidden(true)
     }
     
 }

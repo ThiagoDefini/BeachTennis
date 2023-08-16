@@ -9,14 +9,15 @@ import SwiftUI
 
 struct MatchesView: View {
   //  @State var currentScreen: Tournament = .all
+    @State var all = true
+    @State var favorites = false
     var body: some View {
         NavigationStack{
             ZStack{
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    Image("jiji")
-                        .resizable()
+                    Color("dark-orange")
                         .frame(width: 440, height: 350)
                         .edgesIgnoringSafeArea(.all)
                         .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
@@ -24,7 +25,43 @@ struct MatchesView: View {
                     MatchComponent2()
                         .offset(y: -370 )
                     HStack{
+                        Button(action: {
+                            all.toggle()
+                        }, label: {
+                            Text("All")
+                                .frame(width: 171, height: 36)
+                                .foregroundColor(Color(all == true ? .white : UIColor(named: "blue")!))
+                                .background(Color(all == true ? UIColor(named: "blue")!: .white ))
+                                .cornerRadius(16)
+                        })
+                       // if all ==
 //                        Button(action: {
+//                            favorites.toggle()
+//                        }, label: {
+//                            Text("Favorites")
+//                                .frame(width: 171, height: 36)
+//                                .foregroundColor(Color(favorites == true ? .white : UIColor(named: "blue")!))
+//                                .background(Color(favorites == true ? UIColor(named: "blue")!: .white ))
+//                                .cornerRadius(16)
+//                        })
+                    //    MatchCard(tournament: Tournament, favorite: 1)
+
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+}
+
+struct MatchesView_Previews: PreviewProvider {
+    static var previews: some View {
+        MatchesView()
+    }
+}
+
+//Button(action: {
 ////                            currentScreen = .janeiro
 //                        }) {
 //                            ZStack{
@@ -41,18 +78,4 @@ struct MatchesView: View {
 //                                    .font(.system(size: 16))
 //                                    .foregroundColor(Color(currentScreen == .janeiro ? .white :  UIColor(named: "color3")!))
 
-
-                    }
-//                    MatchCard(tournament: Tournament , favorite: 1)
-                }
-            }
-            
-        }
-    }
-}
-
-struct MatchesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchesView()
-    }
-}
+//(tournament: Tournament , favorite: 1)
