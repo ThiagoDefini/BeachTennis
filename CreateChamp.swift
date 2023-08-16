@@ -188,8 +188,9 @@ struct CreateChamp: View {
                 }
                 .navigationTitle("Create championship")
             }
-        }
         .navigationBarHidden(true)
+        }
+        
     }
     
 

@@ -41,10 +41,6 @@ struct MatchComponent2: View {
        }
         .background(.white)
 
-                       
-                    
-                    
-       }
             RoundedCorner(radius: 20)
                 .stroke(lineWidth: 0.5)
                 .foregroundColor(Color("orange"))
@@ -52,7 +48,6 @@ struct MatchComponent2: View {
             
     }
 
-    }
 }
 
 struct MatchComponent2_Previews: PreviewProvider {
