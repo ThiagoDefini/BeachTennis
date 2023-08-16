@@ -12,7 +12,7 @@ struct Created: View {
     @State private var scale = 1.0
     
     @State var link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
-    
+    var code: String
     
     var body: some View {
         NavigationView{
@@ -126,6 +126,6 @@ func sendNotification(title: String, subtitle: String, secondsLater: TimeInterva
 
 struct Created_Previews: PreviewProvider {
     static var previews: some View {
-        Created()
+        Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")
     }
 }

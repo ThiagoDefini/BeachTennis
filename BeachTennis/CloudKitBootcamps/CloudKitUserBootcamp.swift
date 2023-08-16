@@ -21,7 +21,7 @@ class CloudKitUserBootcampViewModel: ObservableObject {
     init() {
         getiCloudStatus()
         requestPermission()
-        getCurrentUserName()
+//        getCurrentUserName()
         
     }
     
@@ -56,16 +56,29 @@ class CloudKitUserBootcampViewModel: ObservableObject {
     
     }
     
-    func getCurrentUserName() {
-        CloudKitUtility.discoverUserIdentity()
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { [weak self] returnedName in
-                self?.userName = returnedName
-            }
-            .store(in: &cancellables)
-    }
+//    func getCurrentUserName() {
+//        CloudKitUtility.discoverUserIdentity()
+//            .receive(on: DispatchQueue.main)
+//            .sink { _ in
+//
+//            } receiveValue: { [weak self] returnedName in
+//                self?.userName = returnedName
+//            }
+//            .store(in: &cancellables)
+//    }
+    
+//    func getCurrentUserId() {
+//        CloudKitUtility.discoverUserIdentity()
+//            .receive(on: DispatchQueue.main)
+//            .sink { _ in
+//
+//            } receiveValue: { [weak self] returnedName in
+//                self?.userName = returnedName
+//            }
+//            .store(in: &cancellables)
+//    }
+
+    
     
 }
 

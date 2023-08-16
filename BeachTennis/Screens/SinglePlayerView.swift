@@ -50,7 +50,7 @@ struct SinglePlayerView: View {
             }
             .navigationTitle("Single player")
         }
-       
+        
     }
 }
 struct SinglePlayer2View: View{
@@ -62,28 +62,28 @@ struct SinglePlayer2View: View{
                     .font(.system(size: 18))
                     .offset(y: -200)
                     .padding()
-            
+                
                 NavigationLink(destination: SinglePlayerView(), label: {
-                        ZStack{
-                            RoundedCorner(radius: 16)
-                                .stroke(lineWidth: 5)
-                                .frame(width: 165, height: 100)
-                                .background(.white)
+                    ZStack{
+                        RoundedCorner(radius: 16)
+                            .stroke(lineWidth: 5)
+                            .frame(width: 165, height: 100)
+                            .background(.white)
+                            .foregroundColor(Color("blue"))
+                            .cornerRadius(16)
+                        VStack{
+                            Image(systemName: "person.fill")
+                                .font(.system(size: 40))
                                 .foregroundColor(Color("blue"))
-                                .cornerRadius(16)
-                            VStack{
-                                Image(systemName: "person.fill")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(Color("blue"))
-                                Text("Add single player")
-                                    .foregroundColor(Color("blue"))
-                                    .bold()
-                            }
+                            Text("Add single player")
+                                .foregroundColor(Color("blue"))
+                                .bold()
                         }
-                    })
-                    ForEach(c2.tournamentMatches){ teams in
-                        PlayerCell(team: teams, number: 1)
-                            }
+                    }
+                })
+                //                    ForEach(c2.tournamentMatches){ teams in
+                //                        PlayerCell(team: teams, number: 1)
+                //                            }
                 Button(action: { isCreated.toggle()
                     
                 }, label: {
@@ -92,19 +92,21 @@ struct SinglePlayer2View: View{
                         .background(Color("blue"))
                         .foregroundColor(.white)
                         .cornerRadius(16)
-                    })
+                })
                 .sheet(isPresented: $isCreated, onDismiss: {
                     FirstScreenView()
                 }) {
-                    Created()}
+//                    Created()
+                    
+                }
                 
-                   
+                
             }
             .navigationTitle("Include teams")
-           
+            
             
         }
-       
+        
     }
 }
 

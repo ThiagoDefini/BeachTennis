@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MatchCell: View {
-    var tournament: Tournament
-    @State var favorite: Int
+    var tournamentMatches: [Node]
+
+//    @State var favorite: Int
     
     var body: some View {
         VStack(spacing: 20){
@@ -31,10 +32,10 @@ struct MatchCell: View {
                 VStack(alignment: .leading){
                     HStack {
                         VStack(spacing: 5){
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(tournamentMatches[0].player.split(separator: "&")[0])
                                 .foregroundColor(.black)
                                 .bold()
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(tournamentMatches[0].player.split(separator: "&")[1])
                                 .foregroundColor(.black)
                                 .bold()
 
@@ -45,11 +46,11 @@ struct MatchCell: View {
                             .bold()
                         Spacer()
                         VStack(spacing: 5){
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(tournamentMatches[0].player.split(separator: "&")[0])
                                 .foregroundColor(.black)
                                 .bold()
 
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(tournamentMatches[0].player.split(separator: "&")[1])
                                 .foregroundColor(.black)
                                 .bold()
 
@@ -82,6 +83,6 @@ struct MatchCell: View {
 }
 struct MatchCell_Previews: PreviewProvider {
     static var previews: some View {
-        MatchCell(tournament:c2,favorite:0)
+        MatchCell(tournamentMatches: nods)
     }
 }

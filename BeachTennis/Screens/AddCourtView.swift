@@ -41,7 +41,7 @@ struct AddCourtView: View {
                     createButton.toggle()
                 }
                 .sheet(isPresented: $createButton) {
-                    Created()
+//                    Created()
                     
                 }
                 .frame(width: 350, height: 64)
@@ -51,9 +51,9 @@ struct AddCourtView: View {
                 .padding()
                 
                 
-                ForEach(c2.tournamentMatches){ teams in
-                    PlayerCell(team: teams,number: num)
-                }
+//                ForEach(c2.tournamentMatches){ teams in
+//                    PlayerCell(team: teams,number: num)
+//                }
                 
             }.navigationTitle("Players")
             

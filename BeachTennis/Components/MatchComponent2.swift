@@ -41,14 +41,13 @@ struct MatchComponent2: View {
        }
         .background(.white)
 
-                       
-                    
-                    
-       }
+            RoundedCorner(radius: 20)
+                .stroke(lineWidth: 0.5)
+                .foregroundColor(Color("orange"))
+                .frame(width: 372, height: 104)
             
     }
 
-    }
 }
 
 struct MatchComponent2_Previews: PreviewProvider {

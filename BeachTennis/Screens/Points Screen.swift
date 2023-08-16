@@ -1,9 +1,8 @@
-//
-//  Points Screen.swift
-//  BeachTennis
-//
-//  Created by Lucas Cunha on 11/08/23.
-//
+//////
+//////  Points Screen.swift
+//////  BeachTennis
+//////
+//////  Created by Lucas Cunha on 11/08/23.
 
 import SwiftUI
 

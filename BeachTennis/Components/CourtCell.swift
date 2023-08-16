@@ -29,8 +29,8 @@ struct CourtCell: View {
     }
 }
 
-struct CourtCell_Previews: PreviewProvider {
-    static var previews: some View {
-        CourtCell(court: c2.courts[0],number:0)
-    }
-}
+//struct CourtCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CourtCell(court: c2.courts[0],number:0)
+//    }
+//}

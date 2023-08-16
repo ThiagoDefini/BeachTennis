@@ -67,7 +67,8 @@ struct EnterChampionshipView: View {
                         }
                     }
                     if OTPData.code.count == 5{
-                        NavigationLink(destination: EnterChampionshipDetailsView(championship: c1), label: { Text("Continue")})
+//                        NavigationLink(destination: EnterChampionshipDetailsView(championship: c1), label: { Text("Continue")})
+                        NavigationLink(destination: CreateChamp(), label: { Text("Continue")}) //SÓ TESTE
                             .frame(width: 350, height: 64)
                             .background(Color("blue"))
                             .cornerRadius(16)
