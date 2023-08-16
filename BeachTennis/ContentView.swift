@@ -10,7 +10,7 @@ import UserNotifications
 struct ContentView: View {
     var body: some View {
         FirstScreenView()
-        PointsCard(tournament: c2, points: GameState(tournament: c2, groupId: 1, players: [0,1]), favorite: 0)
+        PointsCard(tournament: c2)
     }
 }
 
