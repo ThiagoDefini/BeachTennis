@@ -87,10 +87,10 @@ struct Person: CloudKitableProtocol, Equatable{
 //        return 0
 //    }
 
-    mutating func createTournament (name: String, tournamentType: TournamentTypes, startingTime: Date, endingTime: Date ,location: String, address: String){
+    mutating func createTournament (name: String, tournamentType: TournamentTypes, startDate: String, endDate: String, startTime: String, endTime: String ,location: String, address: String){
         let vm = CloudKitCrudBootcampViewModel()
         
-        guard let tournament = Tournament(name: name, tournamentType: tournamentType, organizerId: self.id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: startingTime, endingTime: endingTime, ranking: [], tournamentMatches: [], groups: [], location: location, address: address) else { return }
+        guard let tournament = Tournament(name: name, tournamentType: tournamentType, organizerId: self.id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: [], tournamentMatches: [], groups: [], location: location, address: address) else { return }
         
         vm.addTournament(newTournament: tournament)
         

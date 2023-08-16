@@ -69,8 +69,8 @@ struct MatchesView: View {
     }
 }
 
-struct MatchesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchesView(tournament:c2)
-    }
-}
+//struct MatchesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchesView(tournament:c2)
+//    }
+//}

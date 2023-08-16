@@ -168,7 +168,8 @@ struct CreateChamp: View {
 
                     Button(action: {
                         if name != "" && tennisCourt != "" && address != "" {
-//                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: "adsasd", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: startDate, endingTime: endDate, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
+                            guard let id = vm.userId else { return print("Erro no userID")}
+                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
                             
                         } else {
                             print("Tem algum campo vazio")

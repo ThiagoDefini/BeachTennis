@@ -60,7 +60,7 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     @Published var courts: [Court] = []
     @Published var tournaments: [Tournament] = []
     @Published var persons: [Person] = []
-    @Published var gameStates: [GameState] = []
+//    @Published var gameStates: [GameState] = []
     
     @Published var userId: String?
     @Published var userName: String?
@@ -90,7 +90,7 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
         fetchCourts()
         fetchPersons()
         fetchTournaments()
-        fetchGameStates()
+//        fetchGameStates()
     }
     
     func addButtonPressed(){
@@ -101,7 +101,7 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
 //        addCourt(name: text, line: Deque([]))
 //        addTeam(playersInGroup: [], matches: [])
 //        addPerson(name: text, contact: text, tournamentsCreated: [], tournamentsRegistered: [], playersFavorited: [])
-        addGameState(tournament: text, groupId: "1", players: [""])
+//        addGameState(tournament: text, groupId: "1", players: [""])
         self.text = ""
     }
     
@@ -600,10 +600,10 @@ extension CloudKitCrudBootcampViewModel {
 
     }
     
-    func addTournament(name: String, tournamentType: TournamentTypes, organizerId: String, selectedCourt: Int, nodesCreated: Int, numGroups: Int, players: [String], courts: [String], startingTime: Date, endingTime: Date, ranking: [String], tournamentMatches: [String], groups: [String], location: String, address: String){
+    func addTournament(name: String, tournamentType: TournamentTypes, organizerId: String, selectedCourt: Int, nodesCreated: Int, numGroups: Int, players: [String], courts: [String], startDate: String, endDate: String,startTime: String, endTime: String, ranking: [String], tournamentMatches: [String], groups: [String], location: String, address: String){
 
         print("Entrou addTournament")
-            guard let newTournament = Tournament(name: name, tournamentType: tournamentType, organizerId: organizerId, selectedCourt: selectedCourt, nodesCreated: nodesCreated, numGroups: numGroups, players: players, courts: courts, startingTime: startingTime, endingTime: endingTime, ranking: ranking, tournamentMatches: tournamentMatches, groups: groups, location: location, address: address) else { return }
+        guard let newTournament = Tournament(name: name, tournamentType: tournamentType, organizerId: organizerId, selectedCourt: selectedCourt, nodesCreated: nodesCreated, numGroups: numGroups, players: players, courts: courts, startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: ranking, tournamentMatches: tournamentMatches, groups: groups, location: location, address: address) else { return }
         
         print("Passou guard let newTournament")
         
@@ -818,101 +818,101 @@ extension CloudKitCrudBootcampViewModel {
 
 // MARK: GameState
 
-extension CloudKitCrudBootcampViewModel {
-    
-    func addGameState(tournament: String, groupId: String, players: [String]){
-        
-        guard let newGameState = GameState(tournament: tournament, groupId: groupId, players: players) else { return }
-
-            CloudKitUtility.add(item: newGameState) { result in
-                DispatchQueue.main.async(){
-                    switch result{
-                    case .success(_):
-                        self.gameStates.append(newGameState)
-                        print("GameState added")
-                    case .failure(_):
-                        break
-                    }
-
-                    self.fetchItems()
-                    self.text = ""
-                }
-            }
-
-    }
-    
-    func fetchGameStates(){
-        let predicate = NSPredicate(value: true)
-        let recordType = "GameState"
-        
-        CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { [weak self] returnedItems in
-                self?.gameStates = returnedItems
-            }
-            .store(in: &cancellables)
-        
-    }
-    
-//    func fetchGameStateById(id: String, completion: @escaping (Node) -> Void) {
-//        let recordType = "Node"
-//        let predicate = NSPredicate(format: "id == %@", argumentArray: [id])
+//extension CloudKitCrudBootcampViewModel {
+//
+//    func addGameState(tournament: String, groupId: String, players: [String]){
+//
+//        guard let newGameState = GameState(tournament: tournament, groupId: groupId, players: players) else { return }
+//
+//            CloudKitUtility.add(item: newGameState) { result in
+//                DispatchQueue.main.async(){
+//                    switch result{
+//                    case .success(_):
+//                        self.gameStates.append(newGameState)
+//                        print("GameState added")
+//                    case .failure(_):
+//                        break
+//                    }
+//
+//                    self.fetchItems()
+//                    self.text = ""
+//                }
+//            }
+//
+//    }
+//
+//    func fetchGameStates(){
+//        let predicate = NSPredicate(value: true)
+//        let recordType = "GameState"
 //
 //        CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
 //            .receive(on: DispatchQueue.main)
 //            .sink { _ in
 //
-//            } receiveValue: { (returnedItems: [Node]) in
-//                guard let node = returnedItems.first else { return }
-//                completion(node)
+//            } receiveValue: { [weak self] returnedItems in
+//                self?.gameStates = returnedItems
 //            }
 //            .store(in: &cancellables)
 //
 //    }
-    
-//    func fetchAllNodesById(ids: [String], completion: @escaping ([Node]) -> Void) {
-//        let recordType = "Node"
-//        let predicate = NSPredicate(format: "id IN %@", argumentArray: [ids])
 //
-//        CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
+////    func fetchGameStateById(id: String, completion: @escaping (Node) -> Void) {
+////        let recordType = "Node"
+////        let predicate = NSPredicate(format: "id == %@", argumentArray: [id])
+////
+////        CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
+////            .receive(on: DispatchQueue.main)
+////            .sink { _ in
+////
+////            } receiveValue: { (returnedItems: [Node]) in
+////                guard let node = returnedItems.first else { return }
+////                completion(node)
+////            }
+////            .store(in: &cancellables)
+////
+////    }
+//
+////    func fetchAllNodesById(ids: [String], completion: @escaping ([Node]) -> Void) {
+////        let recordType = "Node"
+////        let predicate = NSPredicate(format: "id IN %@", argumentArray: [ids])
+////
+////        CloudKitUtility.fetch(predicate: predicate, recordType: recordType)
+////            .receive(on: DispatchQueue.main)
+////            .sink { _ in
+////
+////            } receiveValue: { [weak self] (returnedItems: [Node]) in
+////                self?.nodes = returnedItems
+////                completion(returnedItems)
+////            }
+////            .store(in: &cancellables)
+////
+////    }
+//
+//
+//    func updateNode(gameState: GameState){
+//        gameState.updateRecord()
+//
+//        CloudKitUtility.update(item: gameState) { [weak self] result in
+//            print("UPDATE COMPLETED!")
+//            self?.fetchItems()
+//        }
+//    }
+//
+//    func deleteGameState(indexSet: IndexSet){
+//        guard let index = indexSet.first else { return }
+//        let gameState = gameStates[index]
+////        let record = node.record
+//
+//        CloudKitUtility.delete(item: gameState)
 //            .receive(on: DispatchQueue.main)
 //            .sink { _ in
 //
-//            } receiveValue: { [weak self] (returnedItems: [Node]) in
-//                self?.nodes = returnedItems
-//                completion(returnedItems)
+//            } receiveValue: { [weak self] success in
+//                print("DELETE IS: \(success)")
+//                self?.gameStates.remove(at: index)
 //            }
 //            .store(in: &cancellables)
 //
 //    }
-    
-    
-    func updateNode(gameState: GameState){
-        gameState.updateRecord()
-
-        CloudKitUtility.update(item: gameState) { [weak self] result in
-            print("UPDATE COMPLETED!")
-            self?.fetchItems()
-        }
-    }
-    
-    func deleteGameState(indexSet: IndexSet){
-        guard let index = indexSet.first else { return }
-        let gameState = gameStates[index]
-//        let record = node.record
-        
-        CloudKitUtility.delete(item: gameState)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { [weak self] success in
-                print("DELETE IS: \(success)")
-                self?.gameStates.remove(at: index)
-            }
-            .store(in: &cancellables)
-        
-    }
-    
-}
+//
+//}

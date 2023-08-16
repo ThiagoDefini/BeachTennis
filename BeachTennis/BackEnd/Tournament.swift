@@ -18,8 +18,10 @@ struct Tournament: Identifiable, CloudKitableProtocol{
     var numGroups = 0
     var players: [String]
     var courts: [String] //Court
-    var startingTime: Date
-    var endingTime: Date
+    var startDate: String
+    var endDate: String
+    var startTime: String
+    var endTime: String
     var ranking: [String] //Node
     var tournamentMatches: [String] //Node
     var groups: [String] //Team
@@ -38,8 +40,10 @@ struct Tournament: Identifiable, CloudKitableProtocol{
               let numGroups = record["numGroups"] as? Int,
               let players = record["players"] as? [String],
               let courts = record["courts"] as? [String],
-              let startingTime = record["startingTime"] as? Date,
-              let endingTime = record["endingTime"] as? Date,
+              let startDate = record["startDate"] as? String,
+              let endDate = record["endDate"] as? String,
+              let startTime = record["startTime"] as? String,
+              let endTime = record["endTime"] as? String,
               let ranking = record["ranking"] as? [String],
               let tournamentMatches = record["tournamentMatches"] as? [String],
               let groups = record["groups"] as? [String],
@@ -57,8 +61,10 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         self.numGroups = numGroups
         self.players = players
         self.courts = courts
-        self.startingTime = startingTime
-        self.endingTime = endingTime
+        self.startDate = startDate
+        self.endDate = endDate
+        self.startTime = startTime
+        self.endTime = endTime
         self.ranking = ranking
         self.tournamentMatches = tournamentMatches
         self.groups = groups
@@ -67,7 +73,7 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         self.record = record
     }
     
-    init?(name: String, tournamentType: TournamentTypes, organizerId: String, selectedCourt: Int, nodesCreated: Int, numGroups: Int, players: [String], courts: [String], startingTime: Date, endingTime: Date, ranking: [String], tournamentMatches: [String], groups: [String], location: String, address: String){
+    init?(name: String, tournamentType: TournamentTypes, organizerId: String, selectedCourt: Int, nodesCreated: Int, numGroups: Int, players: [String], courts: [String], startDate: String, endDate: String, startTime: String, endTime: String, ranking: [String], tournamentMatches: [String], groups: [String], location: String, address: String){
         let record = CKRecord(recordType: "Tournament")
         
         record["id"] = UUID().uuidString
@@ -79,8 +85,10 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         record["numGroups"] = numGroups
         record["players"] = players
         record["courts"] = courts
-        record["startingTime"] = startingTime
-        record["endingTime"] = endingTime
+        record["startDate"] = startDate
+        record["endDate"] = endDate
+        record["startTime"] = startTime
+        record["endTime"] = endTime
         record["ranking"] = ranking
         record["tournamentMatches"] = tournamentMatches
         record["groups"] = groups
@@ -100,8 +108,10 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         self.record["numGroups"] = self.numGroups
         self.record["players"] = self.players
         self.record["courts"] = self.courts
-        self.record["startingTime"] = self.startingTime
-        self.record["endingTime"] = self.endingTime
+        self.record["startDate"] = self.startDate
+        self.record["endDate"] = self.endDate
+        self.record["startTime"] = self.startTime
+        self.record["endTime"] = self.endTime
         self.record["ranking"] = self.ranking
         self.record["tournamentMatches"] = self.tournamentMatches
         self.record["groups"] = self.groups

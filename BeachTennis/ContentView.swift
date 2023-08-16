@@ -58,13 +58,13 @@ var user1 = Person(id: "1",name: "João", contact: "51999999999", tournamentsReg
 
 var user2 = Person(id: "2", name: "Maria", contact: "51888888888", tournamentsRegistered: [])
 
-var c1 = Tournament(name: "Sun, Sand, and Smashes", tournamentType: .Tree, organizerId: "1", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: .now, endingTime: .now, ranking: [], tournamentMatches: [], groups: [], location: "Epatur, Cidade Baixa", address: "Rua João Alfredo 300")
+var c1 = Tournament(name: "Sun, Sand, and Smashes", tournamentType: .Tree, organizerId: "1", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "", endDate: "", startTime: "", endTime: "", ranking: [], tournamentMatches: [], groups: [], location: "Epatur, Cidade Baixa", address: "Rua João Alfredo 300")
 
-var c2 = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startingTime: .now, endingTime: .now, ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
+var c2 = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "", endDate: "", startTime: "", endTime: "", ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
 
-var gt1 = GameState(tournament: c1?.id ?? "1", groupId: "", players: [])
+//var gt1 = GameState(tournament: c1?.id ?? "1", groupId: "", players: [])
 
-var gt2 = GameState(tournament: c2?.id ?? "2", groupId: "", players: [])
+//var gt2 = GameState(tournament: c2?.id ?? "2", groupId: "", players: [])
 
 var champs: [Tournament] = []
 
