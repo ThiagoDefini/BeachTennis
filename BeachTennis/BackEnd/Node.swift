@@ -8,11 +8,16 @@
 import Foundation
 import CloudKit
 
-//struct CloudKitNodeNames{
-//    static let name = "name"
-//}
-
-struct Node: Hashable, CloudKitableProtocol{
+struct Node: Identifiable, Hashable, CloudKitableProtocol {
+    
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+    
+    var hashValue: String {
+        return ObjectIdentifier(self).hashValue
+    }
+    
     var id:String
     var empty:Int
     var finished = 0

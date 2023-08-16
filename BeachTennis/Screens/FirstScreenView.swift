@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstScreenView: View {
-    
+    @State private var name: String = ""
     @State private var joinGame = false
     @State private var createGame = false
     @State private var seeAll = false
@@ -23,12 +23,23 @@ struct FirstScreenView: View {
                     VStack(alignment: .leading){
                         Text("Hi,")
                             .font(.system(size: 28))
+                            .foregroundColor(Color("gray"))
                         Text("What we're gonna play today?")
+                            .foregroundColor(Color("gray"))
                             .font(.system(size: 16))
                     }
                     PhotoPicker2()
+                    .offset(x: 50)
+                    
                 }
-                Text("Championships")
+                .offset(x: -20 ,y: -150)
+                VStack(alignment: .leading){
+                    Text("Championships")
+                        .font(.system(size: 20))
+                        .bold()
+                        .foregroundColor(Color("gray"))
+                }
+                .offset(x: -110, y: -120)
                 HStack{
                     Button(action: { joinGame.toggle()
                         
@@ -51,7 +62,9 @@ struct FirstScreenView: View {
                         }
                     })
                     .sheet(isPresented: $joinGame, content:{ EnterChampionshipView()})
-                    
+                    Spacer()
+                           .frame(width: 20)
+                
                    NavigationLink(destination: CreateChamp(), label: {
                        ZStack{
                            RoundedCorner(radius: 16)
@@ -70,14 +83,30 @@ struct FirstScreenView: View {
                        }
                    })
                 }
-                HStack{
-                    Text("My championships")
-                    //implementar botão de see all
+                .offset(y: -110)
+                VStack(alignment: .leading){
+                    HStack{
+                        Text("My championships")
+                            .font(.system(size: 20))
+                            .bold()
+                            .foregroundColor(Color("gray"))
+                        //implementar botão de see all
+                    }
+                    .offset( y: -90)
+    
+                    NoGames()
+                        .offset(y: -60)
                 }
-                NoGames()
+                VStack(alignment: .leading){
+                    Text("What's happening now?")
+                        .font(.system(size: 20))
+                        .bold()
+                        .foregroundColor(Color("gray"))
+                }
+                .offset(x: -75, y: -20)
                 
-                Text("What's happening now?")
                 NoNow()
+                    .offset(y: 40)
             }
             }
         }
