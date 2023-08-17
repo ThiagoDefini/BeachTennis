@@ -82,6 +82,7 @@ struct MatchCard: View {
             .overlay {
                 RoundedCorner(radius: 16, corners: [.bottomLeft, .bottomRight])
                     .stroke(lineWidth: 1)
+                    .stroke(Color("orange"))
             }
         }
         .padding(16)
