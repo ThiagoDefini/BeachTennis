@@ -14,26 +14,7 @@ struct EnterChampionshipView: View {
     @State var isSelected: Bool = false
     @State var text = ""
     
-    var vm = CloudKitCrudBootcampViewModel()
-    
-//    func getCodeAtIndex(index: Int) -> String{
-//        if OTPData.code.count > index{
-//            let start = OTPData.code.startIndex
-//            let current = OTPData.code.index(start,offsetBy: index)
-//            return String(OTPData.code[current])
-//        }
-//        return ""
-//    }
-    
-//    func getChampionship(id: Int, champs: [Tournament]) -> Tournament{
-//        ForEach(champs){ champ in
-//            if champ.id == id{
-//                return champ
-//            }
-//        }
-//        return c1
-//    }
-
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     var body: some View {
         NavigationStack{
@@ -72,11 +53,17 @@ struct EnterChampionshipView: View {
                         }
                     }else{
                             if vm.tournaments.contains(where: {$0.id == text}){
-//                                NavigationLink(destination: ChampInfoView(), label: { Text("Continue")}) //SÓ TESTE
-//                                    .frame(width: 350, height: 64)
-//                                    .background(Color("blue"))
-//                                    .cornerRadius(16)
-//                                    .foregroundColor(.white)
+                                NavigationLink(destination:
+                                                ChampInfoView(tournament: c1!)
+                                    .environmentObject(vm)
+                                    .onAppear{
+                                        vm.updateData()
+                                    }
+                                               , label: { Text("Continue")}) //SÓ TESTE
+                                    .frame(width: 350, height: 64)
+                                    .background(Color("blue"))
+                                    .cornerRadius(16)
+                                    .foregroundColor(.white)
                             }else{
                                 Button{
                                     

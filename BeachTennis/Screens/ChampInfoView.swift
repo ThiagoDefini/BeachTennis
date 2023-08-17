@@ -72,7 +72,7 @@ struct ChampInfoView: View, Shape {
                         
                         Spacer()
 
-                        Button("Start championship"){
+                        Button("Enter championship"){
                             
                         }
                         .frame(width: 372, height: 65)

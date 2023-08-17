@@ -62,12 +62,18 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     @Published var persons: [Person] = []
 //    @Published var gameStates: [GameState] = []
     
+    var ownerTournaments: [Tournament] {
+        self.tournaments.filter({ $0.organizerId == person?.id })
+    }
+    
     @Published var userId: String? {
         didSet {
-            print("mudou id:", userId)
+//            print("mudou id:", userId)
         }
     }
     @Published var userName: String?
+    
+    @Published var person: Person?
     
     init(){
         CloudKitUtility.fetchUserRecordID { result in
@@ -75,7 +81,10 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
             case .success(let id):
                 DispatchQueue.main.async {
                     self.userId = id.recordName
-                    print("looping")
+                    self.fetchPersonById(id: id.recordName) { p in
+                        self.person = p
+                    }
+                    
                 }
             case .failure(let error):
                 print(error)
@@ -88,15 +97,27 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
 
             } receiveValue: { [weak self] name in
                 self?.userName = name
-                print(self?.userName)
             }
             .store(in: &cancellables)
+        
+        
         fetchNodes()
         fetchTeams()
         fetchCourts()
         fetchPersons {}
         fetchTournaments()
 //        fetchGameStates()
+    }
+    
+    func findPerson(completion: @escaping (Person) -> ()){
+        fetchTournaments()
+        fetchPersons {
+            if let id = self.userId {
+                self.fetchPersonById(id: id) { person in
+                    completion(person)
+                }
+            }
+        }
     }
     
     func setData() {
@@ -106,9 +127,11 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
                 case .success(let id):
                     DispatchQueue.main.async {
                         self.userId = id.recordName
-    //                    print("looping")
                         if !self.persons.contains(where: { $0.id == id.recordName }) {
                             self.addPerson(id: id.recordName, name: "Thiago", contact: "", tournamentsRegistered: [])
+                        }
+                        self.fetchPersonById(id: id.recordName) { p in
+                            self.person = p
                         }
                     }
                 case .failure(let error):
@@ -117,15 +140,37 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
             }
         }
         
-//        CloudKitUtility.discoverUserIdentity()
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//
-//            } receiveValue: { [weak self] id in
-//                self?.userId = id.recordName
-//                print(self?.userId)
-//            }
-//            .store(in: &cancellables)
+        CloudKitUtility.discoverUserIdentityName()
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { [weak self] name in
+                self?.userName = name
+                print(self?.userName)
+            }
+            .store(in: &cancellables)
+        fetchNodes()
+        fetchTeams()
+        fetchCourts()
+        fetchTournaments()
+    }
+    
+    func updateData(){
+        fetchPersons() {
+            CloudKitUtility.fetchUserRecordID { result in
+                switch result{
+                case .success(let id):
+                    DispatchQueue.main.async {
+                        self.userId = id.recordName
+                        self.fetchPersonById(id: id.recordName) { p in
+                            self.person = p
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
         
         CloudKitUtility.discoverUserIdentityName()
             .receive(on: DispatchQueue.main)

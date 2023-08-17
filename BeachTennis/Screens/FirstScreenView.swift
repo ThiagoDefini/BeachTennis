@@ -13,16 +13,25 @@ struct FirstScreenView: View {
     @State private var createGame = false
     @State private var seeAll = false
     @State private var person: Person?
+    @State private var champs: [Tournament]?
     
-    func fetchPerson(){
-        guard let userId = vm.userId else { return }
-        
-        vm.fetchPersonById(id: userId) { person in
-            self.person = person
-        }
-    }
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
-    var vm = CloudKitCrudBootcampViewModel()
+//    func fetchPerson(){
+//        vm.findPerson { person in
+//            self.person = person
+//        }
+//    }
+//
+//    func findTournaments(ids: [String]){
+//        vm.fetchAllTournamentsById(ids: ids) { tournaments in
+//            self.champs = tournaments
+//        }
+//    }
+    
+//    init(){
+//        fetchPerson()
+//    }
     
     var body: some View {
         NavigationView{
@@ -72,7 +81,14 @@ struct FirstScreenView: View {
                                 
                             }
                         })
-                        .sheet(isPresented: $joinGame, content:{ EnterChampionshipView()})
+                        .sheet(isPresented: $joinGame, content:{
+                            EnterChampionshipView()
+                                .environmentObject(vm)
+                                .onAppear{
+                                    vm.updateData()
+                                }
+                            
+                        })
                         Spacer()
                             .frame(width: 20)
                         
@@ -93,7 +109,15 @@ struct FirstScreenView: View {
                                 }
                             }
                         })
-                        .sheet(isPresented: $createGame, content:{ CreateChamp()})
+                        .sheet(isPresented: $createGame, content:{
+                            CreateChamp()
+                                .environmentObject(vm)
+                                .onAppear{
+                                    vm.updateData()
+                                }
+                            
+                            
+                        })
                         
                     }
                     .offset(y: -110)
@@ -106,24 +130,29 @@ struct FirstScreenView: View {
                         }
                         .offset( y: -90)
                         
-                        if let person = self.person {
-                            if person.tournamentsRegistered.isEmpty {
-//                                vm.fetchAllTournamentsById(ids: person.tournamentsRegistered) { champs in
-//                                    ScrollView(.horizontal){
-//
-//                                        ForEach(champs) { champ in
-//                                            Text(champ.id)
-//                                        }
-//                                    }
-//                                }
-                                    
-                                } else {
+                        
+                        if let person = self.vm.person {
+                            if !vm.ownerTournaments.isEmpty {
+                                ScrollView(.horizontal){
+                                    HStack{
+                                        //                                    if let championships = vm.ownerTournaments {
+                                        ForEach(vm.ownerTournaments) { champ in
+                                            TournamentCard(tournament: champ)
+                                        }
+                                        //                                    }
+                                    }
+                                }
+                                
+                                
+                            } else {
+                                
                                 NoGames()
                                     .offset(y: -60)
                             }
                         }else{
                             NoGames()
                                 .offset(y: -60)
+                            Text("ajndaoisndlaindilandalsidnalindlaisndliadnila")
                         }
                     }
                     VStack(alignment: .leading){
@@ -135,8 +164,14 @@ struct FirstScreenView: View {
                     .offset(x: -75, y: -20)
                     
                     if let person = self.person {
-                        if person.tournamentsRegistered.isEmpty {
-                            
+                        if !person.tournamentsRegistered.isEmpty {
+                            ScrollView(.horizontal){
+                                if let championships = self.champs{
+                                    ForEach(championships) { champ in
+                                        TournamentCard(tournament: champ)
+                                    }
+                                }
+                            }
                         } else {
                             NoNow()
                                 .offset(y: 40)
@@ -148,8 +183,11 @@ struct FirstScreenView: View {
                     
                 }
             }
-            .onAppear(perform: self.fetchPerson)
+            //.onAppear(perform: self.fetchPerson)
         }
+//        .onAppear {
+//            self.vm.setData()
+//        }
     }
 }
 

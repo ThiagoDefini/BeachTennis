@@ -16,6 +16,8 @@ struct AddPlayersView: View {
     
 var tournament: Tournament
 
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
+    
 var body: some View {
     NavigationView{
         VStack{
@@ -25,7 +27,13 @@ var body: some View {
                 .padding()
                 .padding(.top, 30)
             HStack{
-                NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
+                NavigationLink(destination:
+                                SinglePlayerView(tournament: tournament)
+                                    .environmentObject(vm)
+                                    .onAppear{
+                                        vm.updateData()
+                                    }
+                               , label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)
@@ -45,7 +53,13 @@ var body: some View {
                 })
                 Spacer()
                        .frame(width: 20)
-                NavigationLink(destination: DoublePlayerView(), label: {
+                NavigationLink(destination:
+                                DoublePlayerView()
+                    .environmentObject(vm)
+                    .onAppear{
+                        vm.updateData()
+                    }
+                               , label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)
@@ -74,9 +88,9 @@ var body: some View {
         }
         
         
-    }
-struct AddPlayersView_Previews: PreviewProvider {
-static var previews: some View {
-AddPlayersView(tournament: c1!)
 }
+struct AddPlayersView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddPlayersView(tournament: c1!)
+    }
 }

@@ -11,7 +11,7 @@ struct SinglePlayerView: View {
     @State private var fullName: String = ""
 //    @State private var addPlayerButton = false
     @State private var isCreated = false
-    var vm = CloudKitCrudBootcampViewModel()
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     @State var tournament: Tournament
     
     
@@ -44,6 +44,9 @@ struct SinglePlayerView: View {
                     NavigationLink {
                         SinglePlayer2View(tournament: tournament, player: fullName)
                             .environmentObject(vm)
+                            .onAppear{
+                                vm.updateData()
+                            }
                     } label: {
                         Text("Add player")
                             .frame(width: 350, height: 64)
@@ -89,7 +92,13 @@ struct SinglePlayer2View: View{
                     .offset(y: -200)
                     .padding()
                 
-                NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
+                NavigationLink(destination:
+                                SinglePlayerView(tournament: tournament)
+                    .environmentObject(vm)
+                    .onAppear{
+                        vm.updateData()
+                    }
+                               , label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)
@@ -107,9 +116,6 @@ struct SinglePlayer2View: View{
                         }
                     }
                 })
-                //                    ForEach(c2.tournamentMatches){ teams in
-                //                        PlayerCell(team: teams, number: 1)
-                //                            }
                 Button(action: { isCreated.toggle()
                     self.champFlow.finished = true
                 }, label: {
@@ -119,13 +125,6 @@ struct SinglePlayer2View: View{
                         .foregroundColor(.white)
                         .cornerRadius(16)
                 })
-//                .sheet(isPresented: $isCreated, onDismiss: {
-//                    FirstScreenView()
-//                }) {
-////                    Created()
-//
-//                }
-                
                 
             }
             .navigationTitle("Include teams")

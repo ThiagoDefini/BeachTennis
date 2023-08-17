@@ -30,7 +30,7 @@ struct CreateChamp: View {
     @StateObject var champFlow = ChampFlow()
     
     
-    let vm = CloudKitCrudBootcampViewModel()
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     
     @State private var createButton = false
@@ -201,6 +201,10 @@ struct CreateChamp: View {
                     NavigationLink(isActive: $createButton) {
                         AddPlayersView(tournament: champ ?? Tournament())
                             .environmentObject(champFlow)
+                            .environmentObject(vm)
+                            .onAppear{
+                                vm.updateData()
+                            }
                     } label: {
                         EmptyView()
                     }
