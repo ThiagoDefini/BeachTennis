@@ -14,45 +14,47 @@ struct DoublePlayerView: View {
         NavigationView{
             VStack{
                 Text("Insert the full name of the player bellow:")
-                    .offset(y: -200)
+                    .padding(.bottom,50)
                 VStack{
-                    Text("Double team #1:")
-                        .padding(.trailing, 265)
-                        .foregroundColor(.black)
-                    ZStack{
-                        RoundedCorner(radius: 12)
-                            .stroke(lineWidth: 0.5)
-                            .foregroundColor(Color("blue"))
-                            .frame(width: 400, height: 43)
-                        HStack{
-                            Image(systemName: "person.fill")
-                                .foregroundColor(Color("orange"))
-                                .offset(x: -20)
-                            TextField("Full name", text: self.$fullName)
-                                .foregroundColor(.black)
+                    VStack{
+                        Text("Double team #1:")
+                            .padding(.trailing, 265)
+                            .foregroundColor(.black)
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 400, height: 43)
+                            HStack{
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(Color("orange"))
+                                    
+                                TextField("Full name", text: self.$fullName)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.leading, 50)
                         }
-                        .padding(.leading, 50)
                     }
-                }
-                .offset(y: -160)
-                VStack{
-                    ZStack{
-                        RoundedCorner(radius: 12)
-                            .stroke(lineWidth: 0.5)
-                            .foregroundColor(Color("blue"))
-                            .frame(width: 400, height: 43)
-                        HStack{
-                            Image(systemName: "person.fill")
-                                .foregroundColor(Color("orange"))
-                                .offset(x: -20)
-                            TextField("Full name", text: self.$fullName)
-                                .foregroundColor(.black)
+                    VStack{
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 400, height: 43)
+                            HStack{
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(Color("orange"))
+            
+                                TextField("Full name", text: self.$fullName)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.leading, 50)
                         }
-                        .padding(.leading, 50)
                     }
+                    
                 }
-                .padding()
-                .offset(y: -160)
+                .padding(.bottom,400)
+               
                 Button(action: { addDoubleButton.toggle()
                     
                 }, label: {
@@ -63,24 +65,23 @@ struct DoublePlayerView: View {
                         .cornerRadius(16)
                     
                 })
-               // .offset(y: 250)
             }
             .navigationTitle("Double team")
+            .navigationBarBackButtonHidden()
         }
     }
 }
 
 
 struct DoublePlayer2View: View{
-    @State private var isCreated = false
+   @State private var addCourt = false
     var body: some View{
         NavigationView{
             
             VStack{
                 Text("Please click the button below to add the players to the doubles team:")
                     .font(.system(size: 18))
-                    .offset(y: -200)
-                    .padding()
+                    .padding(.bottom,50)
             
                 NavigationLink(destination: DoublePlayerView(), label: {
                     ZStack{
@@ -100,22 +101,20 @@ struct DoublePlayer2View: View{
                         }
                     }
                 })
-                    ForEach(c2.tournamentMatches){ teams in
-                        PlayerCell(team: teams, number: 1)
-                            }
-                Button(action: { isCreated.toggle()
+                .padding(.bottom,400)
+//                    ForEach(c2.tournamentMatches){ teams in
+//                        PlayerCell(team: teams, number: 1)
+//                            }
+                Button(action: { addCourt.toggle()
                     
                 }, label: {
-                    Text("Create championship")
+                    Text("Next")
                         .frame(width: 350, height: 64)
                         .background(Color("blue"))
                         .foregroundColor(.white)
                         .cornerRadius(16)
                     })
-                .sheet(isPresented: $isCreated, onDismiss: {
-                    FirstScreenView()
-                }) {
-                    Created()}
+                .sheet(isPresented: $addCourt, content: {AddCourtsView()})
             }
             .navigationTitle("Include teams")
             

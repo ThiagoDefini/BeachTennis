@@ -40,12 +40,11 @@ struct NoNow: View {
                     .font(.system(size: 40))
                     .padding()
                     .foregroundColor(Color("orange"))
-                Text("There are no ongoing games at the moment.")
+                Text("You still haven't created any tournament")
                     .foregroundColor(Color("orange"))
-                Text("Stay tuned for upcoming matches  that will be")
+                Text("Create a champhionship to be showcased here!")
                     .foregroundColor(Color("orange"))
-                Text("showcased here!")
-                    .foregroundColor(Color("orange"))
+               
     
             }
             .padding()

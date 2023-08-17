@@ -11,6 +11,9 @@ struct MatchCard: View {
     var tournament: Tournament
     @State var favorite: Int
     
+    var vm = CloudKitCrudBootcampViewModel()
+    var tournamentMatches: [Node]
+
     var body: some View {
         VStack(spacing: 20){
             HStack{
@@ -28,25 +31,27 @@ struct MatchCard: View {
                         Image(systemName: favorite == 1 ? "heart.fill" : "heart")
                     }
                 }
-              
+
             }
             .padding(.top)
-           
+
             HStack {
                 VStack(spacing: 5){
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                    Text(tournamentMatches[0].player.split(separator: "&")[0])
                         .foregroundColor(.black)
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
-                        .foregroundColor(.black)                }
+                    Text(tournamentMatches[0].player.split(separator: "&")[1])
+                        .foregroundColor(.black)
+                    
+                }
                 Spacer()
                 Text("X")
                     .foregroundColor(Color("orange"))
                     .bold()
                 Spacer()
                 VStack(spacing: 5){
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                    Text(tournamentMatches[0].player.split(separator: "&")[0])
                         .foregroundColor(.black)
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
+                    Text(tournamentMatches[0].player.split(separator: "&")[1])
                         .foregroundColor(.black)
                 }
             }
@@ -62,7 +67,7 @@ struct MatchCard: View {
                         Image("mapa")
                             .resizable()
                             .frame(width: 18, height: 20)
-                        
+
                         Text("Quadra 3")
                             .foregroundColor(.black)
 
@@ -90,8 +95,8 @@ struct MatchCard: View {
     }
 }
 
-struct MatchCard_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchCard(tournament:c2,favorite:0)
-    }
-}
+//struct MatchCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchCard(tournament:c2,favorite:0)
+//    }
+//}

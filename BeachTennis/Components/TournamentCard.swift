@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TournamentCard: View {
     var tournament: Tournament
-    @State var favorite: Int
+//    @State var favorite: Int
     
     var body: some View {
         VStack(){
@@ -60,8 +60,9 @@ struct TournamentCard: View {
 
 }
 
-struct TournamentCard_Previews: PreviewProvider {
-    static var previews: some View {
-        TournamentCard(tournament:c2,favorite:0)
-    }
-}
+//struct TournamentCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TournamentCard(tournament:c2,favorite:0)
+//        TournamentCard(tournament: c2)
+//    }
+//}

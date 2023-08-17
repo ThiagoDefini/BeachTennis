@@ -1,20 +1,17 @@
-//
-//  Points Screen.swift
-//  BeachTennis
-//
-//  Created by Lucas Cunha on 11/08/23.
-//
-
 import SwiftUI
 
 struct PointsCard: View {
     var tournament: Tournament
-    @StateObject var points: GameState = GameState(tournament: c1, groupId: 0, players: [0,1])
+    var tournamentMatches: [Node]
+    @State private var id1: String = "0"
+    @State private var id2: String = "0"
     @State private var player1 = "0"
     @State private var player2 = "0"
+    @State private var winner1 = false
+    @State private var winner2 = false
     @FocusState var colorFixer:Bool
     @State var isShowingKeyboard: Bool = false
-    @State var favorite: Int
+    @State var favorite: Int = 0
     
     var body: some View {
         ZStack{
@@ -65,7 +62,7 @@ struct PointsCard: View {
                             TextField("name", text: self.$player1)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(winner1 ? .green : .black)
                                 .multilineTextAlignment(.center)
                                 .focused($colorFixer)
                             VStack{
@@ -81,7 +78,7 @@ struct PointsCard: View {
                             TextField("name", text: self.$player2)
                                 .font(.title)
                                 .bold()
-                                .foregroundColor(.black)
+                                .foregroundColor(winner2 ? .green : .black)
                                 .multilineTextAlignment(.center)
                                 .focused($colorFixer)
                             VStack{
@@ -95,9 +92,9 @@ struct PointsCard: View {
                     Spacer()
                     HStack {
                         VStack(spacing: 5){
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(tournamentMatches[0].player.split(separator: "&")[0])
                                 .foregroundColor(.black)
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(tournamentMatches[0].player.split(separator: "&")[1])
                             .foregroundColor(.black)                }
                         .padding(.vertical)
                         .padding(.leading)
@@ -108,9 +105,9 @@ struct PointsCard: View {
                             .bold()
                         Spacer()
                         VStack(spacing: 5){
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(tournamentMatches[0].player.split(separator: "&")[0])
                                 .foregroundColor(.black)
-                            Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(tournamentMatches[0].player.split(separator: "&")[1])
                                 .foregroundColor(.black)
                         }
                         .padding(.vertical)
@@ -125,7 +122,7 @@ struct PointsCard: View {
                             .stroke(lineWidth: 1)
                     }
                 }
-                .padding()
+                //.padding()
                 .frame(width: 350)
                 .frame(height: 147)
                 .background(colorFixer ? .white : Color("light-orange"))
@@ -166,7 +163,14 @@ struct PointsCard: View {
                 MultiUseCell(text1: "Hour", text2: "X", image: "clock.fill")
                 
                 Button("Save Results"){
-                    isShowingKeyboard.toggle()
+                    if(self.player1 == "6" && winner1 == false && winner2 == false){
+                        tournament.selectWinnerTree(id: id1)
+                        winner1 = true
+                    }
+                    if(self.player2 == "6"){
+                        tournament.selectWinnerTree(id: id2)
+                        winner2 = true
+                    }
                 }
                 .frame(width: 350, height: 64)
                 .background(Color("blue"))
@@ -182,6 +186,6 @@ struct PointsCard: View {
 
 struct PointsCard_Previews: PreviewProvider {
     static var previews: some View {
-        PointsCard(tournament:c2,points: GameState(tournament: c2, groupId: 1, players: [0,1]),favorite:0)
+        PointsCard(tournament:c2!,tournamentMatches: [Node(empty: 0, finished: 0, player: "A & B", time: Date.init(), courtId: "", winner: 0)!])
     }
 }

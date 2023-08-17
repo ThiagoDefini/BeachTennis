@@ -14,14 +14,18 @@ struct AddPlayersView: View {
     @State private var createButton = false
     @State private var num:Int = 1
     
+    var tournament: Tournament
+    
     var body: some View {
         NavigationView{
             VStack{
                 Text("Please click the button below to add the players to the doubles team:")
                     .font(.system(size: 18))
+                    .offset(y: -270)
                     .padding()
+                    .padding(.top, 30)
                 HStack{
-                    NavigationLink(destination: SinglePlayerView(), label: {
+                    NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
                         ZStack{
                             RoundedCorner(radius: 16)
                                 .stroke(lineWidth: 5)
@@ -40,7 +44,7 @@ struct AddPlayersView: View {
                         }
                     })
                     Spacer()
-                           .frame(width: 20)
+                        .frame(width: 20)
                     NavigationLink(destination: DoublePlayerView(), label: {
                         ZStack{
                             RoundedCorner(radius: 16)
@@ -60,42 +64,17 @@ struct AddPlayersView: View {
                         }
                     })
                 }
-                
-            }.navigationTitle("Include teams")
-                .padding(.bottom, 500)
-            
-        }
-       // .navigationBarHidden(true)
-                
+                .offset(y: -200)
             }
-            
+            .navigationTitle("Include teams")
             
         }
-   
-
-struct AddPlayersView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPlayersView()
+        .navigationBarHidden(true)
+        
     }
 }
-//Spacer()
-//                HStack(spacing: 20){
-//                    Text("Court Name")
-//                        .foregroundColor(.black)
-//                    TextField("name", text: self.$name)
-//                        .foregroundColor(.black)
-//                }
-//                .padding(.leading, 40)
-//                Divider()
-//                HStack(spacing: 20){
-//                    Text("Description")
-//                        .foregroundColor(.black)
-//                    TextField("name", text: self.$name2)
-//                        .foregroundColor(.black)
-//                }
-//                .padding(.leading, 40)
-//                Divider()
-//
-//
-//                Spacer()
-//
+struct AddPlayersView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddPlayersView(tournament: c1!)
+    }
+}
