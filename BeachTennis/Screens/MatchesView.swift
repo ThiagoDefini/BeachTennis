@@ -84,8 +84,50 @@
 //    }
 //}
 //
-//struct MatchesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MatchesView(tournaments:c2, player: Person(id: "", name: "", contact: "",  tournamentsRegistered: []))
-//    }
-//}
+
+
+import SwiftUI
+
+struct MatchesView: View {
+  //  @State var currentScreen: Tournament = .all
+    @State var all = true
+    @State var favorites = false
+    var body: some View {
+        NavigationStack{
+            ZStack{
+                Color("bege")
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
+                  Image("background")
+                        .resizable()
+                        .frame(width: 440, height: 350)
+                        .edgesIgnoringSafeArea(.all)
+                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
+                       
+                    MatchComponent2()
+                        .offset(y: -60)
+                    HStack{
+                        Button(action: {
+                            all.toggle()
+                        }, label: {
+                            Text("All")
+                                .frame(width: 171, height: 36)
+                                .foregroundColor(Color(all == true ? .white : UIColor(named: "blue")!))
+                                .background(Color(all == true ? UIColor(named: "blue")!: .white ))
+                                .cornerRadius(16)
+                        })
+                    }
+                    
+                }
+                .padding(.bottom, 500)
+            }
+            
+        }
+    }
+}
+
+struct MatchesView_Previews: PreviewProvider {
+    static var previews: some View {
+        MatchesView()
+    }
+}

@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct Created: View {
-    @Environment(\.dismiss) var dismiss
     @State private var scale = 1.0
-    
+   
     @State var link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     var code: String
     
@@ -18,7 +17,8 @@ struct Created: View {
         NavigationView{
             ZStack(alignment: .topTrailing){
                 Button(action: {
-                    dismiss()}, label: {
+                   
+                    }, label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 35))
                         .foregroundColor(.gray)
@@ -86,8 +86,10 @@ struct Created: View {
                 }
                 
             }
+           
             
         }
+        .navigationBarHidden(true )
       
     }
 }

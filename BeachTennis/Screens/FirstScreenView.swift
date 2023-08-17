@@ -40,17 +40,21 @@ struct FirstScreenView: View {
                                 .font(.system(size: 16))
                         }
                         PhotoPicker2()
-                            .offset(x: 50)
+                        
                         
                     }
-                    .offset(x: -20 ,y: -150)
-                    VStack(alignment: .leading){
+
+                    HStack{
                         Text("Championships")
                             .font(.system(size: 20))
                             .bold()
                             .foregroundColor(Color("gray"))
+                            .padding(.leading, 45)
+                        Spacer()
+                        
+                        
                     }
-                    .offset(x: -110, y: -120)
+                    
                     HStack{
                         Button(action: { joinGame.toggle()
                             
@@ -72,6 +76,8 @@ struct FirstScreenView: View {
                                 
                             }
                         })
+                        
+                        
                         .sheet(isPresented: $joinGame, content:{ EnterChampionshipView()})
                         Spacer()
                             .frame(width: 20)
@@ -96,62 +102,74 @@ struct FirstScreenView: View {
                         .sheet(isPresented: $createGame, content:{ CreateChamp()})
                         
                     }
-                    .offset(y: -110)
-                    VStack(alignment: .leading){
-                        HStack{
-                            Text("My championships")
-                                .font(.system(size: 20))
-                                .bold()
-                                .foregroundColor(Color("gray"))
-                        }
-                        .offset( y: -90)
-                        
-                        if let person = self.person {
-                            if person.tournamentsRegistered.isEmpty {
-//                                vm.fetchAllTournamentsById(ids: person.tournamentsRegistered) { champs in
-//                                    ScrollView(.horizontal){
-//
-//                                        ForEach(champs) { champ in
-//                                            Text(champ.id)
-//                                        }
-//                                    }
-//                                }
+                    VStack{
+                        VStack{
+                            HStack{
+                                Text("Participating")
+                                    .font(.system(size: 20))
+                                    .bold()
+                                    .foregroundColor(Color("gray"))
+                                    .padding(.leading,45)
+                                Spacer()
+                            }
+                            if let person = self.person {
+                                if person.tournamentsRegistered.isEmpty {
+                                    // vm.fetchAllTournamentsById(ids: person.tournamentsRegistered) { champs in
+                                    // ScrollView(.horizontal){
+                                    //
+                                    // ForEach(champs) { champ in
+                                    // Text(champ.id)
+                                    // }
+                                    // }
+                                    // }
                                     
                                 } else {
+                                    NoGames()
+                                        .padding(.top,80)
+                                    
+                                }
+                            }else{
                                 NoGames()
-                                    .offset(y: -60)
+                                    .padding(.top,80)
                             }
-                        }else{
-                            NoGames()
-                                .offset(y: -60)
                         }
-                    }
-                    VStack(alignment: .leading){
-                        Text("What's happening now?")
-                            .font(.system(size: 20))
-                            .bold()
-                            .foregroundColor(Color("gray"))
-                    }
-                    .offset(x: -75, y: -20)
-                    
-                    if let person = self.person {
-                        if person.tournamentsRegistered.isEmpty {
-                            
-                        } else {
-                            NoNow()
-                                .offset(y: 40)
+                        .padding(.top)
+                        
+                        VStack{
+                            HStack{
+                                Text("My created championships")
+                                    .font(.system(size: 20))
+                                    .bold()
+                                    .foregroundColor(Color("gray"))
+                                    .padding(.leading,45)
+                                Spacer()
+                            }
+                            if let person = self.person {
+                                if person.tournamentsRegistered.isEmpty {
+                                    
+                                } else {
+                                    NoNow()
+                                        .padding(.top,60)
+                                    
+                                }
+                            }else{
+                                NoNow()
+                                    .padding(.top,60)
+                                
+                            }
                         }
-                    }else{
-                        NoNow()
-                            .offset(y: 40)
+                        .padding(.top,70)
                     }
-                    
                 }
+                .padding(.bottom,100)
+                }
+                
+                .onAppear(perform: self.fetchPerson)
             }
-            .onAppear(perform: self.fetchPerson)
+            
         }
     }
-}
+
 
 struct FirstScreenView_Previews: PreviewProvider {
     static var previews: some View {

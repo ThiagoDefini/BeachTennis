@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F5B8E072A8E8BBB0030C06D /* AddCourtsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B8E062A8E8BBB0030C06D /* AddCourtsView.swift */; };
 		6F6CCC492A855053005E6457 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC482A855053005E6457 /* MatchesView.swift */; };
 		6F6CCC4B2A855C99005E6457 /* MatchComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */; };
 		6F6CCC4D2A8A9109005E6457 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */; };
@@ -43,7 +44,6 @@
 		CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AC2A784FA200242F3D /* TournamentTypes.swift */; };
 		CE1447AF2A797B7600242F3D /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447AE2A797B7600242F3D /* GameState.swift */; };
 		CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B32A81831800242F3D /* PlayerCell.swift */; };
-		CE1447B62A82C84A00242F3D /* AddCourtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B52A82C84A00242F3D /* AddCourtView.swift */; };
 		CE1447B82A82CAAD00242F3D /* CourtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B72A82CAAD00242F3D /* CourtCell.swift */; };
 		CE1447BA2A82CD6200242F3D /* MatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B92A82CD6200242F3D /* MatchCard.swift */; };
 		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
@@ -57,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F5B8E062A8E8BBB0030C06D /* AddCourtsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourtsView.swift; sourceTree = "<group>"; };
 		6F6CCC482A855053005E6457 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
 		6F6CCC4A2A855C99005E6457 /* MatchComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchComponent2.swift; sourceTree = "<group>"; };
 		6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		CE1447AC2A784FA200242F3D /* TournamentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTypes.swift; sourceTree = "<group>"; };
 		CE1447AE2A797B7600242F3D /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		CE1447B32A81831800242F3D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
-		CE1447B52A82C84A00242F3D /* AddCourtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourtView.swift; sourceTree = "<group>"; };
 		CE1447B72A82CAAD00242F3D /* CourtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtCell.swift; sourceTree = "<group>"; };
 		CE1447B92A82CD6200242F3D /* MatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCard.swift; sourceTree = "<group>"; };
 		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
@@ -131,12 +131,12 @@
 				7BE19E0F2A7C301A0086DA10 /* CustomTF.swift */,
 				6F6DC8362A8177640052F9E3 /* CreateComponent.swift */,
 				CE0D61B72A84268D0036B5DE /* InitialScreen.swift */,
-				CE1447B52A82C84A00242F3D /* AddCourtView.swift */,
 				6F6CCC482A855053005E6457 /* MatchesView.swift */,
 				6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */,
 				CE0D61B92A86B3EA0036B5DE /* Points Screen.swift */,
 				6F7117C02A8CEB6A001EE334 /* SinglePlayerView.swift */,
 				6F7117C22A8CEB7D001EE334 /* DoublePlayerView.swift */,
+				6F5B8E062A8E8BBB0030C06D /* AddCourtsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -325,7 +325,6 @@
 				CEE1D2C92A744AA40074F383 /* Team.swift in Sources */,
 				CE509F662A6F042100E65ECE /* Person.swift in Sources */,
 				6F7117C32A8CEB7D001EE334 /* DoublePlayerView.swift in Sources */,
-				7BE19E142A7C4A810086DA10 /* ChampionshipDetailsView.swift in Sources */,
 				6F6CCC492A855053005E6457 /* MatchesView.swift in Sources */,
 				CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */,
 				6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */,
@@ -343,8 +342,8 @@
 				CE0D61B32A8403D50036B5DE /* CornerRadius.swift in Sources */,
 				CE1447BA2A82CD6200242F3D /* MatchCard.swift in Sources */,
 				CE0D61B82A84268D0036B5DE /* InitialScreen.swift in Sources */,
+				6F5B8E072A8E8BBB0030C06D /* AddCourtsView.swift in Sources */,
 				CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */,
-				CE1447B62A82C84A00242F3D /* AddCourtView.swift in Sources */,
 				CE0D61BA2A86B3EA0036B5DE /* Points Screen.swift in Sources */,
 				7BE19E1B2A7D77C00086DA10 /* CloudKitCrudBootcamp.swift in Sources */,
 				CE0D61C22A8C024F0036B5DE /* MatchCell.swift in Sources */,

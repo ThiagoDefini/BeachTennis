@@ -58,6 +58,7 @@ struct CreateChamp: View {
                             .padding(.leading, 50)
                         }
                     }
+                   
                     VStack{
                         Text("Location:")
                             .padding(.trailing, 270)
@@ -116,13 +117,15 @@ struct CreateChamp: View {
                                     .frame(width: 170, height: 43)
                                 
                             }
+                            
+                           
                             Image(systemName: "arrow.right")
                             ZStack{
                                 VStack{
                                     HStack{
                                         Image(systemName: "calendar")
-                                           .foregroundColor(Color("orange"))
-                                           .padding(.leading, 25)
+                                            .foregroundColor(Color("orange"))
+                                            .padding(.leading, 25)
                                         TextField("Start time", text: self.$endDate)
                                     }
                                 }
@@ -135,67 +138,68 @@ struct CreateChamp: View {
                         }
                     }
                 }
-                    VStack{
-                        Text("Hour:")
-                            .padding(.trailing, 300)
-                            .foregroundColor(.black)
-                        HStack{
-                            ZStack{
-                                VStack{
-                                    HStack{
-                                        Image(systemName: "calendar")
-                                            .foregroundColor(Color("orange"))
-                                            .padding(.leading, 25)
-                                        TextField("End date", text: self.$startTime)
-                                    }
+                VStack{
+                    Text("Hour:")
+                        .padding(.trailing, 300)
+                        .foregroundColor(.black)
+                    HStack{
+                        ZStack{
+                            VStack{
+                                HStack{
+                                    Image(systemName: "calendar")
+                                        .foregroundColor(Color("orange"))
+                                        .padding(.leading, 25)
+                                    TextField("End date", text: self.$startTime)
                                 }
-                                .padding(.trailing, 35)
-                                        RoundedCorner(radius: 12)
-                                            .stroke(lineWidth: 0.5)
-                                            .foregroundColor(Color("blue"))
-                                            .frame(width: 170, height: 43)
-                                            
-                                
                             }
-                            Image(systemName: "arrow.right")
-                            ZStack{
-    
-                                VStack{
-                                    HStack{
-                                        Image(systemName: "calendar")
-                                            .foregroundColor(Color("orange"))
-                                            .padding(.leading, 25)
-                                        TextField("End time", text: self.$endTime)
-                                    }
-                                }
-                                .padding(.trailing, 35)
-                                RoundedCorner(radius: 12)
-                                    .stroke(lineWidth: 0.5)
-                                    .foregroundColor(Color("blue"))
-                                    .frame(width: 170, height: 43)
-                            }
+                            .padding(.trailing, 35)
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 170, height: 43)
+                            
                         }
-                       
+                        Image(systemName: "arrow.right")
+                        ZStack{
+                            
+                            VStack{
+                                HStack{
+                                    Image(systemName: "calendar")
+                                        .foregroundColor(Color("orange"))
+                                        .padding(.leading, 25)
+                                    TextField("End time", text: self.$endTime)
+                                }
+                            }
+                            .padding(.trailing, 35)
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 170, height: 43)
+                        }
                     }
-                    Spacer()
-
+                    
+                }
+                
+             
+                Spacer()
+                
                 if name != "" && tennisCourt != "" && address != "" && startDate != "" && startTime != "" && endDate != "" && endTime != ""{
                     
                     Button(action: {
-                            guard let id = vm.userId else { return print("Erro no userID")}
+                        guard let id = vm.userId else { return print("Erro no userID")}
                         champ = Tournament(name: name, tournamentType: .Tree, organizerId: id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
                         
-                            vm.addTournament(newTournament: champ ?? Tournament())
-
+                        vm.addTournament(newTournament: champ ?? Tournament())
+                        
                         createButton.toggle()
-
+                        
                     }, label: {
                         Text("Next")
                             .frame(width: 350, height: 64)
                             .background(Color("blue"))
                             .foregroundColor(.white)
                             .cornerRadius(16)
-
+                        
                     })
                     
                     NavigationLink(isActive: $createButton) {
@@ -204,11 +208,11 @@ struct CreateChamp: View {
                     } label: {
                         EmptyView()
                     }
-
+                    
                     
                 }else{
                     Button(action: {
-//                        createButton.toggle()
+                        // createButton.toggle()
                         
                     }, label: {
                         Text("Next")
@@ -219,25 +223,20 @@ struct CreateChamp: View {
                         
                     })
                 }
-                }
-                .navigationTitle("Create championship")
-
             }
+            .navigationTitle("Create championship")
+            
+        }
         .navigationBarHidden(true)
         .onChange(of: champFlow.finished, perform: { champFlow in
             if champFlow {
                 dismiss()
             }
         })
-        }
-        
-        
     }
     
-
-
-
-
+    
+}
 struct CreateChamp_Previews: PreviewProvider {
     static var previews: some View {
         CreateChamp()

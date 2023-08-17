@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SinglePlayerView: View {
     @State private var fullName: String = ""
-//    @State private var addPlayerButton = false
-    @State private var isCreated = false
+    @State private var addPlayerButton = false
     var vm = CloudKitCrudBootcampViewModel()
     @State var tournament: Tournament
     
@@ -19,7 +18,7 @@ struct SinglePlayerView: View {
         NavigationView{
             VStack{
                 Text("Insert the full name of the player bellow:")
-                    .offset(y: -230)
+                    .padding(.bottom,50)
                 VStack{
                     Text("Player #1:")
                         .padding(.trailing, 290)
@@ -39,7 +38,8 @@ struct SinglePlayerView: View {
                         .padding(.leading, 50)
                     }
                 }
-                .offset(y: -180)
+                .padding(.bottom, 500)
+               
                 if fullName != ""{
                     NavigationLink {
                         SinglePlayer2View(tournament: tournament, player: fullName)
@@ -65,8 +65,9 @@ struct SinglePlayerView: View {
                         
                     })
                 }
-                //.offset(y: 270)
+              
             }
+            
             
             .navigationTitle("Single player")
             
@@ -75,7 +76,7 @@ struct SinglePlayerView: View {
     }
 }
 struct SinglePlayer2View: View{
-    @State private var isCreated = false
+    @State private var addCourt = false
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     @State var tournament: Tournament
     var player: String
@@ -86,7 +87,6 @@ struct SinglePlayer2View: View{
             VStack{
                 Text("Please click the button below to add the players to the doubles team:")
                     .font(.system(size: 18))
-                    .offset(y: -200)
                     .padding()
                 
                 NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
@@ -110,15 +110,13 @@ struct SinglePlayer2View: View{
                 //                    ForEach(c2.tournamentMatches){ teams in
                 //                        PlayerCell(team: teams, number: 1)
                 //                            }
-                Button(action: { isCreated.toggle()
-                    self.champFlow.finished = true
-                }, label: {
-                    Text("Create championship")
-                        .frame(width: 350, height: 64)
-                        .background(Color("blue"))
-                        .foregroundColor(.white)
-                        .cornerRadius(16)
-                })
+               NavigationLink(destination: AddCourtsView(), label: {
+                   Text("Next")
+                       .frame(width: 350, height: 64)
+                       .background(Color("blue"))
+                       .foregroundColor(.white)
+                       .cornerRadius(16)
+               })
 //                .sheet(isPresented: $isCreated, onDismiss: {
 //                    FirstScreenView()
 //                }) {
@@ -141,8 +139,10 @@ struct SinglePlayer2View: View{
     }
 }
 
-//struct SinglePlayerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SinglePlayer2View(tournament: c1!)
-//    }
-//}
+
+struct SinglePlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        SinglePlayerView(tournament: c1!)
+       // SinglePlayer2View(tournament: c1!, player: "" )
+    }
+}
