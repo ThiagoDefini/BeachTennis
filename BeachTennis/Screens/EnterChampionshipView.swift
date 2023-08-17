@@ -12,15 +12,18 @@ struct EnterChampionshipView: View {
     @StateObject var data = CustomKeyboardModel()
     @State var isShowingKeyboard: Bool = false
     @State var isSelected: Bool = false
+    @State var text = ""
     
-    func getCodeAtIndex(index: Int) -> String{
-        if OTPData.code.count > index{
-            let start = OTPData.code.startIndex
-            let current = OTPData.code.index(start,offsetBy: index)
-            return String(OTPData.code[current])
-        }
-        return ""
-    }
+    var vm = CloudKitCrudBootcampViewModel()
+    
+//    func getCodeAtIndex(index: Int) -> String{
+//        if OTPData.code.count > index{
+//            let start = OTPData.code.startIndex
+//            let current = OTPData.code.index(start,offsetBy: index)
+//            return String(OTPData.code[current])
+//        }
+//        return ""
+//    }
     
 //    func getChampionship(id: Int, champs: [Tournament]) -> Tournament{
 //        ForEach(champs){ champ in
@@ -42,20 +45,22 @@ struct EnterChampionshipView: View {
                     
                     Spacer()
                     
-                    HStack(spacing: UIScreen.main.bounds.size.width/35){
-                        ForEach(0..<5, id: \.self) { index in
-                            Button(action: {
-                                isSelected = true
-                                if !isShowingKeyboard {isShowingKeyboard = true}
-                            }, label: {
-                                CustomTF(code: getCodeAtIndex(index: index), isSelected: ((OTPData.code.count == index)&&(isSelected)) ? true:false)
-                            })
-                        }
+                    VStack{
+                        TextField("0", text: self.$text)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.center)
                     }
-                    
+                    .frame(width:300)
+                    .cornerRadius(16)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.blue, lineWidth: 1)
+                    }
                     Spacer()
                     
-                    if OTPData.code.count < 5{
+                    if text == ""{
                         Button{
                             
                         }label: {
@@ -65,16 +70,25 @@ struct EnterChampionshipView: View {
                                 .cornerRadius(16)
                                 .foregroundColor(.white)
                         }
+                    }else{
+                            if vm.tournaments.contains(where: {$0.id == text}){
+//                                NavigationLink(destination: ChampInfoView(), label: { Text("Continue")}) //SÓ TESTE
+//                                    .frame(width: 350, height: 64)
+//                                    .background(Color("blue"))
+//                                    .cornerRadius(16)
+//                                    .foregroundColor(.white)
+                            }else{
+                                Button{
+                                    
+                                }label: {
+                                    Text("Continue")
+                                        .frame(width: 350, height: 64)
+                                        .background(Color("blue"))
+                                        .cornerRadius(16)
+                                        .foregroundColor(.white)
+                                }
+                            }
                     }
-                    if OTPData.code.count == 5{
-//                        NavigationLink(destination: EnterChampionshipDetailsView(championship: c1), label: { Text("Continue")})
-                        NavigationLink(destination: CreateChamp(), label: { Text("Continue")}) //SÓ TESTE
-                            .frame(width: 350, height: 64)
-                            .background(Color("blue"))
-                            .cornerRadius(16)
-                            .foregroundColor(.white)
-                        
-                        }
                     Spacer()
                     }
                 

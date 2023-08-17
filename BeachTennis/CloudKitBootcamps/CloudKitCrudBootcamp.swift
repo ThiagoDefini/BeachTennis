@@ -62,19 +62,70 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     @Published var persons: [Person] = []
 //    @Published var gameStates: [GameState] = []
     
-    @Published var userId: String?
+    @Published var userId: String? {
+        didSet {
+            print("mudou id:", userId)
+        }
+    }
     @Published var userName: String?
     
     init(){
-        CloudKitUtility.discoverUserIdentity()
+        CloudKitUtility.fetchUserRecordID { result in
+            switch result{
+            case .success(let id):
+                DispatchQueue.main.async {
+                    self.userId = id.recordName
+                    print("looping")
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+
+        CloudKitUtility.discoverUserIdentityName()
             .receive(on: DispatchQueue.main)
             .sink { _ in
-                
-            } receiveValue: { [weak self] id in
-                self?.userId = id.recordName
-                print(self?.userId)
+
+            } receiveValue: { [weak self] name in
+                self?.userName = name
+                print(self?.userName)
             }
             .store(in: &cancellables)
+        fetchNodes()
+        fetchTeams()
+        fetchCourts()
+        fetchPersons {}
+        fetchTournaments()
+//        fetchGameStates()
+    }
+    
+    func setData() {
+        fetchPersons() {
+            CloudKitUtility.fetchUserRecordID { result in
+                switch result{
+                case .success(let id):
+                    DispatchQueue.main.async {
+                        self.userId = id.recordName
+    //                    print("looping")
+                        if !self.persons.contains(where: { $0.id == id.recordName }) {
+                            self.addPerson(id: id.recordName, name: "Thiago", contact: "", tournamentsRegistered: [])
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+//        CloudKitUtility.discoverUserIdentity()
+//            .receive(on: DispatchQueue.main)
+//            .sink { _ in
+//
+//            } receiveValue: { [weak self] id in
+//                self?.userId = id.recordName
+//                print(self?.userId)
+//            }
+//            .store(in: &cancellables)
         
         CloudKitUtility.discoverUserIdentityName()
             .receive(on: DispatchQueue.main)
@@ -88,9 +139,7 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
         fetchNodes()
         fetchTeams()
         fetchCourts()
-        fetchPersons()
         fetchTournaments()
-//        fetchGameStates()
     }
     
     func addButtonPressed(){
@@ -703,13 +752,41 @@ extension CloudKitCrudBootcampViewModel {
 // MARK: Person
 extension CloudKitCrudBootcampViewModel {
 
+    
+    func addPerson(person: Person){
+
+        print("Criando a nova person")
+        
+        print("Name: \(person.name)")
+        print("contact: \(person.contact)")
+        print("tournamentRegist: \(person.id)")
+
+            CloudKitUtility.add(item: person) { result in
+                DispatchQueue.main.async(){
+                    switch result{
+                    case .success(_):
+                        self.persons.append(person)
+                        print("Person added")
+                    case .failure(_):
+                        print("Entrou criar pessoa e falhou")
+                        break
+                    }
+
+                    self.fetchItems()
+                    self.text = ""
+                }
+            }
+
+    }
+    
     func addPerson(id: String,name: String, contact: String, tournamentsRegistered: [String]){
 
         guard let newPerson = Person(id: id,name: name, contact: contact, tournamentsRegistered: tournamentsRegistered) else { return }
 
+        print("id: \(newPerson.id)")
         print("Name: \(newPerson.name)")
         print("contact: \(newPerson.contact)")
-        print("tournamentRegist: \(newPerson.tournamentsRegistered)")
+        
 
             CloudKitUtility.add(item: newPerson) { result in
                 DispatchQueue.main.async(){
@@ -729,7 +806,7 @@ extension CloudKitCrudBootcampViewModel {
 
     }
 
-    func fetchPersons(){
+    func fetchPersons(completion: @escaping () -> Void){
         let predicate = NSPredicate(value: true)
         let recordType = "Person"
 
@@ -739,6 +816,7 @@ extension CloudKitCrudBootcampViewModel {
 
             } receiveValue: { [weak self] returnedItems in
                 self?.persons = returnedItems
+                completion()
             }
             .store(in: &cancellables)
 

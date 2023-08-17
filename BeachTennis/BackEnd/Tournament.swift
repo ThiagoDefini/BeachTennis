@@ -30,6 +30,48 @@ struct Tournament: Identifiable, CloudKitableProtocol{
     
     var record: CKRecord
     
+    init(){
+        self.id = ""
+        self.name = ""
+        self.tournamentType = .Tree
+        self.organizerId = ""
+        self.selectedCourt = 0
+        self.nodesCreated = 0
+        self.numGroups = 0
+        self.players = []
+        self.courts = []
+        self.startDate = ""
+        self.endDate = ""
+        self.startTime = ""
+        self.endTime = ""
+        self.ranking = []
+        self.tournamentMatches = []
+        self.groups = []
+        self.location = ""
+        self.address = ""
+        self.record = CKRecord(recordType: "Tournament")
+        
+        record["id"] = id
+        record["name"] = name
+        record["tournamentType"] = tournamentType.rawValue
+        record["organizerId"] = organizerId
+        record["selectedCourt"] = selectedCourt
+        record["nodesCreated"] = nodesCreated
+        record["numGroups"] = numGroups
+        record["players"] = players
+        record["courts"] = courts
+        record["startDate"] = startDate
+        record["endDate"] = endDate
+        record["startTime"] = startTime
+        record["endTime"] = endTime
+        record["ranking"] = ranking
+        record["tournamentMatches"] = tournamentMatches
+        record["groups"] = groups
+        record["location"] = location
+        record["address"] = address
+        
+    }
+    
     init?(record: CKRecord){
         guard let id = record["id"] as? String,
               let name = record["name"] as? String,
@@ -120,11 +162,7 @@ struct Tournament: Identifiable, CloudKitableProtocol{
     }
     
     mutating func addPlayers(player: String){
-        let vm = CloudKitCrudBootcampViewModel()
-        
         players.append(player)
-        
-        vm.updateTournament(tournament: self)
     }
     
     mutating func addCourts(court:String){
@@ -134,7 +172,6 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         
         vm.updateTournament(tournament: self)
     }
-    
     
     //     Retornar a court baseado no courts do tournament
     mutating func selectCourt(nodeId: String, completion: @escaping (String) -> Void){

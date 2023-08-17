@@ -66,6 +66,7 @@ struct DoublePlayerView: View {
                // .offset(y: 250)
             }
             .navigationTitle("Double team")
+            .navigationBarBackButtonHidden()
         }
     }
 }
@@ -100,9 +101,9 @@ struct DoublePlayer2View: View{
                         }
                     }
                 })
-                    ForEach(c2.tournamentMatches){ teams in
-                        PlayerCell(team: teams, number: 1)
-                            }
+//                    ForEach(c2.tournamentMatches){ teams in
+//                        PlayerCell(team: teams, number: 1)
+//                            }
                 Button(action: { isCreated.toggle()
                     
                 }, label: {
@@ -115,7 +116,9 @@ struct DoublePlayer2View: View{
                 .sheet(isPresented: $isCreated, onDismiss: {
                     FirstScreenView()
                 }) {
-                    Created()}
+//                    Created()
+                    
+                }
             }
             .navigationTitle("Include teams")
             
