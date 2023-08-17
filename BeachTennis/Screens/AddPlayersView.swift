@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct AddPlayersView: View {
-
-@State private var name: String = ""
-@State private var name2: String = ""
-@State private var createButton = false
-@State private var num:Int = 1
     
 var tournament: Tournament
 
@@ -45,9 +40,15 @@ var body: some View {
                             Image(systemName: "person.fill")
                                 .font(.system(size: 40))
                                 .foregroundColor(Color("blue"))
-                            Text("Add single player")
-                                .foregroundColor(Color("blue"))
-                                .bold()
+                                .cornerRadius(16)
+                            VStack{
+                                Image(systemName: "person.fill")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(Color("blue"))
+                                Text("Add single player")
+                                    .foregroundColor(Color("blue"))
+                                    .bold()
+                            }
                         }
                     }
                 })
@@ -71,22 +72,24 @@ var body: some View {
                             Image(systemName: "person.2.fill")
                                 .font(.system(size: 40))
                                 .foregroundColor(Color("blue"))
-                            Text("Add double team")
-                                .foregroundColor(Color("blue"))
-                                .bold()
+                                .cornerRadius(16)
+                            VStack{
+                                Image(systemName: "person.2.fill")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(Color("blue"))
+                                Text("Add double team")
+                                    .foregroundColor(Color("blue"))
+                                    .bold()
+                            }
                         }
-                    }
-                })
+                    })
+                }
+                .offset(y: -200)
             }
-            .offset(y: -200)
-        }
-        .navigationTitle("Include teams")
-        
-    }
-    .navigationBarHidden(true)
+            .navigationTitle("Include teams")
             
         }
-        
+        .navigationBarHidden(true)
         
 }
 struct AddPlayersView_Previews: PreviewProvider {

@@ -49,17 +49,21 @@ struct FirstScreenView: View {
                                 .font(.system(size: 16))
                         }
                         PhotoPicker2()
-                            .offset(x: 50)
+                        
                         
                     }
-                    .offset(x: -20 ,y: -150)
-                    VStack(alignment: .leading){
+
+                    HStack{
                         Text("Championships")
                             .font(.system(size: 20))
                             .bold()
                             .foregroundColor(Color("gray"))
+                            .padding(.leading, 45)
+                        Spacer()
+                        
+                        
                     }
-                    .offset(x: -110, y: -120)
+                    
                     HStack{
                         Button(action: { joinGame.toggle()
                             
@@ -147,7 +151,7 @@ struct FirstScreenView: View {
                             } else {
                                 
                                 NoGames()
-                                    .offset(y: -60)
+                                    .padding(.top,80)
                             }
                         }else{
                             NoGames()
@@ -176,20 +180,21 @@ struct FirstScreenView: View {
                             NoNow()
                                 .offset(y: 40)
                         }
-                    }else{
-                        NoNow()
-                            .offset(y: 40)
+                        .padding(.top,70)
                     }
-                    
                 }
+                .padding(.bottom,100)
+                }
+                
+                .onAppear(perform: self.fetchPerson)
             }
-            //.onAppear(perform: self.fetchPerson)
+            
         }
 //        .onAppear {
 //            self.vm.setData()
 //        }
     }
-}
+
 
 struct FirstScreenView_Previews: PreviewProvider {
     static var previews: some View {
