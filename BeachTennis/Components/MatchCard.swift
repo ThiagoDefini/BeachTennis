@@ -12,7 +12,7 @@ struct MatchCard: View {
     @State var favorite: Int
     
     var vm = CloudKitCrudBootcampViewModel()
-    var tournamentMatches: [Node]
+    var names: [String]
 
     var body: some View {
         VStack(spacing: 20){
@@ -37,9 +37,9 @@ struct MatchCard: View {
 
             HStack {
                 VStack(spacing: 5){
-                    Text(tournamentMatches[0].player.split(separator: "&")[0])
+                    Text(names[0].split(separator: "&")[0])
                         .foregroundColor(.black)
-                    Text(tournamentMatches[0].player.split(separator: "&")[1])
+                    Text(names[0].split(separator: "&")[1])
                         .foregroundColor(.black)
                     
                 }
@@ -49,9 +49,9 @@ struct MatchCard: View {
                     .bold()
                 Spacer()
                 VStack(spacing: 5){
-                    Text(tournamentMatches[0].player.split(separator: "&")[0])
+                    Text(names[1].split(separator: "&")[0])
                         .foregroundColor(.black)
-                    Text(tournamentMatches[0].player.split(separator: "&")[1])
+                    Text(names[1].split(separator: "&")[1])
                         .foregroundColor(.black)
                 }
             }
@@ -95,8 +95,8 @@ struct MatchCard: View {
     }
 }
 
-//struct MatchCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MatchCard(tournament:c2,favorite:0)
-//    }
-//}
+struct MatchCard_Previews: PreviewProvider {
+    static var previews: some View {
+        MatchCard(tournament:c2!,favorite:0, names: ["P & u","P & u"])
+    }
+}
