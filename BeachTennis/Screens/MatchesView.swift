@@ -103,23 +103,12 @@ struct MatchesView: View {
                         .frame(width: 440, height: 350)
                         .edgesIgnoringSafeArea(.all)
                         .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                       
+                        .offset(y: 0)
                     MatchComponent2()
                         .offset(y: -60)
-                    HStack{
-                        Button(action: {
-                            all.toggle()
-                        }, label: {
-                            Text("All")
-                                .frame(width: 171, height: 36)
-                                .foregroundColor(Color(all == true ? .white : UIColor(named: "blue")!))
-                                .background(Color(all == true ? UIColor(named: "blue")!: .white ))
-                                .cornerRadius(16)
-                        })
-                    }
                     
                 }
-                .padding(.bottom, 500)
+                .padding(.bottom, 600)
             }
             
         }

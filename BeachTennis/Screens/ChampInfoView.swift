@@ -27,14 +27,14 @@ struct ChampInfoView: View, Shape {
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
                 ZStack{
-                    Rectangle()
-                        .foregroundColor(Color("light-orange"))
+                   Image("background")
+                        .resizable()
                         .frame(width: 440, height: 400)
+                        .frame(width: 440, height: 350)
                         .edgesIgnoringSafeArea(.all)
-                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                        .offset(y: -440)
-                }
-                        //.offset(y: -370 )
+                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])                }
+                        .offset(y: -300)
+                      
                     VStack{
                         Spacer()
                         CreateComponent(tournament: tournament)
@@ -68,8 +68,37 @@ struct ChampInfoView: View, Shape {
                         }
                         MultiUseCell(text1: "Date", text2: tournament.startDate, image: "calendar.badge.clock")
                         
-                        MultiUseCell(text1: "Hour", text2: tournament.startTime, image: "clock.fill")
-                        
+                        NavigationLink(destination: MatchesView(), label: {
+                            HStack(spacing:10){
+                                Image("mapa")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight:18)
+                                    .frame(maxWidth:18)
+                                    .foregroundColor(Color("orange"))
+                                VStack(alignment: .leading){
+                                    Text("Jogos")
+                                        .foregroundColor(.black)
+                                        .font(.title2)
+                                    Text(String(tournament.players.count/2))
+                                        .foregroundColor(.black)
+                                        .font(.subheadline)
+                                }
+                                .padding(10)
+                                Spacer()
+                            }
+                            .padding(16)
+                            .frame(width: 340)
+                            .frame(height: 70)
+                            .cornerRadius(16)
+                            .background(.white)
+                            .overlay {
+                                RoundedCorner(radius: 16)
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(Color("orange"))
+                            }
+                            
+                        })
                         Spacer()
 
                         Button("Start championship"){
