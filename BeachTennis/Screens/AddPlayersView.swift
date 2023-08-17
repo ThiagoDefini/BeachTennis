@@ -19,7 +19,6 @@ struct AddPlayersView: View {
             VStack{
                 Text("Please click the button below to add the players to the doubles team:")
                     .font(.system(size: 18))
-                    .offset(y: -270)
                     .padding()
                 HStack{
                     NavigationLink(destination: SinglePlayerView(), label: {
@@ -61,11 +60,12 @@ struct AddPlayersView: View {
                         }
                     })
                 }
-                .offset(y: -200)
+                
             }.navigationTitle("Include teams")
+                .padding(.bottom, 500)
             
         }
-        .navigationBarHidden(true)
+       // .navigationBarHidden(true)
                 
             }
             

@@ -17,13 +17,14 @@ struct MatchesView: View {
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    Color("dark-orange")
+                  Image("background")
+                        .resizable()
                         .frame(width: 440, height: 350)
                         .edgesIgnoringSafeArea(.all)
                         .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                        .offset(y: -300)
+                       
                     MatchComponent2()
-                        .offset(y: -370 )
+                        .offset(y: -60)
                     HStack{
                         Button(action: {
                             all.toggle()
@@ -34,21 +35,10 @@ struct MatchesView: View {
                                 .background(Color(all == true ? UIColor(named: "blue")!: .white ))
                                 .cornerRadius(16)
                         })
-                       // if all ==
-//                        Button(action: {
-//                            favorites.toggle()
-//                        }, label: {
-//                            Text("Favorites")
-//                                .frame(width: 171, height: 36)
-//                                .foregroundColor(Color(favorites == true ? .white : UIColor(named: "blue")!))
-//                                .background(Color(favorites == true ? UIColor(named: "blue")!: .white ))
-//                                .cornerRadius(16)
-//                        })
-                    //    MatchCard(tournament: Tournament, favorite: 1)
-
                     }
                     
                 }
+                .padding(.bottom, 500)
             }
             
         }

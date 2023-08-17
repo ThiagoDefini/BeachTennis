@@ -110,6 +110,6 @@ struct SinglePlayer2View: View{
 
 struct SinglePlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        SinglePlayer2View()
+        SinglePlayerView()
     }
 }

@@ -29,7 +29,7 @@ struct MatchComponent2: View {
                 .frame(width: 372, height: 104)
                
        }
-        .background(.white)
+
     }
 }
 

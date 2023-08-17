@@ -29,17 +29,15 @@ struct FirstScreenView: View {
                             .font(.system(size: 16))
                     }
                     PhotoPicker2()
-                    .offset(x: 50)
+                    
                     
                 }
-                .offset(x: -20 ,y: -150)
-                VStack(alignment: .leading){
-                    Text("Championships")
-                        .font(.system(size: 20))
-                        .bold()
-                        .foregroundColor(Color("gray"))
-                }
-                .offset(x: -110, y: -120)
+                Text("Championships")
+                    .font(.system(size: 20))
+                    .bold()
+                    .foregroundColor(Color("gray"))
+                
+                
                 HStack{
                     Button(action: { joinGame.toggle()
                         
@@ -63,27 +61,27 @@ struct FirstScreenView: View {
                     })
                     .sheet(isPresented: $joinGame, content:{ EnterChampionshipView()})
                     Spacer()
-                           .frame(width: 20)
-                
-                   NavigationLink(destination: CreateChamp(), label: {
-                       ZStack{
-                           RoundedCorner(radius: 16)
-                               .stroke(lineWidth: 5)
-                               .frame(width: 165, height: 100)
-                               .background(.white)
-                               .foregroundColor(Color("blue"))
-                               .cornerRadius(16)
-                           VStack{
-                               Image(systemName: "tennis.racket")
-                                   .font(.system(size: 22))
-                                   .foregroundColor(Color("blue"))
-                               Text("Create")
-                                   .foregroundColor(Color("blue"))
-                           }
-                       }
-                   })
+                        .frame(width: 20)
+                    
+                    NavigationLink(destination: CreateChamp(), label: {
+                        ZStack{
+                            RoundedCorner(radius: 16)
+                                .stroke(lineWidth: 5)
+                                .frame(width: 165, height: 100)
+                                .background(.white)
+                                .foregroundColor(Color("blue"))
+                                .cornerRadius(16)
+                            VStack{
+                                Image(systemName: "tennis.racket")
+                                    .font(.system(size: 22))
+                                    .foregroundColor(Color("blue"))
+                                Text("Create")
+                                    .foregroundColor(Color("blue"))
+                            }
+                        }
+                    })
                 }
-                .offset(y: -110)
+               
                 VStack(alignment: .leading){
                     HStack{
                         Text("My championships")
@@ -92,22 +90,22 @@ struct FirstScreenView: View {
                             .foregroundColor(Color("gray"))
                         //implementar botão de see all
                     }
-                    .offset( y: -90)
-    
-                    NoGames()
-                        .offset(y: -60)
+                  
+                  //  NoGames()
+                       
                 }
                 VStack(alignment: .leading){
                     Text("What's happening now?")
                         .font(.system(size: 20))
                         .bold()
                         .foregroundColor(Color("gray"))
+                    //NoNow()
                 }
-                .offset(x: -75, y: -20)
-                
-                NoNow()
-                    .offset(y: 40)
+               
+              
+                    
             }
+            .padding(.bottom, 300)
             }
         }
     }
