@@ -9,8 +9,12 @@ import SwiftUI
 
 struct SinglePlayerView: View {
     @State private var fullName: String = ""
-    @State private var addPlayerButton = false
+//    @State private var addPlayerButton = false
     @State private var isCreated = false
+    var vm = CloudKitCrudBootcampViewModel()
+    @State var tournament: Tournament
+    
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -36,25 +40,47 @@ struct SinglePlayerView: View {
                     }
                 }
                 .offset(y: -180)
-                Button(action: { addPlayerButton.toggle()
-                    
-                }, label: {
-                    Text("Add player")
-                        .frame(width: 350, height: 64)
-                        .background(Color("blue"))
-                        .foregroundColor(.white)
-                        .cornerRadius(16)
-                    
-                })
+                if fullName != ""{
+                    NavigationLink {
+                        SinglePlayer2View(tournament: tournament, player: fullName)
+                            .environmentObject(vm)
+                    } label: {
+                        Text("Add player")
+                            .frame(width: 350, height: 64)
+                            .background(Color("blue"))
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+                    }
+
+                  
+                }else{
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Add player")
+                            .frame(width: 350, height: 64)
+                            .background(Color("blue"))
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+                        
+                    })
+                }
                 //.offset(y: 270)
             }
+            
             .navigationTitle("Single player")
-        }
+            
+        }.navigationBarBackButtonHidden()
         
     }
 }
 struct SinglePlayer2View: View{
     @State private var isCreated = false
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
+    @State var tournament: Tournament
+    var player: String
+    @EnvironmentObject var champFlow: ChampFlow
+    
     var body: some View{
         NavigationView{
             VStack{
@@ -63,7 +89,7 @@ struct SinglePlayer2View: View{
                     .offset(y: -200)
                     .padding()
                 
-                NavigationLink(destination: SinglePlayerView(), label: {
+                NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)
@@ -85,7 +111,7 @@ struct SinglePlayer2View: View{
                 //                        PlayerCell(team: teams, number: 1)
                 //                            }
                 Button(action: { isCreated.toggle()
-                    
+                    self.champFlow.finished = true
                 }, label: {
                     Text("Create championship")
                         .frame(width: 350, height: 64)
@@ -93,25 +119,30 @@ struct SinglePlayer2View: View{
                         .foregroundColor(.white)
                         .cornerRadius(16)
                 })
-                .sheet(isPresented: $isCreated, onDismiss: {
-                    FirstScreenView()
-                }) {
-//                    Created()
-                    
-                }
+//                .sheet(isPresented: $isCreated, onDismiss: {
+//                    FirstScreenView()
+//                }) {
+////                    Created()
+//
+//                }
                 
                 
             }
             .navigationTitle("Include teams")
+            .onAppear {
+                tournament.addPlayers(player: player)
+                vm.updateTournament(tournament: tournament)
+            }
             
             
-        }
+            
+        }.navigationBarBackButtonHidden()
         
     }
 }
 
-struct SinglePlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        SinglePlayer2View()
-    }
-}
+//struct SinglePlayerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SinglePlayer2View(tournament: c1!)
+//    }
+//}

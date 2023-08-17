@@ -8,30 +8,24 @@ import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
-    
-    var vm = CloudKitCrudBootcampViewModel()
-    
-    init(){
-        var personsAux = vm.persons
-        var aux = false
-        for i in 0...personsAux.count{
-            if personsAux[i].id == vm.userId{
-                aux = true
-                break
-            }
-        }
-        if aux == false {
-            var person = Person(id: vm.userId ?? "", name: vm.userName ?? "", contact: "", tournamentsRegistered: [])
-        }
-        createChamps()
-        createNods()
-    }
+
+    @StateObject var vm = CloudKitCrudBootcampViewModel()
     
     var body: some View {
         FirstScreenView()
-            .onChange(of: vm.persons) { persons in
-//                createFirstPerson()
+            .onAppear{
+                vm.setData()
+//                if (UserDefaults.standard.bool(forKey: "hasEntered")) == false {
+                    
+//                    let person = Person(id: vm.userId ?? "", name: vm.userName ?? "", contact: "", tournamentsRegistered: [])
+//                    vm.addPerson(person: person!)
+                    
+//                    UserDefaults.standard.setValue(true, forKey: "hasEntered")
+//                }
             }
+//            .onChange(of: vm.persons) { persons in
+//                createFirstPerson()
+//            }
 //        PointsCard(tournament: c2, points: GameState(tournament: c2, groupId: 1, players: [0,1]), favorite: 0)
     }
 }

@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+class ChampFlow: ObservableObject, Equatable {
+    static func == (lhs: ChampFlow, rhs: ChampFlow) -> Bool {
+        lhs.finished == rhs.finished
+    }
+    
+    @Published var finished: Bool = false
+}
+
 struct CreateChamp: View {
     @State private var name: String = ""
     @State private var tennisCourt: String = ""
@@ -16,6 +24,11 @@ struct CreateChamp: View {
     @State private var startTime: String = ""
     @State private var endTime: String = ""
     @State private var image = Image("")
+    @State private var champ : Tournament?
+    
+    @Environment(\.dismiss) var dismiss
+    @StateObject var champFlow = ChampFlow()
+    
     
     let vm = CloudKitCrudBootcampViewModel()
     
@@ -110,7 +123,7 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                            .foregroundColor(Color("orange"))
                                            .padding(.leading, 25)
-                                        TextField("End date", text: self.$endDate)
+                                        TextField("Start time", text: self.$endDate)
                                     }
                                 }
                                 .padding(.trailing, 15)
@@ -152,7 +165,7 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                             .foregroundColor(Color("orange"))
                                             .padding(.leading, 25)
-                                        TextField("End date", text: self.$endTime)
+                                        TextField("End time", text: self.$endTime)
                                     }
                                 }
                                 .padding(.trailing, 35)
@@ -166,15 +179,36 @@ struct CreateChamp: View {
                     }
                     Spacer()
 
+                if name != "" && tennisCourt != "" && address != "" && startDate != "" && startTime != "" && endDate != "" && endTime != ""{
+                    
                     Button(action: {
-                        if name != "" && tennisCourt != "" && address != "" {
                             guard let id = vm.userId else { return print("Erro no userID")}
-                            vm.addTournament(name: name, tournamentType: .Tree, organizerId: id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
-                            
-                        } else {
-                            print("Tem algum campo vazio")
-                        }
+                        champ = Tournament(name: name, tournamentType: .Tree, organizerId: id, selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: startDate, endDate: endDate, startTime: startTime, endTime: endTime, ranking: [], tournamentMatches: [], groups: [], location: tennisCourt, address: address)
+                        
+                            vm.addTournament(newTournament: champ ?? Tournament())
+
                         createButton.toggle()
+
+                    }, label: {
+                        Text("Next")
+                            .frame(width: 350, height: 64)
+                            .background(Color("blue"))
+                            .foregroundColor(.white)
+                            .cornerRadius(16)
+
+                    })
+                    
+                    NavigationLink(isActive: $createButton) {
+                        AddPlayersView(tournament: champ ?? Tournament())
+                            .environmentObject(champFlow)
+                    } label: {
+                        EmptyView()
+                    }
+
+                    
+                }else{
+                    Button(action: {
+//                        createButton.toggle()
                         
                     }, label: {
                         Text("Next")
@@ -184,12 +218,19 @@ struct CreateChamp: View {
                             .cornerRadius(16)
                         
                     })
-                    .sheet(isPresented: $createButton, content:{ Created(code: "61A86C2B-0ECF-4918-A193-286DE1F630E7")})
+                }
                 }
                 .navigationTitle("Create championship")
+
             }
         .navigationBarHidden(true)
+        .onChange(of: champFlow.finished, perform: { champFlow in
+            if champFlow {
+                dismiss()
+            }
+        })
         }
+        
         
     }
     
