@@ -34,6 +34,8 @@ struct AddCourtsView: View {
                         }
                         .padding(.leading, 50)
                     }
+                    Spacer()
+                        .frame(height: 350)
                 }
                
                
@@ -66,9 +68,10 @@ struct AddCourtsView: View {
                 }
                   
             }
+            //.padding(.bottom,400)
             
-            .navigationTitle("add courts")
-            .navigationBarHidden(true )
+            .navigationTitle("Add courts")
+           
             
         }
         
