@@ -107,6 +107,7 @@ struct MatchesView: View {
                     MatchComponent2()
                         .offset(y: -60)
                     
+                    
                 }
                 .padding(.bottom, 600)
             }
