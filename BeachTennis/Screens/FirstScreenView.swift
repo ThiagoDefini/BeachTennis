@@ -28,6 +28,7 @@ struct FirstScreenView: View {
                             Text("Hi,")
                                 .font(.custom("poppins", size: 28))
                                 .foregroundColor(Color("gray"))
+                               
                             Text("What we're gonna play today?")
                                 .foregroundColor(Color("gray"))
                                 .font(.custom("poppins", size: 16))
@@ -44,9 +45,8 @@ struct FirstScreenView: View {
                             .padding(.leading,25)
                         Spacer()
                     }
-
+                    .padding(.bottom)
                     HStack{
-
                         Button(action: { joinGame.toggle()
 
                         }, label: {

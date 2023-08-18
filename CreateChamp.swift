@@ -25,7 +25,10 @@ struct CreateChamp: View {
     @State private var endTime: String = ""
     @State private var image = Image("")
     @State private var champ : Tournament?
+    @State private var createButton = false
     
+    let vm = CloudKitCrudBootcampViewModel()
+    let characterLimit = 30
     @Environment(\.dismiss) var dismiss
     @StateObject var champFlow = ChampFlow()
     
@@ -33,9 +36,8 @@ struct CreateChamp: View {
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     
-    @State private var createButton = false
     
-    let characterLimit = 18
+
     var body: some View {
         NavigationView{
             ScrollView{
@@ -152,6 +154,7 @@ struct CreateChamp: View {
                                     .foregroundColor(Color("blue"))
                                     .frame(width: 160, height: 43)
                             }
+                           
                         }
                     }
                     .padding(.horizontal)
@@ -220,7 +223,7 @@ struct CreateChamp: View {
                             .cornerRadius(16)
                         
                     })
-                    
+                   
                     NavigationLink(isActive: $createButton) {
                         AddPlayersView(tournament: champ ?? Tournament())
                             .environmentObject(champFlow)
@@ -247,9 +250,12 @@ struct CreateChamp: View {
                 }
             }
             .navigationTitle("Create championship")
+            .padding()
+            
             
         }
-        .navigationBarHidden(true)
+       
+       
         .onChange(of: champFlow.finished, perform: { champFlow in
             if champFlow {
                 dismiss()

@@ -1,20 +1,18 @@
 //
-//  ChampInfoView.swift
+//  JoinChampNoButton.swift
 //  BeachTennis
 //
-//  Created by Madu Maciel on 04/08/23.
+//  Created by Lucas Cunha on 17/08/23.
 //
 
 import SwiftUI
 
-struct ChampInfoView: View, Shape {
+struct JoinChampNoButton: View, Shape {
     @State var addPlayers: Bool = false
 //    var tournament = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "17/02", endDate: "18/02", startTime: "13:00", endTime: "17:00", ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
     var tournament: Tournament
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-    
-    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
@@ -102,18 +100,6 @@ struct ChampInfoView: View, Shape {
                             
                         })
                         Spacer()
-
-                        Button("Enter championship"){
-                            if var person = vm.person{
-                                person.tournamentsRegistered.append(tournament.id)
-                                vm.updatePerson(person: person)
-                            }
-                            
-                        }
-                        .frame(width: 372, height: 65)
-                        .foregroundColor(Color("bege"))
-                        .background(Color("blue"))
-                        .cornerRadius(20)
                         
                     }
                     //Spacer()
@@ -124,8 +110,9 @@ struct ChampInfoView: View, Shape {
   
         
 
-struct ChampInfoView_Previews: PreviewProvider {
+struct JoinChampNoButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChampInfoView(tournament: c1!)
+        JoinChampNoButton(tournament: c1!)
     }
 }
+

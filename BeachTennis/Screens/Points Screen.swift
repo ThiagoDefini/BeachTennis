@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PointsCard: View {
     var tournament: Tournament
-    var tournamentMatches: [Node]
+    var players: [String]
     @State private var id1: String = "0"
     @State private var id2: String = "0"
     @State private var player1 = "0"
@@ -92,9 +92,9 @@ struct PointsCard: View {
                     Spacer()
                     HStack {
                         VStack(spacing: 5){
-                            Text(tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(players[0].split(separator: "&")[0])
                                 .foregroundColor(.black)
-                            Text(tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(players[0].split(separator: "&")[1])
                             .foregroundColor(.black)                }
                         .padding(.vertical)
                         .padding(.leading)
@@ -105,9 +105,9 @@ struct PointsCard: View {
                             .bold()
                         Spacer()
                         VStack(spacing: 5){
-                            Text(tournamentMatches[0].player.split(separator: "&")[0])
+                            Text(players[1].split(separator: "&")[0])
                                 .foregroundColor(.black)
-                            Text(tournamentMatches[0].player.split(separator: "&")[1])
+                            Text(players[1].split(separator: "&")[1])
                                 .foregroundColor(.black)
                         }
                         .padding(.vertical)
@@ -186,6 +186,6 @@ struct PointsCard: View {
 
 struct PointsCard_Previews: PreviewProvider {
     static var previews: some View {
-        PointsCard(tournament:c2!,tournamentMatches: [Node(empty: 0, finished: 0, player: "A & B", time: Date.init(), courtId: "", winner: 0)!])
+        PointsCard(tournament:c2!,players: ["Nescau & Cereal","Nescau & Leite"])
     }
 }
