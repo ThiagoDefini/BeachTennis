@@ -17,13 +17,14 @@ struct SinglePlayerView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            ScrollView{
                 Text("Insert the full name of both the players with an '&' bellow:")
                     .font(.footnote)
-                    .padding(.bottom,50)
+                    .padding(.top,50)
                 VStack{
                     Text("Players:")
                         .padding(.trailing, 290)
+                        .padding(.top, 20)
                         .foregroundColor(.black)
                     ZStack{
                         RoundedCorner(radius: 12)
@@ -40,7 +41,7 @@ struct SinglePlayerView: View {
                         .padding(.leading, 50)
                     }
                 }
-                .padding(.bottom, 500)
+                .padding(.bottom, 300)
                
                 if fullName != ""{
                     NavigationLink {
@@ -54,6 +55,7 @@ struct SinglePlayerView: View {
                             .background(Color("blue"))
                             .foregroundColor(.white)
                             .cornerRadius(16)
+                            .padding(.bottom,100)
                     }
 
                   
@@ -61,19 +63,20 @@ struct SinglePlayerView: View {
                     Button(action: {
                         
                     }, label: {
-                        Text("Add player")
+                        Text("Add team")
                             .frame(width: 350, height: 64)
                             .background(Color("blue"))
                             .foregroundColor(.white)
                             .cornerRadius(16)
-                        
+                            .padding(.bottom,100)
+
                     })
                 }
               
             }
             
             
-            .navigationTitle("Single player")
+            .navigationTitle("Include teams")
             
         }.navigationBarBackButtonHidden()
         

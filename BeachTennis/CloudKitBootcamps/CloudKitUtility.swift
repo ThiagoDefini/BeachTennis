@@ -121,9 +121,6 @@ extension CloudKitUtility {
         }
     }
     
-    
-    #warning("VER COM ALGUEM SE TA CERTO")
-    
     static private func fetchUserRecordName(completion: @escaping (Result<String, Error>) -> ()) {
         CKContainer.default().fetchUserRecordID { returnedID, returnedError in
             if let id = returnedID {
@@ -148,7 +145,7 @@ extension CloudKitUtility {
         }
     }
     
-    static private func discoverUserIdentityName(completion: @escaping (Result<String, Error>) -> ()) {
+    static func discoverUserIdentityName(completion: @escaping (Result<String, Error>) -> ()) {
         fetchUserRecordID { fetchCompletion in
             switch fetchCompletion{
             case .success(let recordID):

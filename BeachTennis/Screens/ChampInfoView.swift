@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ChampInfoView: View, Shape {
     @State var addPlayers: Bool = false
-//    var tournament = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "17/02", endDate: "18/02", startTime: "13:00", endTime: "17:00", ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
     var tournament: Tournament
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
