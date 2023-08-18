@@ -9,12 +9,9 @@ import SwiftUI
 
 struct AddPlayersView: View {
     
-    @State private var name: String = ""
-    @State private var name2: String = ""
-    @State private var createButton = false
-    @State private var num:Int = 1
-    
     var tournament: Tournament
+    
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     var body: some View {
         NavigationView{
@@ -24,7 +21,12 @@ struct AddPlayersView: View {
                     .padding()
                     
                 HStack{
-                    NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
+                    NavigationLink(destination:
+                                    SinglePlayerView(tournament: tournament)
+                        .onAppear{
+                            vm.updateData()
+                        }
+                                   , label: {
                         ZStack{
                             RoundedCorner(radius: 16)
                                 .stroke(lineWidth: 5)
@@ -36,15 +38,26 @@ struct AddPlayersView: View {
                                 Image(systemName: "person.fill")
                                     .font(.system(size: 40))
                                     .foregroundColor(Color("blue"))
-                                Text("Add single player")
-                                    .foregroundColor(Color("blue"))
-                                    .bold()
+                                    .cornerRadius(16)
+                                VStack{
+                                    Image(systemName: "person.fill")
+                                        .font(.system(size: 40))
+                                        .foregroundColor(Color("blue"))
+                                    Text("Add single player")
+                                        .foregroundColor(Color("blue"))
+                                        .bold()
+                                }
                             }
                         }
                     })
                     Spacer()
                         .frame(width: 20)
-                    NavigationLink(destination: DoublePlayerView(), label: {
+                    NavigationLink(destination:
+                                    DoublePlayerView()
+                        .onAppear{
+                            vm.updateData()
+                        }
+                                   , label: {
                         ZStack{
                             RoundedCorner(radius: 16)
                                 .stroke(lineWidth: 5)
@@ -56,9 +69,15 @@ struct AddPlayersView: View {
                                 Image(systemName: "person.2.fill")
                                     .font(.system(size: 40))
                                     .foregroundColor(Color("blue"))
-                                Text("Add double team")
-                                    .foregroundColor(Color("blue"))
-                                    .bold()
+                                    .cornerRadius(16)
+                                VStack{
+                                    Image(systemName: "person.2.fill")
+                                        .font(.system(size: 40))
+                                        .foregroundColor(Color("blue"))
+                                    Text("Add double team")
+                                        .foregroundColor(Color("blue"))
+                                        .bold()
+                                }
                             }
                         }
                     })
@@ -77,3 +96,4 @@ struct AddPlayersView_Previews: PreviewProvider {
         AddPlayersView(tournament: c1!)
     }
 }
+

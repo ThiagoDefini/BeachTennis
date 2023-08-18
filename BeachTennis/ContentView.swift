@@ -13,16 +13,12 @@ struct ContentView: View {
     
     var body: some View {
         FirstScreenView()
+            .environmentObject(vm)
             .onAppear{
                 vm.setData()
-//                if (UserDefaults.standard.bool(forKey: "hasEntered")) == false {
-                    
-//                    let person = Person(id: vm.userId ?? "", name: vm.userName ?? "", contact: "", tournamentsRegistered: [])
-//                    vm.addPerson(person: person!)
-                    
-//                    UserDefaults.standard.setValue(true, forKey: "hasEntered")
-//                }
             }
+            .preferredColorScheme(.light)
+
 //            .onChange(of: vm.persons) { persons in
 //                createFirstPerson()
 //            }
@@ -52,7 +48,7 @@ var user1 = Person(id: "1",name: "João", contact: "51999999999", tournamentsReg
 
 var user2 = Person(id: "2", name: "Maria", contact: "51888888888", tournamentsRegistered: [])
 
-var c1 = Tournament(name: "Sun, Sand, and Smashes", tournamentType: .Tree, organizerId: "1", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "", endDate: "", startTime: "", endTime: "", ranking: [], tournamentMatches: [], groups: [], location: "Epatur, Cidade Baixa", address: "Rua João Alfredo 300")
+var c1 = Tournament(name: "Sun, Sand, and Smashes", tournamentType: .Tree, organizerId: "1", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "17/02", endDate: "17/02", startTime: "13:00", endTime: "18:00", ranking: [], tournamentMatches: [], groups: [], location: "Epatur, Cidade Baixa", address: "Rua João Alfredo 300")
 
 var c2 = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "", endDate: "", startTime: "", endTime: "", ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
 
@@ -83,3 +79,4 @@ func createNods(){
     nods.append(node1)
     nods.append(node2)
 }
+

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SinglePlayerView: View {
     @State private var fullName: String = ""
-    @State private var addPlayerButton = false
-    var vm = CloudKitCrudBootcampViewModel()
+//    @State private var addPlayerButton = false
+    @State private var isCreated = false
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     @State var tournament: Tournament
     
     
@@ -44,7 +45,9 @@ struct SinglePlayerView: View {
                 if fullName != ""{
                     NavigationLink {
                         SinglePlayer2View(tournament: tournament, player: fullName)
-                            .environmentObject(vm)
+                            .onAppear{
+                                vm.updateData()
+                            }
                     } label: {
                         Text("Add player")
                             .frame(width: 350, height: 64)
@@ -90,7 +93,12 @@ struct SinglePlayer2View: View{
                     .font(.system(size: 18))
                     .padding()
                 
-                NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
+                NavigationLink(destination:
+                                SinglePlayerView(tournament: tournament)
+                    .onAppear{
+                        vm.updateData()
+                    }
+                               , label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)

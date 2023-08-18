@@ -13,16 +13,9 @@ struct FirstScreenView: View {
     @State private var createGame = false
     @State private var seeAll = false
     @State private var person: Person?
+    @State private var champs: [Tournament]?
     
-    func fetchPerson(){
-        guard let userId = vm.userId else { return }
-        
-        vm.fetchPersonById(id: userId) { person in
-            self.person = person
-        }
-    }
-    
-    var vm = CloudKitCrudBootcampViewModel()
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     var body: some View {
         NavigationView{
@@ -33,33 +26,29 @@ struct FirstScreenView: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text("Hi,")
-//                                .bold()
-                                .font(.custom("Poppins", size: 28))
+                                .font(.custom("poppins", size: 28))
                                 .foregroundColor(Color("gray"))
                                
                             Text("What we're gonna play today?")
                                 .foregroundColor(Color("gray"))
-                                .font(.custom("Nunito", size: 16))
-                            
-                        }.padding(.leading,25)
+                                .font(.custom("poppins", size: 16))
+                        }
+                        .padding(.leading,25)
                         Spacer()
                     }
                     .padding(.bottom)
                     HStack{
                         Text("Championships")
+                            .font(.custom("poppins", size: 20))
                             .bold()
-                            .font(.custom("Poppins", size: 20))
                             .foregroundColor(Color("gray"))
-                            
                             .padding(.leading,25)
                         Spacer()
-                        
-                        
                     }
-                    
+                    .padding(.bottom)
                     HStack{
                         Button(action: { joinGame.toggle()
-                            
+
                         }, label: {
                             ZStack{
                                 RoundedCorner(radius: 16)
@@ -75,15 +64,19 @@ struct FirstScreenView: View {
                                     Text("Join")
                                         .foregroundColor(Color("blue"))
                                 }
-                                
+
                             }
                         })
-                        
-                        
-                        .sheet(isPresented: $joinGame, content:{ EnterChampionshipView()})
+                        .sheet(isPresented: $joinGame, content:{
+                            EnterChampionshipView()
+                                .onAppear{
+                                    vm.updateData()
+                                }
+
+                        })
                         Spacer()
                             .frame(width: 20)
-                        
+
                         Button(action: { createGame.toggle()}, label: {
                             ZStack{
                                 RoundedCorner(radius: 16)
@@ -101,80 +94,81 @@ struct FirstScreenView: View {
                                 }
                             }
                         })
-                        .sheet(isPresented: $createGame, content:{ CreateChamp()})
-                        
+                        .sheet(isPresented: $createGame, content:{
+                            CreateChamp()
+                                .onAppear{
+                                    vm.updateData()
+                                }
+                        })
+
                     }
                     VStack{
                         VStack{
                             HStack{
-                                Text("Participating")
-                                    .font(.custom("Poppins", size: 20))
+                                Text("Participating Championships")
+                                    .font(.custom("poppins", size: 20))
                                     .bold()
                                     .foregroundColor(Color("gray"))
                                     .padding(.leading,25)
                                 Spacer()
                             }
-                            if let person = self.person {
-                                if person.tournamentsRegistered.isEmpty {
-                                    // vm.fetchAllTournamentsById(ids: person.tournamentsRegistered) { champs in
-                                    // ScrollView(.horizontal){
-                                    //
-                                    // ForEach(champs) { champ in
-                                    // Text(champ.id)
-                                    // }
-                                    // }
-                                    // }
-                                    
-                                } else {
-                                    NoGames()
-                                        .padding(.top,80)
-                                    
+
+                            if let playingTournaments = vm.playingTournaments, !playingTournaments.isEmpty{
+                                ScrollView(.horizontal){
+                                    HStack{
+                                        ForEach(playingTournaments) { tours in
+                                            TournamentCard(tournament: tours)
+                                        }
+                                    }
                                 }
-                            }else{
+                            } else {
+
                                 NoGames()
                                     .padding(.top,80)
+
                             }
                         }
                         .padding(.top)
-                        
                         VStack{
                             HStack{
-                                Text("My created championships")
-                                    .font(.custom("Poppins", size: 20))
+                                Text("Created championships")
+                                    .font(.custom("poppins", size: 20))
                                     .bold()
                                     .foregroundColor(Color("gray"))
                                     .padding(.leading,25)
                                 Spacer()
                             }
-                            if let person = self.person {
-                                if person.tournamentsRegistered.isEmpty {
-                                    
-                                } else {
-                                    NoNow()
-                                        .padding(.top,60)
-                                    
+
+
+                            if !vm.ownerTournaments.isEmpty {
+                                ScrollView(.horizontal){
+                                    HStack{
+                                        ForEach(vm.ownerTournaments) { champ in
+                                            TournamentCard(tournament: champ)
+                                        }
+                                    }
                                 }
-                            }else{
-                                NoNow()
+
+
+                            } else {
+
+                                NoGames()
                                     .padding(.top,60)
-                                
                             }
+
                         }
                         .padding(.top,70)
                     }
+
                 }
                 .padding(.bottom,50)
-                }
-                
-                .onAppear(perform: self.fetchPerson)
             }
-            
         }
     }
-
-
-struct FirstScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstScreenView()
-    }
 }
+
+//struct FirstScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstScreenView()
+//    }
+//}

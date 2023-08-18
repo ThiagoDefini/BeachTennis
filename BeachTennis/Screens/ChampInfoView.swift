@@ -14,6 +14,8 @@ struct ChampInfoView: View, Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
+    
     let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
     func path(in rect: CGRect) -> Path {
@@ -101,7 +103,11 @@ struct ChampInfoView: View, Shape {
                         })
                         Spacer()
 
-                        Button("Start championship"){
+                        Button("Enter championship"){
+                            if var person = vm.person{
+                                person.tournamentsRegistered.append(tournament.id)
+                                vm.updatePerson(person: person)
+                            }
                             
                         }
                         .frame(width: 372, height: 65)

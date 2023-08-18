@@ -27,16 +27,11 @@ struct CreateChamp: View {
     @State private var champ : Tournament?
     @State private var createButton = false
     
-    let vm = CloudKitCrudBootcampViewModel()
     let characterLimit = 30
     @Environment(\.dismiss) var dismiss
     @StateObject var champFlow = ChampFlow()
     
-//    init() {
-////
-////          UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Poppins", size: 24)]
-//          UINavigationBar.appearance().titleTextAttributes = [.font : (name: "Poppins", size: 20)!]
-//      }
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     
     
@@ -44,16 +39,14 @@ struct CreateChamp: View {
     var body: some View {
         NavigationView{
             ScrollView{
-                
                 Group{
                     VStack{
                         HStack{
                             Text("Name:")
+                                .padding(.leading, 10)
                                 .foregroundColor(.black)
-                                .padding(.leading,10)
                             Spacer()
                         }
-                       
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
@@ -69,15 +62,14 @@ struct CreateChamp: View {
                         }
                     }
                     .padding(.horizontal)
+                   
                     VStack{
                         HStack{
                             Text("Location:")
                                 .foregroundColor(.black)
-                                .padding(.leading,10)
+                                .padding(.leading, 10)
                             Spacer()
                         }
-                       
-
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
@@ -98,12 +90,10 @@ struct CreateChamp: View {
                     VStack{
                         HStack{
                             Text("Address:")
+                                .padding(.leading, 10)
                                 .foregroundColor(.black)
-                                .padding(.leading,10)
                             Spacer()
                         }
-                       
-
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
@@ -124,11 +114,10 @@ struct CreateChamp: View {
                     VStack{
                         HStack{
                             Text("Date:")
+                                .padding(.leading, 10)
                                 .foregroundColor(.black)
-                                .padding(.leading,10)
                             Spacer()
                         }
-                       
                         HStack{
                             ZStack{
                                 VStack{
@@ -140,7 +129,6 @@ struct CreateChamp: View {
                                             .foregroundColor(.black)
                                     }
                                 }
-                             
                                 RoundedCorner(radius: 12)
                                     .stroke(lineWidth: 0.5)
                                     .foregroundColor(Color("blue"))
@@ -172,12 +160,10 @@ struct CreateChamp: View {
                 VStack{
                     HStack{
                         Text("Hour:")
+                            .padding(.leading, 10)
                             .foregroundColor(.black)
-                            .padding(.leading,10)
                         Spacer()
                     }
-                   
-
                     HStack{
                         ZStack{
                             VStack{
@@ -188,7 +174,6 @@ struct CreateChamp: View {
                                     TextField("Start hour", text: self.$startTime)
                                 }
                             }
-                          
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
@@ -197,7 +182,6 @@ struct CreateChamp: View {
                         }
                         Image(systemName: "arrow.right")
                         ZStack{
-                            
                             VStack{
                                 HStack{
                                     Image(systemName: "clock")
@@ -206,7 +190,6 @@ struct CreateChamp: View {
                                     TextField("End hour", text: self.$endTime)
                                 }
                             }
-        
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
@@ -216,8 +199,10 @@ struct CreateChamp: View {
                     
                 }
                 .padding(.horizontal)
+             
                 Spacer()
                     .frame(height: 100)
+                
                 if name != "" && tennisCourt != "" && address != "" && startDate != "" && startTime != "" && endDate != "" && endTime != ""{
                     
                     Button(action: {
@@ -240,6 +225,9 @@ struct CreateChamp: View {
                     NavigationLink(isActive: $createButton) {
                         AddPlayersView(tournament: champ ?? Tournament())
                             .environmentObject(champFlow)
+                            .onAppear{
+                                vm.updateData()
+                            }
                     } label: {
                         EmptyView()
                     }
