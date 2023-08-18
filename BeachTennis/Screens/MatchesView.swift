@@ -173,7 +173,7 @@ struct MatchesView: View {
                         .edgesIgnoringSafeArea(.all)
                         .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
                         .offset(y: -300)
-                    
+
                     MatchComponent2()
                     HStack{
                         Button("All"){
@@ -206,6 +206,7 @@ struct MatchesView: View {
                             Text("nao")
                         }
                     }
+
                 }
                 .padding(120)
             }

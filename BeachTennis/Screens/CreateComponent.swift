@@ -24,6 +24,7 @@ struct CreateComponent: View {
                         .font(.system(size: 24))
                         .frame(width: 300)
                         .lineLimit(1)
+                        
                     
                     
                 }
@@ -37,7 +38,7 @@ struct CreateComponent: View {
                         .lineLimit(1)
                 }
             }
-            .padding(.trailing, 100)
+            .padding(.trailing, 80)
             ShareLink(item: link){
                 Label("", systemImage: "square.and.arrow.up")
                     .foregroundColor(Color("blue"))

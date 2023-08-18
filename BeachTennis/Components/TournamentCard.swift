@@ -60,9 +60,9 @@ struct TournamentCard: View {
 
 }
 
-//struct TournamentCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TournamentCard(tournament:c2,favorite:0)
-//        TournamentCard(tournament: c2)
-//    }
-//}
+struct TournamentCard_Previews: PreviewProvider {
+    static var previews: some View {
+     //   TournamentCard(tournament:c2,favorite:0)
+        TournamentCard(tournament: c2!)
+    }
+}

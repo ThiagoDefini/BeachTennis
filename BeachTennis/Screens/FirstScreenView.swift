@@ -33,23 +33,25 @@ struct FirstScreenView: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text("Hi,")
-                                .font(.system(size: 28))
+//                                .bold()
+                                .font(.custom("Poppins", size: 28))
                                 .foregroundColor(Color("gray"))
+                               
                             Text("What we're gonna play today?")
                                 .foregroundColor(Color("gray"))
-                                .font(.system(size: 16))
-                        }
-                        PhotoPicker2()
-                        
-                        
+                                .font(.custom("Nunito", size: 16))
+                            
+                        }.padding(.leading,25)
+                        Spacer()
                     }
-
+                    .padding(.bottom)
                     HStack{
                         Text("Championships")
-                            .font(.system(size: 20))
                             .bold()
+                            .font(.custom("Poppins", size: 20))
                             .foregroundColor(Color("gray"))
-                            .padding(.leading, 45)
+                            
+                            .padding(.leading,25)
                         Spacer()
                         
                         
@@ -106,10 +108,10 @@ struct FirstScreenView: View {
                         VStack{
                             HStack{
                                 Text("Participating")
-                                    .font(.system(size: 20))
+                                    .font(.custom("Poppins", size: 20))
                                     .bold()
                                     .foregroundColor(Color("gray"))
-                                    .padding(.leading,45)
+                                    .padding(.leading,25)
                                 Spacer()
                             }
                             if let person = self.person {
@@ -138,10 +140,10 @@ struct FirstScreenView: View {
                         VStack{
                             HStack{
                                 Text("My created championships")
-                                    .font(.system(size: 20))
+                                    .font(.custom("Poppins", size: 20))
                                     .bold()
                                     .foregroundColor(Color("gray"))
-                                    .padding(.leading,45)
+                                    .padding(.leading,25)
                                 Spacer()
                             }
                             if let person = self.person {
@@ -161,7 +163,7 @@ struct FirstScreenView: View {
                         .padding(.top,70)
                     }
                 }
-                .padding(.bottom,100)
+                .padding(.bottom,50)
                 }
                 
                 .onAppear(perform: self.fetchPerson)
