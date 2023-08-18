@@ -38,7 +38,6 @@
 		7BE19E1F2A7D781A0086DA10 /* CloudKitUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE19E1E2A7D781A0086DA10 /* CloudKitUtility.swift */; };
 		CE0D61B32A8403D50036B5DE /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61B22A8403D50036B5DE /* CornerRadius.swift */; };
 		CE0D61B62A841D8F0036B5DE /* MultiUseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61B52A841D8F0036B5DE /* MultiUseCell.swift */; };
-		CE0D61B82A84268D0036B5DE /* InitialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61B72A84268D0036B5DE /* InitialScreen.swift */; };
 		CE0D61BA2A86B3EA0036B5DE /* Points Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61B92A86B3EA0036B5DE /* Points Screen.swift */; };
 		CE0D61C02A8BF4280036B5DE /* TournamentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61BF2A8BF4280036B5DE /* TournamentCard.swift */; };
 		CE0D61C22A8C024F0036B5DE /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0D61C12A8C024F0036B5DE /* MatchCell.swift */; };
@@ -52,7 +51,6 @@
 		CE509F662A6F042100E65ECE /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* Person.swift */; };
 		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
 		CE509F6A2A6F097400E65ECE /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F692A6F097400E65ECE /* Court.swift */; };
-		CE55AE742A8E9E1700BD5EFB /* JoinChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */; };
 		CEE1D2C32A71980B0074F383 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C22A71980B0074F383 /* Collections */; };
 		CEE1D2C52A71980B0074F383 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C42A71980B0074F383 /* DequeModule */; };
 		CEE1D2C72A71980B0074F383 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C62A71980B0074F383 /* OrderedCollections */; };
@@ -93,7 +91,6 @@
 		7BE19E202A7D7D060086DA10 /* BeachTennis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeachTennis.entitlements; sourceTree = "<group>"; };
 		CE0D61B22A8403D50036B5DE /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
 		CE0D61B52A841D8F0036B5DE /* MultiUseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiUseCell.swift; sourceTree = "<group>"; };
-		CE0D61B72A84268D0036B5DE /* InitialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreen.swift; sourceTree = "<group>"; };
 		CE0D61B92A86B3EA0036B5DE /* Points Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points Screen.swift"; sourceTree = "<group>"; };
 		CE0D61BF2A8BF4280036B5DE /* TournamentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCard.swift; sourceTree = "<group>"; };
 		CE0D61C12A8C024F0036B5DE /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
@@ -107,7 +104,6 @@
 		CE509F652A6F042100E65ECE /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CE509F692A6F097400E65ECE /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
-		CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChamp.swift; sourceTree = "<group>"; };
 		CEE1D2C82A744AA40074F383 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +132,6 @@
 				7BE19E0D2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift */,
 				7BE19E0F2A7C301A0086DA10 /* CustomTF.swift */,
 				6F6DC8362A8177640052F9E3 /* CreateComponent.swift */,
-				CE0D61B72A84268D0036B5DE /* InitialScreen.swift */,
 				6F6CCC482A855053005E6457 /* MatchesView.swift */,
 				6F6CCC4C2A8A9109005E6457 /* FirstScreenView.swift */,
 				CE0D61B92A86B3EA0036B5DE /* Points Screen.swift */,
@@ -350,7 +345,6 @@
 				7BE19E0E2A7C2FE30086DA10 /* CustomNumericalKeyboardView.swift in Sources */,
 				CE0D61B32A8403D50036B5DE /* CornerRadius.swift in Sources */,
 				CE1447BA2A82CD6200242F3D /* MatchCard.swift in Sources */,
-				CE0D61B82A84268D0036B5DE /* InitialScreen.swift in Sources */,
 				6F5B8E072A8E8BBB0030C06D /* AddCourtsView.swift in Sources */,
 				CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */,
 				CE0D61BA2A86B3EA0036B5DE /* Points Screen.swift in Sources */,
@@ -500,10 +494,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeachTennis/BeachTennis.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeachTennis/Preview Content\"";
-				DEVELOPMENT_TEAM = RU3T8G764D;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -519,6 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThiagoDefini.BeachTennis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Beach Tennis Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -535,10 +532,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeachTennis/BeachTennis.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BeachTennis/Preview Content\"";
-				DEVELOPMENT_TEAM = RU3T8G764D;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -554,6 +553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThiagoDefini.BeachTennis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Beach Tennis Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

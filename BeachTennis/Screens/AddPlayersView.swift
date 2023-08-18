@@ -15,7 +15,7 @@ struct AddPlayersView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            ScrollView{
                 Text("Please click the button below to add the players to the doubles team:")
                     .font(.system(size: 18))
                     .padding()
@@ -34,11 +34,7 @@ struct AddPlayersView: View {
                                 .background(.white)
                                 .foregroundColor(Color("blue"))
                                 .cornerRadius(16)
-                            VStack{
-                                Image(systemName: "person.fill")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(Color("blue"))
-                                    .cornerRadius(16)
+                            
                                 VStack{
                                     Image(systemName: "person.fill")
                                         .font(.system(size: 40))
@@ -47,7 +43,7 @@ struct AddPlayersView: View {
                                         .foregroundColor(Color("blue"))
                                         .bold()
                                 }
-                            }
+                            
                         }
                     })
                     Spacer()
@@ -65,11 +61,7 @@ struct AddPlayersView: View {
                                 .background(.white)
                                 .foregroundColor(Color("blue"))
                                 .cornerRadius(16)
-                            VStack{
-                                Image(systemName: "person.2.fill")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(Color("blue"))
-                                    .cornerRadius(16)
+                            
                                 VStack{
                                     Image(systemName: "person.2.fill")
                                         .font(.system(size: 40))
@@ -78,12 +70,12 @@ struct AddPlayersView: View {
                                         .foregroundColor(Color("blue"))
                                         .bold()
                                 }
-                            }
+                            
                         }
                     })
                 }
             }
-            .padding(.bottom,500)
+           
             .navigationTitle("Include teams")
             
         }

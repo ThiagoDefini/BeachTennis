@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SinglePlayerView: View {
     @State private var fullName: String = ""
-//    @State private var addPlayerButton = false
+    //    @State private var addPlayerButton = false
     @State private var isCreated = false
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     @State var tournament: Tournament
@@ -19,67 +19,72 @@ struct SinglePlayerView: View {
         NavigationView{
             ScrollView{
                 Text("Insert the full name of both the players with an '&' bellow:")
-                    .font(.footnote)
-                    .padding(.top,50)
+                
+                    .padding(.bottom,30)
                 VStack{
-                    Text("Players:")
-                        .padding(.trailing, 290)
-                        .padding(.top, 20)
-                        .foregroundColor(.black)
-                    ZStack{
-                        RoundedCorner(radius: 12)
-                            .stroke(lineWidth: 0.5)
-                            .foregroundColor(Color("blue"))
-                            .frame(width: 400, height: 43)
-                        HStack{
-                            Image(systemName: "person.fill")
-                                .foregroundColor(Color("orange"))
-                                .offset(x: -20)
-                            TextField("Example: Joao & Maria", text: self.$fullName)
-                                .foregroundColor(.black)
-                        }
-                        .padding(.leading, 50)
+                    HStack{
+                        Text("Players:")
+                            .padding(.leading,25)
+                            .foregroundColor(.black)
+                        Spacer()
                     }
-                }
-                .padding(.bottom, 300)
-               
-                if fullName != ""{
-                    NavigationLink {
-                        SinglePlayer2View(tournament: tournament, player: fullName)
-                            .onAppear{
-                                vm.updateData()
-                            }
-                    } label: {
-                        Text("Add player")
-                            .frame(width: 350, height: 64)
-                            .background(Color("blue"))
-                            .foregroundColor(.white)
-                            .cornerRadius(16)
-                            .padding(.bottom,100)
-                    }
-
-                  
-                }else{
-                    Button(action: {
+                    VStack{
                         
-                    }, label: {
-                        Text("Add team")
-                            .frame(width: 350, height: 64)
-                            .background(Color("blue"))
-                            .foregroundColor(.white)
-                            .cornerRadius(16)
-                            .padding(.bottom,100)
-
-                    })
+                        ZStack{
+                            RoundedCorner(radius: 12)
+                                .stroke(lineWidth: 0.5)
+                                .foregroundColor(Color("blue"))
+                                .frame(width: 350, height: 43)
+                            HStack{
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(Color("orange"))
+                                TextField("Example: Joao & Maria", text: self.$fullName)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(.leading, 50)
+                        }
+                    }
+                    .padding(.bottom, 400)
+                    if fullName != ""{
+                        NavigationLink {
+                            SinglePlayer2View(tournament: tournament, player: fullName)
+                                .onAppear{
+                                    vm.updateData()
+                                }
+                        } label: {
+                            Text("Add player")
+                                .frame(width: 350, height: 64)
+                                .background(Color("blue"))
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                                .padding(.bottom,100)
+                        }
+                        
+                        
+                    }else{
+                        Button(action: {
+                            
+                        }, label: {
+                            Text("Add team")
+                                .frame(width: 350, height: 64)
+                                .background(Color("blue"))
+                                .foregroundColor(.white)
+                                .cornerRadius(16)
+                                .padding(.bottom,100)
+                            
+                        })
+                    }
+                    
                 }
-              
-            }
+                
+                .padding()
+                
+                .navigationTitle("Include teams")
+                
+                
+            }.navigationBarBackButtonHidden()
             
-            
-            .navigationTitle("Include teams")
-            
-        }.navigationBarBackButtonHidden()
-        
+        }
     }
 }
 struct SinglePlayer2View: View{
@@ -154,7 +159,7 @@ struct SinglePlayer2View: View{
 
 struct SinglePlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        SinglePlayerView(tournament: c1!)
-       // SinglePlayer2View(tournament: c1!, player: "" )
+       SinglePlayerView(tournament: c1!)
+       // SinglePlayer2View(tournament: c1!, player: <#String#>)
     }
 }
