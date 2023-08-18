@@ -69,6 +69,14 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
     }
     @Published var userName: String?
     
+    @Published var nodesById: [Node]?
+    
+    func findNodes(array: [String]){
+        fetchAllNodesById(ids: array) { nodes in
+            self.nodesById = nodes
+        }
+    }
+    
     init(){
         CloudKitUtility.fetchUserRecordID { result in
             switch result{

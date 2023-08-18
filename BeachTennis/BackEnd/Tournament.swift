@@ -177,7 +177,7 @@ struct Tournament: Identifiable, CloudKitableProtocol{
     mutating func selectCourt(nodeId: String, completion: @escaping (String) -> Void){
         let vm = CloudKitCrudBootcampViewModel()
         
-        if (selectedCourt == courts.count+1){
+        if (selectedCourt == courts.count){
             selectedCourt = 0
         }
         let courtSelectedId = courts[selectedCourt]
@@ -199,8 +199,8 @@ struct Tournament: Identifiable, CloudKitableProtocol{
                     vm.fetchCourtById(id: court) { courtLet in
                         var court = courtLet
                         var nodeIdAux = 0
-                        for i in 0...groups.count{
-                            if tournamentMatches[i] == nodeId{
+                        for i in 0...tournamentMatches.count-1{
+                            if (tournamentMatches[i] == nodeId && nodeIdAux == 0){
                                 nodeIdAux = i + 1
                             }
                         }
@@ -211,21 +211,21 @@ struct Tournament: Identifiable, CloudKitableProtocol{
                             vm.fetchCourtById(id: node.courtId) { courtLet2 in
                                 var court = courtLet2
                                 court.removeById(nodeId: tournamentMatches[nodeIdAux*2])
-                                court.removeById(nodeId: tournamentMatches[(nodeIdAux*2)+1])
+                                court.removeById(nodeId: tournamentMatches[(nodeIdAux*2)-1])
                             }
                             
                             node.courtId = court.id
                             vm.updateNode(node: node)
                         }
                         
-                        vm.fetchNodeById(id: tournamentMatches[(nodeIdAux*2)+1]) { nodeLet in
+                        vm.fetchNodeById(id: tournamentMatches[(nodeIdAux*2)-1]) { nodeLet in
                             var node = nodeLet
                             node.courtId = court.id
                             vm.updateNode(node: node)
                         }
                         
                         court.line.append(tournamentMatches[(nodeIdAux*2)])
-                        court.line.append(tournamentMatches[(nodeIdAux*2)+1])
+                        court.line.append(tournamentMatches[(nodeIdAux*2)-1])
                         vm.updateCourt(court: court)
                     }
                 }
@@ -266,13 +266,13 @@ struct Tournament: Identifiable, CloudKitableProtocol{
         
         for nodeString in tournamentMatches{
             if(nodeString == nodeId){
-                var auxCourt = ""
+                //var auxCourt = ""
                 vm.fetchNodeById(id: nodeString) { nodeLet in
-                    var nodeFound = nodeLet
+                    let nodeFound = nodeLet
                     let auxCourt = nodeFound.courtId
                     
                     vm.fetchCourtById(id: auxCourt) { courtLet in
-                        var court = courtLet
+                        let court = courtLet
                         court.positionInLine(nodeId: nodeId) { result in
                             if result != 0 {
                                 completion(result)
@@ -292,6 +292,13 @@ struct Tournament: Identifiable, CloudKitableProtocol{
             vm.fetchNodeById(id: id) { nodeLet in
                 var node = nodeLet
                 node.winner += 1
+                var auxCourt = node.courtId
+                vm.fetchCourtById(id: auxCourt) { court in
+                    var courtAux = court
+                    courtAux.removeByIndex(index: 0)
+                    courtAux.removeByIndex(index: 1)
+                    vm.updateCourt(court: courtAux)
+                }
                 vm.updateNode(node: node)
             }
             for i in 0...tournamentMatches.count{

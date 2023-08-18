@@ -46,10 +46,12 @@
 		CE1447B42A81831800242F3D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B32A81831800242F3D /* PlayerCell.swift */; };
 		CE1447B82A82CAAD00242F3D /* CourtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B72A82CAAD00242F3D /* CourtCell.swift */; };
 		CE1447BA2A82CD6200242F3D /* MatchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1447B92A82CD6200242F3D /* MatchCard.swift */; };
+		CE3CF83F2A8ED63200736FCF /* JoinChampNoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CF83E2A8ED63200736FCF /* JoinChampNoButton.swift */; };
 		CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F632A6EFF2200E65ECE /* Tournament.swift */; };
 		CE509F662A6F042100E65ECE /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* Person.swift */; };
 		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
 		CE509F6A2A6F097400E65ECE /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F692A6F097400E65ECE /* Court.swift */; };
+		CE55AE742A8E9E1700BD5EFB /* JoinChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */; };
 		CEE1D2C32A71980B0074F383 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C22A71980B0074F383 /* Collections */; };
 		CEE1D2C52A71980B0074F383 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C42A71980B0074F383 /* DequeModule */; };
 		CEE1D2C72A71980B0074F383 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C62A71980B0074F383 /* OrderedCollections */; };
@@ -98,10 +100,12 @@
 		CE1447B32A81831800242F3D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		CE1447B72A82CAAD00242F3D /* CourtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtCell.swift; sourceTree = "<group>"; };
 		CE1447B92A82CD6200242F3D /* MatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCard.swift; sourceTree = "<group>"; };
+		CE3CF83E2A8ED63200736FCF /* JoinChampNoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChampNoButton.swift; sourceTree = "<group>"; };
 		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		CE509F652A6F042100E65ECE /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CE509F692A6F097400E65ECE /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
+		CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChamp.swift; sourceTree = "<group>"; };
 		CEE1D2C82A744AA40074F383 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +141,8 @@
 				6F7117C02A8CEB6A001EE334 /* SinglePlayerView.swift */,
 				6F7117C22A8CEB7D001EE334 /* DoublePlayerView.swift */,
 				6F5B8E062A8E8BBB0030C06D /* AddCourtsView.swift */,
+				CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */,
+				CE3CF83E2A8ED63200736FCF /* JoinChampNoButton.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -329,6 +335,7 @@
 				CE1447AD2A784FA200242F3D /* TournamentTypes.swift in Sources */,
 				6F6DC8242A7305E00052F9E3 /* PhotoPicker.swift in Sources */,
 				6F6DC82D2A7976B60052F9E3 /* Created.swift in Sources */,
+				CE55AE742A8E9E1700BD5EFB /* JoinChamp.swift in Sources */,
 				7BE19E192A7D779C0086DA10 /* CloudKitUserBootcamp.swift in Sources */,
 				CE509F682A6F056100E65ECE /* Node.swift in Sources */,
 				6F6CCC532A8B1703005E6457 /* JoinCard.swift in Sources */,
@@ -348,6 +355,7 @@
 				7BE19E1B2A7D77C00086DA10 /* CloudKitCrudBootcamp.swift in Sources */,
 				CE0D61C22A8C024F0036B5DE /* MatchCell.swift in Sources */,
 				6F7117BF2A8CE917001EE334 /* PlayerCard.swift in Sources */,
+				CE3CF83F2A8ED63200736FCF /* JoinChampNoButton.swift in Sources */,
 				CE509F642A6EFF2200E65ECE /* Tournament.swift in Sources */,
 				CE0D61B62A841D8F0036B5DE /* MultiUseCell.swift in Sources */,
 				6F6CCC552A8C0038005E6457 /* NoGames.swift in Sources */,

@@ -12,18 +12,18 @@ struct AddCourtsView: View {
     @State private var isCreated = false
     var body: some View {
         NavigationView{
-            VStack{
+            ScrollView{
                 Text("Insert the courts bellow:")
-                    .padding(.bottom,50)
+                   // .padding(.bottom,50)
                 VStack(alignment: .leading){
                     Text("Court:")
                         .foregroundColor(.black)
-                        .padding(.leading)
+                        .padding(.leading,25)
                     ZStack{
                         RoundedCorner(radius: 12)
                             .stroke(lineWidth: 0.5)
                             .foregroundColor(Color("blue"))
-                            .frame(width: 400, height: 43)
+                            .frame(width: 350, height: 43)
                         HStack{
                             Image(systemName: "tennisball.fill")
                                 .foregroundColor(Color("orange"))
@@ -35,7 +35,7 @@ struct AddCourtsView: View {
                         .padding(.leading, 50)
                     }
                 }
-                .padding(.bottom, 500)
+               
                
                 if court != ""{
                     NavigationLink {
@@ -67,8 +67,7 @@ struct AddCourtsView: View {
                   
             }
             
-            
-            .navigationTitle("Add court")
+            .navigationTitle("add courts")
             .navigationBarHidden(true )
             
         }

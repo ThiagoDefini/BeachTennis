@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MatchCell: View {
-    var tournamentMatches: [Node]
+//    var tournamentMatches: [Node]
+    var names: [String]
 
 //    @State var favorite: Int
     
@@ -28,61 +29,70 @@ struct MatchCell: View {
             }
             .padding(.top)
             .padding(.horizontal)
+            
+            HStack{
+                VStack(spacing: 5){
+                    Text(names[0].split(separator: "&")[0])
+                        .foregroundColor(.black)
+                    Text(names[0].split(separator: "&")[1])
+                        .foregroundColor(.black)
+                    
+                }
+                Spacer()
+                Text("X")
+                    .foregroundColor(Color("orange"))
+                    .bold()
+                Spacer()
+                VStack(spacing: 5){
+                    Text(names[1].split(separator: "&")[0])
+                        .foregroundColor(.black)
+                    Text(names[1].split(separator: "&")[1])
+                        .foregroundColor(.black)
+                }
+            }
             HStack{
                 VStack(alignment: .leading){
-                    HStack {
-                        VStack(spacing: 5){
-                            Text(tournamentMatches[0].player.split(separator: "&")[0])
-                                .foregroundColor(.black)
-                                .bold()
-                            Text(tournamentMatches[0].player.split(separator: "&")[1])
-                                .foregroundColor(.black)
-                                .bold()
-
-                        }
-                        Spacer()
-                        Text("X")
+                    HStack{
+                        Image(systemName: "calendar.badge.clock")
                             .foregroundColor(Color("orange"))
-                            .bold()
-                        Spacer()
-                        VStack(spacing: 5){
-                            Text(tournamentMatches[0].player.split(separator: "&")[0])
-                                .foregroundColor(.black)
-                                .bold()
-
-                            Text(tournamentMatches[0].player.split(separator: "&")[1])
-                                .foregroundColor(.black)
-                                .bold()
-
-                        }
+                        Text("12/04/2023 - 17:00 PM")
+                            .foregroundColor(.black)
                     }
-                    .padding(.horizontal)
-                    Spacer()
+                    HStack{
+                        Image("mapa")
+                            .resizable()
+                            .frame(width: 18, height: 20)
+
+                        Text("Quadra 3")
+                            .foregroundColor(.black)
+
+                    }
                 }
                 .padding()
+                Spacer()
             }
-            .background(.white)
-            .frame(width: 390)
+            .background(Color("dark-bege"))
+            .frame(width: 350)
             .cornerRadius(16, corners: [.bottomLeft, .bottomRight])
             .overlay {
                 RoundedCorner(radius: 16, corners: [.bottomLeft, .bottomRight])
                     .stroke(lineWidth: 1)
+                    .stroke(Color("orange"))
             }
-            Spacer()
         }
-        .frame(width: 370)
-        .frame(height: 140)
-        .background(Color("light-orange"))
+        .padding(16)
+        .frame(width: 350)
+        .frame(height: 207)
         .cornerRadius(16)
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color("orange"), lineWidth: 1)
         }
     }
-
 }
+
 struct MatchCell_Previews: PreviewProvider {
     static var previews: some View {
-        MatchCell(tournamentMatches: nods)
+        MatchCell( names: ["P & u","P & u"])
     }
 }
