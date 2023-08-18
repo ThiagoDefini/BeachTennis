@@ -20,7 +20,7 @@ struct Created: View {
                    
                     }, label: {
                     Image(systemName: "xmark")
-                        .font(.system(size: 35))
+                        .font(.system(size: 20))
                         .foregroundColor(.gray)
                 })
                 VStack{

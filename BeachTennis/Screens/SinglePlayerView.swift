@@ -44,7 +44,6 @@ struct SinglePlayerView: View {
                 if fullName != ""{
                     NavigationLink {
                         SinglePlayer2View(tournament: tournament, player: fullName)
-                            .environmentObject(vm)
                             .onAppear{
                                 vm.updateData()
                             }
@@ -95,7 +94,6 @@ struct SinglePlayer2View: View{
                 
                 NavigationLink(destination:
                                 SinglePlayerView(tournament: tournament)
-                    .environmentObject(vm)
                     .onAppear{
                         vm.updateData()
                     }

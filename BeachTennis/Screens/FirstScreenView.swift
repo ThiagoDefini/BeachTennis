@@ -17,22 +17,6 @@ struct FirstScreenView: View {
     
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
-//    func fetchPerson(){
-//        vm.findPerson { person in
-//            self.person = person
-//        }
-//    }
-//
-//    func findTournaments(ids: [String]){
-//        vm.fetchAllTournamentsById(ids: ids) { tournaments in
-//            self.champs = tournaments
-//        }
-//    }
-    
-//    init(){
-//        fetchPerson()
-//    }
-    
     var body: some View {
         NavigationView{
             ZStack{
@@ -42,29 +26,27 @@ struct FirstScreenView: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text("Hi,")
-                                .font(.system(size: 28))
+                                .font(.custom("poppins", size: 28))
                                 .foregroundColor(Color("gray"))
                             Text("What we're gonna play today?")
                                 .foregroundColor(Color("gray"))
-                                .font(.system(size: 16))
+                                .font(.custom("poppins", size: 16))
                         }
-                        PhotoPicker2()
-                        
-                        
+                        .padding(.leading,25)
+                        Spacer()
                     }
-
+                    .padding(.bottom)
                     HStack{
                         Text("Championships")
-                            .font(.system(size: 20))
+                            .font(.custom("poppins", size: 20))
                             .bold()
                             .foregroundColor(Color("gray"))
-                            .padding(.leading, 45)
+                            .padding(.leading,25)
                         Spacer()
-                        
-                        
                     }
-                    
+                   
                     HStack{
+                      
                         Button(action: { joinGame.toggle()
                             
                         }, label: {
@@ -87,7 +69,6 @@ struct FirstScreenView: View {
                         })
                         .sheet(isPresented: $joinGame, content:{
                             EnterChampionshipView()
-                                .environmentObject(vm)
                                 .onAppear{
                                     vm.updateData()
                                 }
@@ -115,35 +96,56 @@ struct FirstScreenView: View {
                         })
                         .sheet(isPresented: $createGame, content:{
                             CreateChamp()
-                                .environmentObject(vm)
                                 .onAppear{
                                     vm.updateData()
                                 }
-                            
-                            
                         })
                         
                     }
-                    .offset(y: -110)
-                    VStack(alignment: .leading){
-                        HStack{
-                            Text("My championships")
-                                .font(.system(size: 20))
-                                .bold()
-                                .foregroundColor(Color("gray"))
+                    VStack{
+                        VStack{
+                            HStack{
+                                Text("Participating Championships")
+                                    .font(.custom("poppins", size: 20))
+                                    .bold()
+                                    .foregroundColor(Color("gray"))
+                                    .padding(.leading,25)
+                                Spacer()
+                            }
+                           
+                            if let playingTournaments = vm.playingTournaments, !playingTournaments.isEmpty{
+                                ScrollView(.horizontal){
+                                    HStack{
+                                        ForEach(playingTournaments) { tours in
+                                            TournamentCard(tournament: tours)
+                                        }
+                                    }
+                                }
+                            } else {
+
+                                NoGames()
+                                    .padding(.top,80)
+                                    
+                            }
                         }
-                        .offset( y: -90)
-                        
-                        
-                        if let person = self.vm.person {
+                        .padding(.top)
+                        VStack{
+                            HStack{
+                                Text("Created championships")
+                                    .font(.custom("poppins", size: 20))
+                                    .bold()
+                                    .foregroundColor(Color("gray"))
+                                    .padding(.leading,25)
+                                Spacer()
+                            }
+                            
+                            
                             if !vm.ownerTournaments.isEmpty {
                                 ScrollView(.horizontal){
                                     HStack{
-                                        //                                    if let championships = vm.ownerTournaments {
                                         ForEach(vm.ownerTournaments) { champ in
                                             TournamentCard(tournament: champ)
                                         }
-                                        //                                    }
                                     }
                                 }
                                 
@@ -151,53 +153,22 @@ struct FirstScreenView: View {
                             } else {
                                 
                                 NoGames()
-                                    .padding(.top,80)
+                                    .padding(.top,60)
                             }
-                        }else{
-                            NoGames()
-                                .offset(y: -60)
-                            Text("ajndaoisndlaindilandalsidnalindlaisndliadnila")
-                        }
-                    }
-                    VStack(alignment: .leading){
-                        Text("What's happening now?")
-                            .font(.system(size: 20))
-                            .bold()
-                            .foregroundColor(Color("gray"))
-                    }
-                    .offset(x: -75, y: -20)
-                    
-                    if let person = self.person {
-                        if !person.tournamentsRegistered.isEmpty {
-                            ScrollView(.horizontal){
-                                if let championships = self.champs{
-                                    ForEach(championships) { champ in
-                                        TournamentCard(tournament: champ)
-                                    }
-                                }
-                            }
-                        } else {
-                            NoNow()
-                                .offset(y: 40)
+                            
                         }
                         .padding(.top,70)
                     }
+               
                 }
-                .padding(.bottom,100)
-                }
-                
-                .onAppear(perform: self.fetchPerson)
+                .padding(.bottom,50)
             }
-            
         }
-//        .onAppear {
-//            self.vm.setData()
-//        }
-    }
-
-
-struct FirstScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        FirstScreenView()
     }
 }
+
+//struct FirstScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FirstScreenView()
+//    }
+//}

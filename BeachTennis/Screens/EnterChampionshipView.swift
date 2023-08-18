@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct EnterChampionshipView: View {
-    @ObservedObject var OTPData: OTPDataModel = OTPDataModel()
-    @StateObject var data = CustomKeyboardModel()
-    @State var isShowingKeyboard: Bool = false
-    @State var isSelected: Bool = false
     @State var text = ""
-    
+    @State var showAlert = false
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     var body: some View {
@@ -27,7 +23,7 @@ struct EnterChampionshipView: View {
                     Spacer()
                     
                     VStack{
-                        TextField("0", text: self.$text)
+                        TextField("Insert Code", text: self.$text)
                             .font(.title)
                             .bold()
                             .foregroundColor(.black)
@@ -41,56 +37,56 @@ struct EnterChampionshipView: View {
                     }
                     Spacer()
                     
-                    if text == ""{
+                    if text == "" {
                         Button{
                             
-                        }label: {
+                        } label: {
                             Text("Continue")
                                 .frame(width: 350, height: 64)
                                 .background(Color("blue"))
                                 .cornerRadius(16)
                                 .foregroundColor(.white)
                         }
-                    }else{
-                            if vm.tournaments.contains(where: {$0.id == text}){
-                                NavigationLink(destination:
-                                                ChampInfoView(tournament: c1!)
-                                    .environmentObject(vm)
+                    } else {
+                        
+                        if let index = vm.tournaments.firstIndex(where: {$0.id == text}) {
+                            
+                            NavigationLink {
+                                ChampInfoView(tournament: vm.tournaments[index])
                                     .onAppear{
                                         vm.updateData()
                                     }
-                                               , label: { Text("Continue")}) //SÓ TESTE
+                            } label: {
+                                Text("Continue")
+                                   .frame(width: 350, height: 64)
+                                   .background(Color("blue"))
+                                   .cornerRadius(16)
+                                   .foregroundColor(.white)
+                            }
+                            
+                        } else {
+                            Button {
+                                showAlert.toggle()
+                            }label: {
+                                Text("Continue")
                                     .frame(width: 350, height: 64)
                                     .background(Color("blue"))
                                     .cornerRadius(16)
                                     .foregroundColor(.white)
-                            }else{
-                                Button{
-                                    
-                                }label: {
-                                    Text("Continue")
-                                        .frame(width: 350, height: 64)
-                                        .background(Color("blue"))
-                                        .cornerRadius(16)
-                                        .foregroundColor(.white)
-                                }
                             }
+                        }
                     }
                     Spacer()
-                    }
-                
-                
-                if isShowingKeyboard{
-                    CustomNumericalKeyboardView(isShowingKeyboard: $isShowingKeyboard, OTPData: OTPData, data:data)
                 }
             }
             
             .navigationTitle("Enter championship")
+            .alert("Campeonato não encontrado", isPresented: $showAlert) {}
         }
     }
 }
 
-    
+
 struct EnterChampionshipView_Previews: PreviewProvider {
     static var previews: some View {
         EnterChampionshipView()

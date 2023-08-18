@@ -16,14 +16,9 @@ struct ContentView: View {
             .environmentObject(vm)
             .onAppear{
                 vm.setData()
-//                if (UserDefaults.standard.bool(forKey: "hasEntered")) == false {
-                    
-//                    let person = Person(id: vm.userId ?? "", name: vm.userName ?? "", contact: "", tournamentsRegistered: [])
-//                    vm.addPerson(person: person!)
-                    
-//                    UserDefaults.standard.setValue(true, forKey: "hasEntered")
-//                }
             }
+            .preferredColorScheme(.light)
+
 //            .onChange(of: vm.persons) { persons in
 //                createFirstPerson()
 //            }
@@ -84,3 +79,4 @@ func createNods(){
     nods.append(node1)
     nods.append(node2)
 }
+

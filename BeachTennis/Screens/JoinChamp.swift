@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-struct ChampInfoView: View, Shape {
+struct JoinChamp: View, Shape {
     @State var addPlayers: Bool = false
 //    var tournament = Tournament(name: "Torneio dos Guri", tournamentType: .Tree, organizerId: "2", selectedCourt: 0, nodesCreated: 0, numGroups: 0, players: [], courts: [], startDate: "17/02", endDate: "18/02", startTime: "13:00", endTime: "17:00", ranking: [], tournamentMatches: [], groups: [], location: "Centro Histórico", address: "Borges de Medeiros 123")
     var tournament: Tournament
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-    
-    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
     let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
@@ -29,14 +27,14 @@ struct ChampInfoView: View, Shape {
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
                 ZStack{
-                    Rectangle()
-                        .foregroundColor(Color("light-orange"))
+                   Image("background")
+                        .resizable()
                         .frame(width: 440, height: 400)
+                        .frame(width: 440, height: 350)
                         .edgesIgnoringSafeArea(.all)
-                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                        .offset(y: -440)
-                }
-                        //.offset(y: -370 )
+                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])                }
+                        .offset(y: -300)
+                      
                     VStack{
                         Spacer()
                         CreateComponent(tournament: tournament)
@@ -70,15 +68,40 @@ struct ChampInfoView: View, Shape {
                         }
                         MultiUseCell(text1: "Date", text2: tournament.startDate, image: "calendar.badge.clock")
                         
-                        MultiUseCell(text1: "Hour", text2: tournament.startTime, image: "clock.fill")
-                        
+                        NavigationLink(destination: MatchesView(), label: {
+                            HStack(spacing:10){
+                                Image("mapa")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight:18)
+                                    .frame(maxWidth:18)
+                                    .foregroundColor(Color("orange"))
+                                VStack(alignment: .leading){
+                                    Text("Jogos")
+                                        .foregroundColor(.black)
+                                        .font(.title2)
+                                    Text(String(tournament.players.count/2))
+                                        .foregroundColor(.black)
+                                        .font(.subheadline)
+                                }
+                                .padding(10)
+                                Spacer()
+                            }
+                            .padding(16)
+                            .frame(width: 340)
+                            .frame(height: 70)
+                            .cornerRadius(16)
+                            .background(.white)
+                            .overlay {
+                                RoundedCorner(radius: 16)
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(Color("orange"))
+                            }
+                            
+                        })
                         Spacer()
 
-                        Button("Enter championship"){
-                            if var person = vm.person{
-                                person.tournamentsRegistered.append(tournament.id)
-                                vm.updatePerson(person: person)
-                            }
+                        Button("Join championship"){
                             
                         }
                         .frame(width: 372, height: 65)
@@ -95,8 +118,8 @@ struct ChampInfoView: View, Shape {
   
         
 
-struct ChampInfoView_Previews: PreviewProvider {
+struct JoinChamp_Previews: PreviewProvider {
     static var previews: some View {
-        ChampInfoView(tournament: c1!)
+        JoinChamp(tournament: c1!)
     }
 }

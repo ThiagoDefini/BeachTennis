@@ -38,67 +38,86 @@ struct CreateChamp: View {
     let characterLimit = 18
     var body: some View {
         NavigationView{
-            VStack{
+            ScrollView{
                 Group{
                     VStack{
-                        Text("Name:")
-                            .padding(.trailing, 290)
-                            .foregroundColor(.black)
+                        HStack{
+                            Text("Name:")
+                                .padding(.leading, 10)
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
-                                .frame(width: 400, height: 43)
+                                .frame(width: 350, height: 43)
                             HStack{
                                 Image(systemName: "trophy.fill")
                                     .foregroundColor(Color("orange"))
                                 TextField("Name", text: self.$name)
                                     .foregroundColor(.black)
                             }
-                            .padding(.leading, 50)
+                            .padding(.horizontal)
                         }
                     }
+                    .padding(.horizontal)
                    
                     VStack{
-                        Text("Location:")
-                            .padding(.trailing, 270)
-                            .foregroundColor(.black)
+                        HStack{
+                            Text("Location:")
+                                .foregroundColor(.black)
+                                .padding(.leading, 10)
+                            Spacer()
+                        }
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
-                                .frame(width: 400, height: 43)
+                                .frame(width: 350, height: 43)
                             HStack{
-                                Image(systemName: "mappin")
+                                Image("mapa")
+                                    .resizable()
+                                    .frame(width: 15, height: 18)
                                     .foregroundColor(Color("orange"))
                                 TextField("Location", text: self.$tennisCourt)
                                     .foregroundColor(.black)
                             }
-                            .padding(.leading, 50)
+                            .padding(.horizontal)
                         }
                     }
+                    .padding(.horizontal)
                     VStack{
-                        Text("Address:")
-                            .padding(.trailing, 285)
-                            .foregroundColor(.black)
+                        HStack{
+                            Text("Address:")
+                                .padding(.leading, 10)
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
                         ZStack{
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
-                                .frame(width: 400, height: 43)
+                                .frame(width: 350, height: 43)
                             HStack{
-                                Image(systemName: "mappin")
+                                Image("mapa")
+                                    .resizable()
+                                    .frame(width: 15, height: 18)
                                     .foregroundColor(Color("orange"))
                                 TextField("Address", text: self.$address)
                                     .foregroundColor(.black)
                             }
-                            .padding(.leading, 50)
+                            .padding(.horizontal)
                         }
                     }
+                    .padding(.horizontal)
                     VStack{
-                        Text("Date:")
-                            .padding(.trailing, 300)
-                            .foregroundColor(.black)
+                        HStack{
+                            Text("Date:")
+                                .padding(.leading, 10)
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
                         HStack{
                             ZStack{
                                 VStack{
@@ -110,11 +129,10 @@ struct CreateChamp: View {
                                             .foregroundColor(.black)
                                     }
                                 }
-                                .padding(.trailing,15)
                                 RoundedCorner(radius: 12)
                                     .stroke(lineWidth: 0.5)
                                     .foregroundColor(Color("blue"))
-                                    .frame(width: 170, height: 43)
+                                    .frame(width: 160, height: 43)
                                 
                             }
                             
@@ -126,62 +144,63 @@ struct CreateChamp: View {
                                         Image(systemName: "calendar")
                                             .foregroundColor(Color("orange"))
                                             .padding(.leading, 25)
-                                        TextField("Start time", text: self.$endDate)
+                                        TextField("End date", text: self.$endDate)
                                     }
                                 }
-                                .padding(.trailing, 15)
                                 RoundedCorner(radius: 12)
                                     .stroke(lineWidth: 0.5)
                                     .foregroundColor(Color("blue"))
-                                    .frame(width: 170, height: 43)
+                                    .frame(width: 160, height: 43)
                             }
                         }
                     }
+                    .padding(.horizontal)
                 }
                 VStack{
-                    Text("Hour:")
-                        .padding(.trailing, 300)
-                        .foregroundColor(.black)
+                    HStack{
+                        Text("Hour:")
+                            .padding(.leading, 10)
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
                     HStack{
                         ZStack{
                             VStack{
                                 HStack{
-                                    Image(systemName: "calendar")
+                                    Image(systemName: "clock")
                                         .foregroundColor(Color("orange"))
                                         .padding(.leading, 25)
-                                    TextField("End date", text: self.$startTime)
+                                    TextField("Start hour", text: self.$startTime)
                                 }
                             }
-                            .padding(.trailing, 35)
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
-                                .frame(width: 170, height: 43)
+                                .frame(width: 160, height: 43)
                             
                         }
                         Image(systemName: "arrow.right")
                         ZStack{
-                            
                             VStack{
                                 HStack{
-                                    Image(systemName: "calendar")
+                                    Image(systemName: "clock")
                                         .foregroundColor(Color("orange"))
                                         .padding(.leading, 25)
-                                    TextField("End time", text: self.$endTime)
+                                    TextField("End hour", text: self.$endTime)
                                 }
                             }
-                            .padding(.trailing, 35)
                             RoundedCorner(radius: 12)
                                 .stroke(lineWidth: 0.5)
                                 .foregroundColor(Color("blue"))
-                                .frame(width: 170, height: 43)
+                                .frame(width: 160, height: 43)
                         }
                     }
                     
                 }
-                
+                .padding(.horizontal)
              
                 Spacer()
+                    .frame(height: 100)
                 
                 if name != "" && tennisCourt != "" && address != "" && startDate != "" && startTime != "" && endDate != "" && endTime != ""{
                     
@@ -205,7 +224,6 @@ struct CreateChamp: View {
                     NavigationLink(isActive: $createButton) {
                         AddPlayersView(tournament: champ ?? Tournament())
                             .environmentObject(champFlow)
-                            .environmentObject(vm)
                             .onAppear{
                                 vm.updateData()
                             }
