@@ -25,7 +25,7 @@ struct FirstScreenView: View {
                 VStack{
                     HStack{
                         VStack(alignment: .leading){
-                            Text("Hi,")
+                            Text("Hi, \(vm.person?.name ?? "")")
                                 .font(.custom("poppins", size: 28))
                                 .foregroundColor(Color("gray"))
                                
@@ -117,7 +117,11 @@ struct FirstScreenView: View {
                                 ScrollView(.horizontal){
                                     HStack{
                                         ForEach(playingTournaments) { tours in
-                                            TournamentCard(tournament: tours)
+                                            NavigationLink {
+                                                JoinChampNoButton(tournament: tours)
+                                            } label: {
+                                                TournamentCard(tournament: tours)
+                                            }
                                         }
                                     }
                                 }
@@ -144,7 +148,13 @@ struct FirstScreenView: View {
                                 ScrollView(.horizontal){
                                     HStack{
                                         ForEach(vm.ownerTournaments) { champ in
-                                            TournamentCard(tournament: champ)
+                                            NavigationLink {
+                                                ChampInfoView(tournament: champ)
+                                            } label: {
+                                                TournamentCard(tournament: champ)
+                                            }
+                                            
+                                            
                                         }
                                     }
                                 }

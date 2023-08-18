@@ -140,7 +140,16 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
                     DispatchQueue.main.async {
                         self.userId = id.recordName
                         if !self.persons.contains(where: { $0.id == id.recordName }) {
-                            self.addPerson(id: id.recordName, name: "Thiago", contact: "", tournamentsRegistered: [])
+                            CloudKitUtility.discoverUserIdentityName { result in
+                                switch result{
+                                case .success(let name):
+                                    self.userName = name
+                                    self.addPerson(id: id.recordName, name: name, contact: "", tournamentsRegistered: [])
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            }
+                           
                         }
                         self.fetchPersonById(id: id.recordName) { p in
                             self.person = p
@@ -155,17 +164,6 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
                 }
             }
         }
-        
-        CloudKitUtility.discoverUserIdentityName()
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { [weak self] name in
-                self?.userName = name
-                print(self?.userName)
-            }
-            .store(in: &cancellables)
-        
         fetchNodes()
         fetchTeams()
         fetchCourts()
@@ -763,7 +761,6 @@ extension CloudKitCrudBootcampViewModel {
             .sink { _ in
                 
             } receiveValue: { [weak self] (returnedItems: [Tournament]) in
-                //                self?.tournaments = returnedItems
                 completion(returnedItems)
             }
             .store(in: &cancellables)
