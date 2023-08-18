@@ -27,11 +27,9 @@ struct CreateChamp: View {
     @State private var champ : Tournament?
     @State private var createButton = false
     
-    let vm = CloudKitCrudBootcampViewModel()
     let characterLimit = 30
     @Environment(\.dismiss) var dismiss
     @StateObject var champFlow = ChampFlow()
-    
     
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
