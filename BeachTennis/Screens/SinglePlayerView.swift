@@ -9,42 +9,46 @@ import SwiftUI
 
 struct SinglePlayerView: View {
     @State private var fullName: String = ""
-    @State private var addPlayerButton = false
-    var vm = CloudKitCrudBootcampViewModel()
+//    @State private var addPlayerButton = false
+    @State private var isCreated = false
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     @State var tournament: Tournament
     
     
     var body: some View {
         NavigationView{
-            VStack{
+            ScrollView{
                 Text("Insert the full name of both the players with an '&' bellow:")
-                    .font(.footnote)
-                    .padding(.bottom,50)
+                    .padding(.bottom,30)
                 VStack{
-                    Text("Players:")
-                        .padding(.trailing, 290)
-                        .foregroundColor(.black)
+                    HStack{
+                        Text("Players:")
+                            .padding(.leading,25)
+                            .foregroundColor(.black)
+                        Spacer()
+                    }
                     ZStack{
                         RoundedCorner(radius: 12)
                             .stroke(lineWidth: 0.5)
                             .foregroundColor(Color("blue"))
-                            .frame(width: 400, height: 43)
+                            .frame(width: 350, height: 43)
                         HStack{
                             Image(systemName: "person.fill")
                                 .foregroundColor(Color("orange"))
-                                .offset(x: -20)
                             TextField("Example: Joao & Maria", text: self.$fullName)
                                 .foregroundColor(.black)
                         }
                         .padding(.leading, 50)
                     }
                 }
-                .padding(.bottom, 500)
+                .padding(.bottom, 400)
                
                 if fullName != ""{
                     NavigationLink {
                         SinglePlayer2View(tournament: tournament, player: fullName)
-                            .environmentObject(vm)
+                            .onAppear{
+                                vm.updateData()
+                            }
                     } label: {
                         Text("Add player")
                             .frame(width: 350, height: 64)
@@ -71,6 +75,7 @@ struct SinglePlayerView: View {
             
             
             .navigationTitle("Single player")
+            .padding()
             
         }.navigationBarBackButtonHidden()
         
@@ -90,7 +95,12 @@ struct SinglePlayer2View: View{
                     .font(.system(size: 18))
                     .padding()
                 
-                NavigationLink(destination: SinglePlayerView(tournament: tournament), label: {
+                NavigationLink(destination:
+                                SinglePlayerView(tournament: tournament)
+                    .onAppear{
+                        vm.updateData()
+                    }
+                               , label: {
                     ZStack{
                         RoundedCorner(radius: 16)
                             .stroke(lineWidth: 5)
@@ -143,7 +153,7 @@ struct SinglePlayer2View: View{
 
 struct SinglePlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        SinglePlayerView(tournament: c1!)
-       // SinglePlayer2View(tournament: c1!, player: "" )
+       SinglePlayerView(tournament: c1!)
+       // SinglePlayer2View(tournament: c1!, player: <#String#>)
     }
 }

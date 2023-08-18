@@ -15,7 +15,7 @@ struct TournamentCard: View {
         VStack(){
             Spacer()
             HStack{
-                Text("Torneio das gurias")
+                Text(tournament.name)
                     .font(.title2)
                     .bold()
                     .foregroundColor(Color("orange"))
@@ -28,10 +28,10 @@ struct TournamentCard: View {
                     HStack{
                         Image(systemName: "calendar.badge.clock")
                             .foregroundColor(Color("orange"))
-                        Text("12/04/2023 - 17:00")
+                        Text("\(tournament.startDate) - \(tournament.startTime)")
                             .foregroundColor(.black)
                             .font(.footnote)
-                        Text("12/04/2023 - 17:00")
+                        Text("\(tournament.endDate) - \(tournament.endTime)")
                             .foregroundColor(.black)
                             .font(.footnote)
                     }
@@ -62,7 +62,7 @@ struct TournamentCard: View {
 
 struct TournamentCard_Previews: PreviewProvider {
     static var previews: some View {
-     //   TournamentCard(tournament:c2,favorite:0)
-        TournamentCard(tournament: c2!)
+//        TournamentCard(tournament:c2,favorite:0)
+        TournamentCard(tournament: c1!)
     }
 }

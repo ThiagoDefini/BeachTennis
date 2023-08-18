@@ -157,60 +157,56 @@ struct MatchesView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack{
-                Color("bege")
-                    .edgesIgnoringSafeArea(.all)
-                Rectangle()
-                    .foregroundColor(Color("light-orange"))
-                    .frame(width: 440, height: 350)
-                    .edgesIgnoringSafeArea(.all)
-                    .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                    .offset(y: -400)
-                
-                VStack{
-                    Color("dark-orange")
-                        .frame(width: 440, height: 350)
+            VStack{
+                ZStack{
+                    Color("bege")
                         .edgesIgnoringSafeArea(.all)
-                        .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
-                        .offset(y: -300)
-                    
-
-                    MatchComponent2()
-                    HStack{
-                        Button("All"){
-                            
-                        }
-                        .frame(width: 160, height: 39)
-                        .background(all ? Color("blue") : .white)
-                        .cornerRadius(16)
-                        .foregroundColor(all ? .white: Color("blue"))
-                        .padding(.leading)
-                        .font(.subheadline)
+                    VStack{
+                        Image("background")
+                            .resizable()
+                            .frame(width: 440, height: 350)
+                            .edgesIgnoringSafeArea(.all)
+                            .cornerRadius(40, corners: [.bottomLeft, .bottomRight])
+                            .offset(y: -200)
                         
-                        Button("Favorites"){
-                            
-                        }
-                        .frame(width: 160, height: 39)
-                        .background(favorite ? Color("blue") :.white )
-                        .cornerRadius(16)
-                        .foregroundColor(favorite ? .white : Color("blue"))
-                        .padding(.trailing)
-                        .font(.subheadline)
-                    }
-                    Spacer()
-                    VStack {
-                        if let nodess = vm.nodesById {
-                            ForEach(returnsStrings(nodes: nodess), id: \.0) { node in
-                                MatchCard(tournament: tournaments!, favorite: 0, names:[node.0,node.1])
+                        MatchComponent2()
+                            .offset(y: -250)
+                        HStack{
+                            Button("All"){
+                                
                             }
-                        } else {
-                            Text("nao")
+                            .frame(width: 160, height: 39)
+                            .background(all ? Color("blue") : .white)
+                            .cornerRadius(16)
+                            .foregroundColor(all ? .white: Color("blue"))
+                            .padding(.leading)
+                            .font(.subheadline)
+                            
+                            Button("Favorites"){
+                                
+                            }
+                            .frame(width: 160, height: 39)
+                            .background(favorite ? Color("blue") :.white )
+                            .cornerRadius(16)
+                            .foregroundColor(favorite ? .white : Color("blue"))
+                            .padding(.trailing)
+                            .font(.subheadline)
                         }
+                       Spacer()
+                        VStack {
+                            if let nodess = vm.nodesById {
+                                ForEach(returnsStrings(nodes: nodess), id: \.0) { node in
+                                    MatchCard(tournament: tournaments!, favorite: 0, names:[node.0,node.1])
+                                }
+                            } else {
+                                Text("nao")
+                            }
+                        }
+                        
                     }
-
                 }
-                .padding(120)
             }
+           // .padding(.bottom,100)
         }
     }
 }

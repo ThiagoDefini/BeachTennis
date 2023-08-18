@@ -19,11 +19,9 @@ struct Created: View {
                 Button(action: {
                    
                     }, label: {
-                            Image(systemName: "xmark")
-                                .font(.system(size: 20))
-                                .foregroundColor(.gray)
-                        
-                  
+                    Image(systemName: "xmark")
+                        .font(.system(size: 20))
+                        .foregroundColor(.gray)
                 })
                 VStack{
                     VStack{
