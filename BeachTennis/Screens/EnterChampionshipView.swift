@@ -81,7 +81,7 @@ struct EnterChampionshipView: View {
             }
             
             .navigationTitle("Enter championship")
-            .alert("Campeonato não encontrado", isPresented: $showAlert) {}
+            .alert("Championship not found", isPresented: $showAlert) {}
         }
     }
 }

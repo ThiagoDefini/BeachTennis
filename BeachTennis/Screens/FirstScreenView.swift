@@ -44,11 +44,11 @@ struct FirstScreenView: View {
                             .padding(.leading,25)
                         Spacer()
                     }
-                   
+
                     HStack{
-                      
+
                         Button(action: { joinGame.toggle()
-                            
+
                         }, label: {
                             ZStack{
                                 RoundedCorner(radius: 16)
@@ -64,7 +64,7 @@ struct FirstScreenView: View {
                                     Text("Join")
                                         .foregroundColor(Color("blue"))
                                 }
-                                
+
                             }
                         })
                         .sheet(isPresented: $joinGame, content:{
@@ -72,11 +72,11 @@ struct FirstScreenView: View {
                                 .onAppear{
                                     vm.updateData()
                                 }
-                            
+
                         })
                         Spacer()
                             .frame(width: 20)
-                        
+
                         Button(action: { createGame.toggle()}, label: {
                             ZStack{
                                 RoundedCorner(radius: 16)
@@ -100,7 +100,7 @@ struct FirstScreenView: View {
                                     vm.updateData()
                                 }
                         })
-                        
+
                     }
                     VStack{
                         VStack{
@@ -112,7 +112,7 @@ struct FirstScreenView: View {
                                     .padding(.leading,25)
                                 Spacer()
                             }
-                           
+
                             if let playingTournaments = vm.playingTournaments, !playingTournaments.isEmpty{
                                 ScrollView(.horizontal){
                                     HStack{
@@ -125,7 +125,7 @@ struct FirstScreenView: View {
 
                                 NoGames()
                                     .padding(.top,80)
-                                    
+
                             }
                         }
                         .padding(.top)
@@ -138,8 +138,8 @@ struct FirstScreenView: View {
                                     .padding(.leading,25)
                                 Spacer()
                             }
-                            
-                            
+
+
                             if !vm.ownerTournaments.isEmpty {
                                 ScrollView(.horizontal){
                                     HStack{
@@ -148,18 +148,18 @@ struct FirstScreenView: View {
                                         }
                                     }
                                 }
-                                
-                                
+
+
                             } else {
-                                
+
                                 NoGames()
                                     .padding(.top,60)
                             }
-                            
+
                         }
                         .padding(.top,70)
                     }
-               
+
                 }
                 .padding(.bottom,50)
             }
