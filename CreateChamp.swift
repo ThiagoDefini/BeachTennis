@@ -222,15 +222,20 @@ struct CreateChamp: View {
                         
                     })
                    
-                    NavigationLink(isActive: $createButton) {
-                        AddPlayersView(tournament: champ ?? Tournament())
-                            .environmentObject(champFlow)
-                            .onAppear{
-                                vm.updateData()
-                            }
-                    } label: {
-                        EmptyView()
+                    if let c = champ {
+                        NavigationLink(isActive: $createButton) {
+//                            AddPlayersView(tournament: champ ?? Tournament())
+                            SinglePlayerView(tournament: c)
+                                .environmentObject(champFlow)
+                                .onAppear{
+                                    vm.updateData()
+                                }
+                        } label: {
+                            EmptyView()
+                        }
                     }
+                    
+                    
                     
                     
                 }else{
