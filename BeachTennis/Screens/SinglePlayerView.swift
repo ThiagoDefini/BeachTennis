@@ -17,10 +17,11 @@ struct SinglePlayerView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Text("Insert the full name of the player bellow:")
+                Text("Insert the full name of both the players with an '&' bellow:")
+                    .font(.footnote)
                     .padding(.bottom,50)
                 VStack{
-                    Text("Player #1:")
+                    Text("Players:")
                         .padding(.trailing, 290)
                         .foregroundColor(.black)
                     ZStack{
@@ -32,7 +33,7 @@ struct SinglePlayerView: View {
                             Image(systemName: "person.fill")
                                 .foregroundColor(Color("orange"))
                                 .offset(x: -20)
-                            TextField("Full name", text: self.$fullName)
+                            TextField("Example: Joao & Maria", text: self.$fullName)
                                 .foregroundColor(.black)
                         }
                         .padding(.leading, 50)
