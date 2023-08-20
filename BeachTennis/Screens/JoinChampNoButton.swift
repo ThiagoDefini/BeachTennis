@@ -68,7 +68,7 @@ struct JoinChampNoButton: View, Shape {
                         }
                         MultiUseCell(text1: "Date", text2: tournament.startDate, image: "calendar.badge.clock")
                         
-                        NavigationLink(destination: MatchesView(), label: {
+                        NavigationLink(destination: MatchesView(tournament: tournament), label: {
                             HStack(spacing:10){
                                 Image("mapa")
                                     .resizable()

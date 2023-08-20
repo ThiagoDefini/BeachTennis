@@ -52,7 +52,7 @@ struct EnterChampionshipView: View {
                         if let index = vm.tournaments.firstIndex(where: {$0.id == text}) {
                             
                             NavigationLink {
-                                ChampInfoView(tournament: vm.tournaments[index])
+                                JoinChamp(tournament: vm.tournaments[index])
                                     .onAppear{
                                         vm.updateData()
                                     }

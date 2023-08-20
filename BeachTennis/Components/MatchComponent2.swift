@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MatchComponent2: View {
+    var tournament: Tournament
+    
     var body: some View {
         ZStack{
                 VStack{
@@ -17,7 +19,7 @@ struct MatchComponent2: View {
                         .bold()
                         .padding(.trailing, 235)
                         .padding(.bottom, 5)
-                    Text("Torneio das gurias")
+                    Text(tournament.name)
                         .padding(.trailing, 180)
                         .font(.system(size: 18))
                         .foregroundColor(Color("orange"))
@@ -37,6 +39,6 @@ struct MatchComponent2: View {
 
 struct MatchComponent2_Previews: PreviewProvider {
     static var previews: some View {
-        MatchComponent2()
+        MatchComponent2(tournament: c1!)
     }
 }

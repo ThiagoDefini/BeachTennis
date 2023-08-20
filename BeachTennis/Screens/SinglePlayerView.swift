@@ -113,7 +113,7 @@ struct SinglePlayer2View: View{
                             Image(systemName: "person.fill")
                                 .font(.system(size: 40))
                                 .foregroundColor(Color("blue"))
-                            Text("Add single player")
+                            Text("Add team")
                                 .foregroundColor(Color("blue"))
                                 .bold()
                         }
@@ -122,7 +122,7 @@ struct SinglePlayer2View: View{
                 //                    ForEach(c2.tournamentMatches){ teams in
                 //                        PlayerCell(team: teams, number: 1)
                 //                            }
-               NavigationLink(destination: AddCourtsView(), label: {
+                NavigationLink(destination: AddCourtsView(tournament: tournament), label: {
                    Text("Next")
                        .frame(width: 350, height: 64)
                        .background(Color("blue"))

@@ -224,7 +224,6 @@ struct CreateChamp: View {
                    
                     if let c = champ {
                         NavigationLink(isActive: $createButton) {
-//                            AddPlayersView(tournament: champ ?? Tournament())
                             SinglePlayerView(tournament: c)
                                 .environmentObject(champFlow)
                                 .onAppear{

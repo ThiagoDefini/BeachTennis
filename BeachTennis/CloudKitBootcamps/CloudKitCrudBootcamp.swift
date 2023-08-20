@@ -144,7 +144,16 @@ class CloudKitCrudBootcampViewModel: ObservableObject{
                                 switch result{
                                 case .success(let name):
                                     self.userName = name
-                                    self.addPerson(id: id.recordName, name: name, contact: "", tournamentsRegistered: [])
+                                    CloudKitUtility.discoverUserIdentityPhone { resultPhone in
+                                        switch resultPhone{
+                                        case .success(let phone):
+                                            self.addPerson(id: id.recordName, name: name, contact: phone, tournamentsRegistered: [])
+                                        case .failure(let error):
+                                            print(error)
+                                            self.addPerson(id: id.recordName, name: name, contact: "", tournamentsRegistered: [])
+                                        }
+                                    }
+                                    
                                 case .failure(let error):
                                     print(error)
                                 }

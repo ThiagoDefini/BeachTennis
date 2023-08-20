@@ -52,7 +52,6 @@
 		CE509F662A6F042100E65ECE /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F652A6F042100E65ECE /* Person.swift */; };
 		CE509F682A6F056100E65ECE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F672A6F056100E65ECE /* Node.swift */; };
 		CE509F6A2A6F097400E65ECE /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE509F692A6F097400E65ECE /* Court.swift */; };
-		CE55AE742A8E9E1700BD5EFB /* JoinChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */; };
 		CEE1D2C32A71980B0074F383 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C22A71980B0074F383 /* Collections */; };
 		CEE1D2C52A71980B0074F383 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C42A71980B0074F383 /* DequeModule */; };
 		CEE1D2C72A71980B0074F383 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = CEE1D2C62A71980B0074F383 /* OrderedCollections */; };
@@ -107,7 +106,6 @@
 		CE509F652A6F042100E65ECE /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CE509F692A6F097400E65ECE /* Court.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
-		CE55AE732A8E9E1700BD5EFB /* JoinChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChamp.swift; sourceTree = "<group>"; };
 		CEE1D2C82A744AA40074F383 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -501,7 +499,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeachTennis/BeachTennis.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BeachTennis/Preview Content\"";
 				DEVELOPMENT_TEAM = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
@@ -536,7 +534,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeachTennis/BeachTennis.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BeachTennis/Preview Content\"";
 				DEVELOPMENT_TEAM = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
