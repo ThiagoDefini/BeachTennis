@@ -17,6 +17,7 @@ struct Created: View {
         NavigationView{
             ZStack(alignment: .topTrailing){
                 Button(action: {
+                    
                    
                     }, label: {
                     Image(systemName: "xmark")
