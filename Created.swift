@@ -52,11 +52,12 @@ struct Created: View {
                                 .frame(width: 350, height: 107)
                             VStack{
                                 
-                                Text("83972")
+                                Text(code)
                                     .foregroundColor(Color("gray"))
-                                    .font(.system(size: 90))
+                                    .font(.system(size: 25))
                             }
                         }
+                        .padding(.horizontal)
                     }
                     .padding(.bottom, 150)
                     ZStack{
@@ -88,9 +89,10 @@ struct Created: View {
                 
             }
            
-           
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarHidden(true )
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
       
     }
 }

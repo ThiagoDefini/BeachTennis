@@ -14,6 +14,8 @@ struct JoinChamp: View, Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
     
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
+    
     let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
     
     func path(in rect: CGRect) -> Path {
@@ -68,7 +70,7 @@ struct JoinChamp: View, Shape {
                         }
                         MultiUseCell(text1: "Date", text2: tournament.startDate, image: "calendar.badge.clock")
                         
-                        NavigationLink(destination: MatchesView(), label: {
+                        NavigationLink(destination: MatchesView(tournament: tournament), label: {
                             HStack(spacing:10){
                                 Image("mapa")
                                     .resizable()
@@ -100,14 +102,27 @@ struct JoinChamp: View, Shape {
                             
                         })
                         Spacer()
-
-                        Button("Join championship"){
+                        
+                        if var person = vm.person, !person.tournamentsRegistered.contains(tournament.id){
+                            Button("Join championship"){
+                                person.tournamentsRegistered.append(tournament.id)
+                                vm.updatePerson(person: person)
+                            }
+                            .frame(width: 372, height: 65)
+                            .foregroundColor(Color("bege"))
+                            .background(Color("blue"))
+                            .cornerRadius(20)
+                            
+                        }else{
+//                            Button("Join championship"){
+//                                
+//                            }
+//                            .frame(width: 372, height: 65)
+//                            .foregroundColor(Color("bege"))
+//                            .background(Color("blue"))
+//                            .cornerRadius(20)
                             
                         }
-                        .frame(width: 372, height: 65)
-                        .foregroundColor(Color("bege"))
-                        .background(Color("blue"))
-                        .cornerRadius(20)
                         
                     }
                     //Spacer()

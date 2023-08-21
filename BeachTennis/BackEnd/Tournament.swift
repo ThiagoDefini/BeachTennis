@@ -177,9 +177,11 @@ struct Tournament: Identifiable, CloudKitableProtocol{
     mutating func selectCourt(nodeId: String, completion: @escaping (String) -> Void){
         let vm = CloudKitCrudBootcampViewModel()
         
-        if (selectedCourt == courts.count){
+        if (selectedCourt == courts.count-1){
             selectedCourt = 0
         }
+        print(courts)
+        print(courts.count-1)
         let courtSelectedId = courts[selectedCourt]
         
         vm.fetchCourtById(id: courtSelectedId) { courtLet in

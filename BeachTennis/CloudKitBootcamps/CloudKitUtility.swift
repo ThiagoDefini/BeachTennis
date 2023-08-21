@@ -164,6 +164,30 @@ extension CloudKitUtility {
             }
         }
     }
+    
+    static private func discoverUserIdentityPhone(id: CKRecord.ID, completion: @escaping (Result<String, Error>) -> ()) {
+        CKContainer.default().discoverUserIdentity(withUserRecordID: id) { returnedIdentity, returnedError in
+            DispatchQueue.main.async {
+                if let name = returnedIdentity?.lookupInfo?.phoneNumber{
+                    completion(.success(name))
+                }else{
+                    completion(.failure(CloudKitError.iCloudCouldNotDiscoverUser))
+                }
+            }
+        }
+    }
+    
+    static func discoverUserIdentityPhone(completion: @escaping (Result<String, Error>) -> ()) {
+        fetchUserRecordID { fetchCompletion in
+            switch fetchCompletion{
+            case .success(let recordID):
+                CloudKitUtility.discoverUserIdentityPhone(id: recordID, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+        
+    }
 }
 
 // MARK: CRUD FUNCTIONS

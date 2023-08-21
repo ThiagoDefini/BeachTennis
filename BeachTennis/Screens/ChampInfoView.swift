@@ -15,15 +15,15 @@ struct ChampInfoView: View, Shape {
     
     @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
     
-    let link = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")!
-    
+    var link: String = ""
+        
     func path(in rect: CGRect) -> Path {
            let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
            return Path(path.cgPath)
        }
     
     var body: some View {
-        NavigationStack{
+//        NavigationStack{
             ZStack{
                 Color("bege")
                     .edgesIgnoringSafeArea(.all)
@@ -69,7 +69,7 @@ struct ChampInfoView: View, Shape {
                         }
                         MultiUseCell(text1: "Date", text2: tournament.startDate, image: "calendar.badge.clock")
                         
-                        NavigationLink(destination: MatchesView(), label: {
+                        NavigationLink(destination: MatchesView(tournament: tournament), label: {
                             HStack(spacing:10){
                                 Image("mapa")
                                     .resizable()
@@ -102,12 +102,11 @@ struct ChampInfoView: View, Shape {
                         })
                         Spacer()
 
-                        Button("Enter championship"){
-                            if var person = vm.person{
-                                person.tournamentsRegistered.append(tournament.id)
-                                vm.updatePerson(person: person)
-                            }
-                            
+                        Button("Start Championship"){
+//                            var tour = tournament
+//                            tour.createTournamentTree()
+//
+//                            vm.updateTournament(tournament: tour)
                         }
                         .frame(width: 372, height: 65)
                         .foregroundColor(Color("bege"))
@@ -117,7 +116,10 @@ struct ChampInfoView: View, Shape {
                     }
                     //Spacer()
             }
-        }
+            .onAppear{
+//                self.link = tournament.id
+            }
+//        }
     }
 }
   
