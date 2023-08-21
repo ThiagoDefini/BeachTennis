@@ -13,6 +13,8 @@ struct PointsCard: View {
     @State var isShowingKeyboard: Bool = false
     @State var favorite: Int = 0
     
+    @EnvironmentObject var vm: CloudKitCrudBootcampViewModel
+    
     var body: some View {
         ZStack{
             Color("bege")

@@ -10,6 +10,8 @@ import UserNotifications
 struct ContentView: View {
 
     @StateObject var vm = CloudKitCrudBootcampViewModel()
+    var user = CloudKitUserBootcamp()
+    
     
     var body: some View {
         FirstScreenView()
