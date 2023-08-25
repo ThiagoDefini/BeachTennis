@@ -48,7 +48,7 @@ struct ChampInfoView: View, Shape {
                                 .frame(maxWidth:18)
                                 .foregroundColor(Color("orange"))
                             VStack(alignment: .leading){
-                                Text("Local")
+                                Text("Location")
                                     .foregroundColor(.black)
                                     .font(.title2)
                                 Text(tournament.location)
@@ -78,7 +78,7 @@ struct ChampInfoView: View, Shape {
                                     .frame(maxWidth:18)
                                     .foregroundColor(Color("orange"))
                                 VStack(alignment: .leading){
-                                    Text("Jogos")
+                                    Text("Games")
                                         .foregroundColor(.black)
                                         .font(.title2)
                                     Text(String(tournament.players.count/2))

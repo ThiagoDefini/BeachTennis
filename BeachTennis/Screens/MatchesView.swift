@@ -165,8 +165,11 @@ struct MatchesView: View {
                     //                        if tournament.players.isEmpty{
                     //                            ForEach(matches, id: \.0) { node in
                     ForEach(returnsStrings(nodes: tournament.players), id: \.0) { node in
-                        
-                        MatchCard(tournament: tournament, favorite: 0, names:[node.0,node.1])
+                        NavigationLink {
+                            PointsCard(tournament: tournament, players: [node.0,node.1] )
+                        } label: {
+                            MatchCard(tournament: tournament, favorite: 0, names:[node.0,node.1])
+                        }   
                     }
                     //                        } else {
                     //                            Text("Empty")
@@ -182,9 +185,9 @@ struct MatchesView: View {
         }
     }
 }
-
-struct MatchesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MatchesView(tournament: c1!)
-    }
-}
+//
+//struct MatchesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MatchesView(tournament: c1!)
+//    }
+//}
