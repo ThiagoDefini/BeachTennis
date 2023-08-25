@@ -9,13 +9,16 @@ import SwiftUI
 
 struct MatchCard: View {
     var tournament: Tournament
+    var team: Int
     @State var favorite: Int
+    @State var names: [String]
     
     var body: some View {
         VStack(spacing: 20){
             HStack{
                 Text("Match #12")
                     .foregroundColor(Color("orange"))
+                    .font(.custom("Nunito-VariableFont_wght", size: 20))
                     .bold()
                     .padding(.top)
                 Spacer()
@@ -33,21 +36,42 @@ struct MatchCard: View {
             .padding(.top)
            
             HStack {
-                VStack(spacing: 5){
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
-                        .foregroundColor(.black)
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
-                        .foregroundColor(.black)                }
+                if(team == 1){
+                    VStack(alignment: .leading,spacing: 5){
+                        Text(names[0].split(separator: "&")[0])
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
+                        Text(names[0].split(separator: "&")[1])
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
+                        
+                    }
+                }
+                else{
+                    VStack(spacing: 5){
+                        Text(names[0])
+                    }
+                }
                 Spacer()
                 Text("X")
                     .foregroundColor(Color("orange"))
+                    .font(.custom("Nunito", size: 20))
                     .bold()
                 Spacer()
-                VStack(spacing: 5){
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[0])
-                        .foregroundColor(.black)
-                    Text(tournament.tournamentMatches[0].player.split(separator: "&")[1])
-                        .foregroundColor(.black)
+                if(team == 1){
+                    VStack(alignment: .leading,spacing: 5){
+                        Text(names[1].split(separator: "&")[0])
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
+                        Text(names[1].split(separator: "&")[1])
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
+                    }
+                }
+                else{
+                    VStack(spacing: 5){
+                        Text(names[1])
+                    }
                 }
             }
             HStack{
@@ -57,6 +81,7 @@ struct MatchCard: View {
                             .foregroundColor(Color("orange"))
                         Text("12/04/2023 - 17:00 PM")
                             .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
                     }
                     HStack{
                         Image("mapa")
@@ -65,6 +90,7 @@ struct MatchCard: View {
                         
                         Text("Quadra 3")
                             .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 20))
 
                     }
                 }
@@ -81,7 +107,7 @@ struct MatchCard: View {
         }
         .padding(16)
         .frame(width: 350)
-        .frame(height: 207)
+        .frame(height: team == 1 ? 207 : 180)
         .cornerRadius(16)
         .overlay {
             RoundedRectangle(cornerRadius: 16)
@@ -92,6 +118,6 @@ struct MatchCard: View {
 
 struct MatchCard_Previews: PreviewProvider {
     static var previews: some View {
-        MatchCard(tournament:c2,favorite:0)
+        MatchCard(tournament:c2,team:1,favorite:0, names: ["Pepper&Steak","Sofia&Horacio"])
     }
 }

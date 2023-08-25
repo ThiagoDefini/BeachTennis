@@ -25,7 +25,7 @@ struct NoGames: View {
             .padding()
            
         }
-        .frame(height: 80)
+        .frame(width: 420,height: 80)
        
     }
 }
@@ -51,7 +51,7 @@ struct NoNow: View {
             .padding()
            
         }
-        .frame(height: 70)
+        .frame(width: 420,height: 80)
        
     }
     

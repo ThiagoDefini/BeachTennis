@@ -49,23 +49,14 @@ struct MatchesView: View {
 
                     }
                     Spacer()
-                    VStack{
-                        ForEach(tournaments.tournamentMatches, id: \.self) { match in
-                                if (favorite == false){
-                                    MatchCard(tournament: tournaments,favorite: match.id)
-                              }
-                                if(favorite == true){
-                                  //for j in player.favorites{
-                                    ForEach(player.playersFavorited, id: \.self){
-                                        j in
-                                        if(j.id == match.id){
-                                            MatchCard(tournament: tournaments,favorite:match.id)
-                                     }
-                              }
-                            }
-                        }
-
-                    }
+//                    VStack {
+//                        if let nodess = vm.nodesById {
+//                            ForEach(returnsStrings(nodes: nodess), id: \.0) { node in
+//                                MatchCard(tournament: tournaments!,team:1,favorite: 0, names:[node.0,node.1])
+//                            }
+//                        }
+//
+//                    }
                 }
                 .padding(120)
             }

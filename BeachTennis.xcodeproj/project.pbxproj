@@ -104,6 +104,10 @@
 		CE1447B52A82C84A00242F3D /* AddCourtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourtView.swift; sourceTree = "<group>"; };
 		CE1447B72A82CAAD00242F3D /* CourtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtCell.swift; sourceTree = "<group>"; };
 		CE1447B92A82CD6200242F3D /* MatchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCard.swift; sourceTree = "<group>"; };
+		CE3CF83E2A8ED63200736FCF /* JoinChampNoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChampNoButton.swift; sourceTree = "<group>"; };
+		CE3CF8402A969BE100736FCF /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		CE3CF8432A969FC300736FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE3CF8442A96A16E00736FCF /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		CE509F632A6EFF2200E65ECE /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		CE509F652A6F042100E65ECE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CE509F672A6F056100E65ECE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 		7BB618282A671A480097A3AD /* BeachTennis */ = {
 			isa = PBXGroup;
 			children = (
+				CE3CF8432A969FC300736FCF /* Info.plist */,
 				6FBD2AA32A82EC11003EF5F8 /* WatchOS */,
 				CE0D61B42A841D3D0036B5DE /* Components */,
 				CE0D61B12A8403B50036B5DE /* Extensions */,
@@ -198,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				7BB618302A671A490097A3AD /* Preview Assets.xcassets */,
+				CE3CF8442A96A16E00736FCF /* Nunito-VariableFont_wght.ttf */,
+				CE3CF8402A969BE100736FCF /* Poppins-Regular.ttf */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -509,6 +516,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeachTennis/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -543,6 +551,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = RU3T8G764D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BeachTennis/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
