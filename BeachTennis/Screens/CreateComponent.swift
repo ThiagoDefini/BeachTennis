@@ -13,7 +13,7 @@ struct CreateComponent: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
-                .frame(width: 372, height: 104)
+                .frame(width: 350, height: 104)
                 .foregroundColor(.white)
             VStack(alignment: .leading){
                 
@@ -30,7 +30,7 @@ struct CreateComponent: View {
                 }
                 HStack{
                     Text(tournament.id)
-                        .font(.system(size: 24))
+                        .font(.system(size: 18))
                         .foregroundColor(Color("orange"))
                         .bold()
                         .padding(.horizontal)
@@ -38,19 +38,19 @@ struct CreateComponent: View {
                         .lineLimit(1)
                 }
             }
-            .padding(.trailing, 80)
+            .padding(.trailing,40)
             ShareLink(item: link){
                 Label("", systemImage: "square.and.arrow.up")
                     .foregroundColor(Color("blue"))
                     .font(.system(size: 30))
                 
             }
-            .padding(.leading,310)
+            .padding(.leading,300)
             
             RoundedCorner(radius: 20)
                 .stroke(lineWidth: 0.5)
                 .foregroundColor(Color("orange"))
-                .frame(width: 372, height: 104)
+                .frame(width: 350, height: 104)
             
         }
         

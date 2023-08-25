@@ -105,7 +105,7 @@ struct FirstScreenView: View {
                     VStack{
                         VStack{
                             HStack{
-                                Text("Participating Championships")
+                                Text("Participating championships")
                                     .font(.custom("poppins", size: 20))
                                     .bold()
                                     .foregroundColor(Color("gray"))
